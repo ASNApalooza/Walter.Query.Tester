@@ -1,0 +1,416 @@
+﻿Using System
+Using System.Collections
+Using System.Collections.Generic 
+Using System.ComponentModel
+Using System.Data
+Using System.Drawing
+Using System.Text
+Using System.Windows.Forms
+Using ASNA.DataGate.Client 
+Using System.Web.UI.WebControls
+Using System.IO 
+Using NewtonSoft.Json
+
+BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
+
+	/region Default Constructor
+	
+	BegConstructor Access(*Public)
+		//
+		// Required for Windows Form Designer support
+		//
+		InitializeComponent()
+
+		//
+		// TODO: Add any constructor code after InitializeComponent call
+		//
+	EndConstructor
+
+	/endregion
+
+    
+
+    DclFld db             Type(AdgConnection) 
+    DclFld Query          Type(ASNA.Helpers.DataServices.QueryDriver) 
+    DclFld ArgsJson       Type(*String) 
+    DclFld QueryAvailable Type(*Boolean) 
+
+	BegSr Form1_Load Access(*Private) Event(*this.Load)
+		DclSrParm sender *Object
+		DclSrParm e System.EventArgs
+
+        comboboxDBName.Items.Add(*New ListItem("Local", "*Public/DG Net Local"))
+        comboboxDBName.Items.Add(*New ListItem("IBM i", "*Public/Cypress"))
+        comboboxDBName.SelectedIndex = 1
+
+        labelCurrentQueryFile.Text = String.Empty 
+	EndSr
+
+	BegSr Form1_FormClosing Access(*Private) Event(*this.FormClosing)
+		DclSrParm sender Type(*Object)
+		DclSrParm e Type(System.Windows.Forms.FormClosingEventArgs)
+
+     		// Occurs when form is closing.    
+		// Put form "housecleaning" code here (ie close files).
+	EndSr
+
+    BegSr ConfigureShowNextPage
+        linklableNextPage.Enabled = Query.Args.Outputs.MoreRowsForward
+    EndSr
+
+	BegSr buttonPerformQuery_Click Access(*Private) Event(*this.buttonPerformQuery.Click)
+		DclSrParm sender Type(*Object)
+		DclSrParm e Type(System.EventArgs)
+
+        DclFld dt           Type(DataTable)
+        DclFld DBName       Type(*String) 
+
+        *This.QueryAvailable = *False
+        
+        If (String.IsNullOrEmpty(textboxLibrary.Text)) AND + 
+           (String.IsNullOrEmpty(textboxFile.Text)) AND + 
+           (String.IsNullOrEmpty(textboxFieldsList.Text)) AND + 
+           (String.IsNullOrEmpty(textboxRows.Text))
+            LeaveSr 
+        EndIf
+
+        datagridviewResults.DataSource = *Nothing 
+
+        DBName = (comboboxDBName.SelectedItem *As ListItem).Value 
+        db = *New AdgConnection(DBName) 
+        //db.Open()       
+
+        *This.Cursor = Cursors.WaitCursor
+
+        Query = *New ASNA.Helpers.DataServices.QueryDriver(db)        
+        SetQueryProperties(Query) 
+
+        dt = Query.Exec() *As DataTable
+        If (Query.Args.Error.ErrorException <> *Nothing)
+            MsgBox Query.Args.Error.ErrorMessage
+        Else 
+            *This.QueryAvailable = *True 
+        EndIf 
+
+        ConfigureShowNextPage()
+        labelQueryTime.Text = String.Format("Query took {0:#,##0} milliseconds on the server.", Query.Args.Outputs.Milliseconds)
+        datagridviewResults.DataSource = dt 
+        
+        *This.Cursor = Cursors.Default 
+        db.Close() 
+
+        ArgsJson = JsonConvert.SerializeObject(Query.Args,Formatting.Indented)
+
+        tabControl1.TabIndex = 0
+        tabControl2.TabIndex = 0
+
+        tabControl1.SelectedIndex = 1
+	EndSr
+
+    BegSr SetQueryProperties
+        DclSrParm Query     Type(ASNA.Helpers.DataServices.QueryDriver)
+
+        Query.Args.Inputs.Library      = textboxLibrary.Text
+        Query.Args.Inputs.File         = textboxFile.Text
+        Query.Args.Inputs.FieldsList   = textboxFieldsList.Text
+        Query.Args.Inputs.Rows         = Convert.ToInt32(textboxRows.Text)
+        Query.Args.Inputs.Query        = textboxQuery.Text 
+
+        If (textboxQueryParm1Field.Text <> String.Empty)
+            AddQueryField(Query,textboxQueryParm1Field,textboxQueryParm1Value)
+        EndIf 
+        If (textboxQueryParm2Field.Text <> String.Empty)
+            AddQueryField(Query,textboxQueryParm2Field,textboxQueryParm2Value)
+        EndIf 
+        If (textboxQueryParm3Field.Text <> String.Empty)
+            AddQueryField(Query,textboxQueryParm3Field,textboxQueryParm3Value)
+        EndIf 
+
+        If (textboxOrderBy1Field.Text <> String.Empty)
+            AddParmField(Query,textboxOrderBy1Field,textboxOrderBy1Value) 
+        EndIf 
+        If (textboxOrderBy2Field.Text <> String.Empty)
+            AddParmField(Query,textboxOrderBy2Field,textboxOrderBy2Value) 
+        EndIf 
+        If (textboxOrderBy3Field.Text <> String.Empty)
+            AddParmField(Query,textboxOrderBy3Field,textboxOrderBy3Value) 
+        EndIf 
+    EndSr
+
+    BegSr AddQueryField
+        DclSrParm Query     Type(ASNA.Helpers.DataServices.QueryDriver)
+        DclSrParm Field Type(TextBox)
+        DclSrParm Value Type(TextBox) 
+
+        DclFld o Type(*Object) 
+
+        o = Value.Text *As Object
+
+        Query.Args.Inputs.QueryParms.Add(*New ASNA.Helpers.DataServices.QueryField(Field.Text,o))
+    EndSr
+
+    BegSr AddParmField
+        DclSrParm Query     Type(ASNA.Helpers.DataServices.QueryDriver)
+        DclSrParm Field Type(TextBox)
+        DclSrParm Value Type(TextBox) 
+
+        Query.Args.Inputs.OrderBy.Add(*New ASNA.Helpers.DataServices.QueryOrderByField(Field.Text,Convert.ToInt32(value.Text)))
+    EndSr
+    	
+	BegSr saveQueryAsToolStripMenuItem_Click Access(*Private) Event(*this.saveQueryAsToolStripMenuItem.Click)
+		DclSrParm sender Type(*Object)
+		DclSrParm e Type(System.EventArgs)
+
+        DclFld ArgsJson Type(*String) 
+
+        ArgsJson = JsonConvert.SerializeObject(Query.Args,Formatting.Indented)
+
+        savefiledialog1.ShowDialog() 
+        If (savefiledialog1.FileName <> String.Empty) 
+            If (File.Exists(savefiledialog1.FileName))
+                File.Delete(savefiledialog1.FileName)
+            EndIf
+            File.WriteAllText(savefiledialog1.FileName,ArgsJson)           
+        EndIF
+	EndSr
+	
+	BegSr fileToolStripMenuItem_Click Access(*Private) Event(*this.fileToolStripMenuItem.Click)
+		DclSrParm sender Type(*Object)
+		DclSrParm e Type(System.EventArgs)
+	EndSr
+	
+	BegSr openQueryToolStripMenuItem_Click Access(*Private) Event(*this.openQueryToolStripMenuItem.Click)
+		DclSrParm sender Type(*Object)
+		DclSrParm e Type(System.EventArgs)
+
+        DclFld ArgsJson     Type(*String) 
+        DclFld DBName       Type(*String) 
+        
+        openfiledialog1.Filter = savefiledialog1.Filter
+        openfiledialog1.FilterIndex = 0
+        openfiledialog1.FileName = String.Empty 
+
+        openfiledialog1.ShowDialog() 
+        If ( openfiledialog1.FileName <> "") 
+            *This.Cursor = Cursors.WaitCursor
+            ArgsJson = File.ReadAllText(openfiledialog1.FileName) 
+            DBName = (comboboxDBName.SelectedItem *As ListItem).Value 
+            db = *New AdgConnection(DBName) 
+            db.Open()       
+            Query = *New ASNA.Helpers.DataServices.QueryDriver(db)   
+            
+            Query.Args = JsonConvert.DeserializeObject(ArgsJson, Query.Args.GetType()) *AS ASNA.Helpers.DataServices.QueryFileInstanceArgs
+            //Query.Args = JsonConvert.DeserializeObject(ArgsJson, *TypeOf( ASNA.Helpers.DataServices.QueryFileInstanceArgs)) *AS ASNA.Helpers.DataServices.QueryFileInstanceArgs
+            
+            //Query.Args.GetType()) *AS ASNA.Helpers.DataServices.QueryFileInstanceArgs
+            RefreshFormInputs(Query)
+            db.Close() 
+            *This.Cursor = Cursors.Default
+            *This.QueryAvailable = *False
+            labelCurrentQueryFile.Text = openfiledialog1.FileName  
+        EndIf
+	EndSr
+
+    BegSr RefreshFormInputs
+        DclSrParm Query     Type(ASNA.Helpers.DataServices.QueryDriver)
+
+        DclFld i  Type(*Integer4) 
+        DclFld tb Type(TextBox) 
+
+        ClearInputs()
+
+        textboxLibrary.Text     =   Query.Args.Inputs.Library
+        textboxFile.Text        =   Query.Args.Inputs.File
+        textboxFieldsList.Text  =   Query.Args.Inputs.FieldsList
+        textboxRows.Text        =   Query.Args.Inputs.Rows.ToString() 
+        textboxQuery.Text       =   Query.Args.Inputs.Query
+
+        i = 1
+        ForEach qf Type(ASNA.Helpers.DataServices.QueryField) Collection(Query.Args.Inputs.QueryParms) 
+            tb = *This.Controls.Find(String.Format("textboxQueryParm{0}Field",i),*True)[0] *As TextBox 
+            tb.Text = qf.FieldName
+            tb = *This.Controls.Find(String.Format("textboxQueryParm{0}Value",i),*True)[0] *As TextBox  
+            tb.Text = qf.FieldValue.ToString()
+            i += 1
+        EndFor 
+
+        i = 1
+        ForEach qo Type(ASNA.Helpers.DataServices.QueryOrderByField) Collection(Query.Args.Inputs.OrderBy) 
+            tb = *This.Controls.Find(String.Format("textboxOrderBy{0}Field",i),*True)[0] *As TextBox 
+            tb.Text = qo.FieldName
+            tb = *This.Controls.Find(String.Format("textboxOrderBy{0}Value",i),*True)[0] *As TextBox 
+            tb.Text = qo.SortOrder
+            i += 1
+        EndFor 
+    EndSr
+	
+    BegSr ClearInputs
+        ForEach tb Type(TextBox) Collection(panelInputs.Controls)
+            tb.Text = String.Empty
+        EndFor 
+        labelCurrentQueryFile.Text = openfiledialog1.FileName  
+    EndSr 
+	
+	BegSr showQueryAsExcelToolStripMenuItem_Click Access(*Private) Event(*this.showQueryAsExcelToolStripMenuItem.Click)
+		DclSrParm sender Type(*Object)
+		DclSrParm e Type(System.EventArgs)
+
+        DclConst EXCEL_FILE Value("C:\Users\Roger\Documents\testing\example.xlsx")
+
+        DclFld ExcelAdapter Type(ASNA.Helpers.DataServices.ToExcelAdapter)
+
+        *This.Cursor = Cursors.WaitCursor
+        ExcelAdapter = *New ASNA.Helpers.DataServices.ToExcelAdapter(Query.Args) 
+        Query.OverrideAdapter(ExcelAdapter)
+        Query.Args.Inputs.Options.Clear() 
+        Query.Args.Inputs.Options.Add("heading","Customer Listing")
+        Query.Args.Inputs.Options.Add("worksheet_name","Customers")
+        Query.Exec()
+        ExcelAdapter.SaveToLocalFile(EXCEL_FILE)
+        *This.Cursor = Cursors.Default
+
+        OsExec CmdLine(EXCEL_FILE) 
+	EndSr
+	
+
+	BegSr tabControl1_SelectedIndexChanged Access(*Private) Event(*this.tabControl1.SelectedIndexChanged)
+		DclSrParm sender Type(*Object)
+		DclSrParm e Type(System.EventArgs)
+
+
+	EndSr
+	
+	BegSr tabControl1_Selecting Access(*Private) Event(*this.tabControl1.Selecting)
+		DclSrParm sender Type(*Object)
+		DclSrParm e Type(System.Windows.Forms.TabControlCancelEventArgs)
+
+        If ( NOT QueryAvailable) 
+            e.Cancel = *True 
+            LeaveSr 
+        EndIf
+
+        //*This.Text = "Selecting: " + e.TabPageIndex.ToString() 
+        If (e.TabPageIndex = 3) 
+            richtextboxJsonResults.Text = String.Empty
+        EndIf
+
+	EndSr
+	
+	BegSr tabControl1_Selected Access(*Private) Event(*this.tabControl1.Selected)
+		DclSrParm sender Type(*Object)
+		DclSrParm e Type(System.Windows.Forms.TabControlEventArgs)
+
+        DclFld AVRXlate Type(AVRXLate) New()
+        DclFld Json Type(*String)
+
+
+        If (e.TabPageIndex = 0)
+
+        ElseIf (e.TabPageIndex = 1)
+            linklableNextPage.Visible = String.IsNullOrEmpty(Query.Args.Inputs.Query) 
+
+
+        ElseIf (e.TabPageIndex = 2)
+            richtextboxJsonArgs.Text = ArgsJson 
+
+        ElseIf ( e.TabPageIndex = 3) 
+            *This.Cursor = Cursors.WaitCursor
+            Query.Args.Inputs.Options.Clear() 
+            Query.Args.Inputs.Options.Add("indentJson", *True) 
+            Query.OverrideAdapter(*New ASNA.Helpers.DataServices.ToJsonAdapter(Query.Args)) 
+            Json = Query.Exec() *As *String 
+
+            *This.Cursor = Cursors.Default
+            richtextboxJsonResults.Text = Json 
+        ElseIf (e.TabPageIndex = 4)
+            richtextboxAVR.Text = AVRXLate.ToDataTableCode(Query) 
+        EndIf 
+
+	EndSr
+	
+	BegSr tabControl2_Selecting Access(*Private) Event(*this.tabControl2.Selecting)
+		DclSrParm sender Type(*Object)
+		DclSrParm e Type(System.Windows.Forms.TabControlCancelEventArgs)
+
+        richtextboxAVR.Parent = e.TabPage
+	EndSr
+	
+	BegSr tabControl2_Selected Access(*Private) Event(*this.tabControl2.Selected)
+		DclSrParm sender Type(*Object)
+		DclSrParm e Type(System.Windows.Forms.TabControlEventArgs)
+
+        DclFld AVRXlate Type(AVRXLate) New()
+
+        If (e.TabPageIndex = 0)
+            richtextboxAVR.Text = AVRXLate.ToDataTableCode(Query) 
+
+        ElseIf (e.TabPageIndex = 1)
+            richtextboxAVR.Text = AVRXLate.ToJsonCode(Query) 
+
+        ElseIf (e.TabPageIndex = 2)
+            richtextboxAVR.Text = AVRXLate.ToExcelCode(Query) 
+
+        ElseIf (e.TabPageIndex = 3)
+            richtextboxAVR.Text = AVRXLate.ToListItemCode(Query)
+
+        EndIf 
+
+
+	EndSr
+	
+	BegSr linklabelToClipboard_LinkClicked Access(*Private) Event(*this.linklabelToClipboard.LinkClicked)
+		DclSrParm sender Type(*Object)
+		DclSrParm e Type(System.Windows.Forms.LinkLabelLinkClickedEventArgs)
+
+        Clipboard.SetText(richtextboxAVR.Text) 
+	EndSr
+
+
+	
+	BegSr clearInputsToolStripMenuItem_Click Access(*Private) Event(*this.clearInputsToolStripMenuItem.Click)
+		DclSrParm sender Type(*Object)
+		DclSrParm e Type(System.EventArgs)
+
+        ClearInputs()
+        *This.QueryAvailable = *False
+	EndSr
+	
+	BegSr linklableNextPage_LinkClicked Access(*Private) Event(*this.linklableNextPage.LinkClicked)
+		DclSrParm sender Type(*Object)
+		DclSrParm e Type(System.Windows.Forms.LinkLabelLinkClickedEventArgs)
+
+        DclFld dt           Type(DataTable)
+        DclFld DBName       Type(*String) 
+        DclFld EncodedArgs  Type(*String) 
+
+        EncodedArgs = Query.Args.Outputs.EncodedArgs
+
+        *This.QueryAvailable = *False
+
+        datagridviewResults.DataSource = *Nothing 
+
+        DBName = (comboboxDBName.SelectedItem *As ListItem).Value 
+        db = *New AdgConnection(DBName) 
+
+        Query = *New ASNA.Helpers.DataServices.QueryDriver(db)        
+
+        *This.Cursor = Cursors.WaitCursor
+
+        dt = Query.NextPage(EncodedArgs) *As DataTable
+        If (Query.Args.Error.ErrorException <> *Nothing)
+            MsgBox Query.Args.Error.ErrorMessage
+        Else 
+            *This.QueryAvailable = *True 
+        EndIf 
+
+        ConfigureShowNextPage()
+        labelQueryTime.Text = String.Format("Query took {0:#,##0} milliseconds on the server.", Query.Args.Outputs.Milliseconds)
+        datagridviewResults.DataSource = dt 
+        
+        *This.Cursor = Cursors.Default 
+        db.Close() 
+
+        ArgsJson = JsonConvert.SerializeObject(Query.Args,Formatting.Indented)
+	EndSr
+	
+EndClass

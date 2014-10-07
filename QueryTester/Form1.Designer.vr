@@ -1,0 +1,879 @@
+﻿BegClass Form1 Partial(*Yes)
+	DclFld labelCurrentQueryFile Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld labelQueryTime Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld linklableNextPage Type(System.Windows.Forms.LinkLabel) Access(*Private) WithEvents(*Yes)
+	DclFld editToolStripMenuItem Type(System.Windows.Forms.ToolStripMenuItem) Access(*Private) WithEvents(*Yes)
+	DclFld clearInputsToolStripMenuItem Type(System.Windows.Forms.ToolStripMenuItem) Access(*Private) WithEvents(*Yes)
+	DclFld panelInputs Type(System.Windows.Forms.Panel) Access(*Private) WithEvents(*Yes)
+	DclFld linklabelToClipboard Type(System.Windows.Forms.LinkLabel) Access(*Private) WithEvents(*Yes)
+	DclFld tabPage8 Type(System.Windows.Forms.TabPage) Access(*Private) WithEvents(*Yes)
+	DclFld tabPage9 Type(System.Windows.Forms.TabPage) Access(*Private) WithEvents(*Yes)
+	DclFld tabControl2 Type(System.Windows.Forms.TabControl) Access(*Private) WithEvents(*Yes)
+	DclFld tabPage6 Type(System.Windows.Forms.TabPage) Access(*Private) WithEvents(*Yes)
+	DclFld richtextboxAVR Type(System.Windows.Forms.RichTextBox) Access(*Private) WithEvents(*Yes)
+	DclFld tabPage7 Type(System.Windows.Forms.TabPage) Access(*Private) WithEvents(*Yes)
+	DclFld tabPage5 Type(System.Windows.Forms.TabPage) Access(*Private) WithEvents(*Yes)
+	DclFld buttonPerformQuery Type(System.Windows.Forms.Button) Access(*Private) WithEvents(*Yes)
+	DclFld tabPage4 Type(System.Windows.Forms.TabPage) Access(*Private) WithEvents(*Yes)
+	DclFld richtextboxJsonResults Type(System.Windows.Forms.RichTextBox) Access(*Private) WithEvents(*Yes)
+	DclFld label20 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld label19 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld tabPage3 Type(System.Windows.Forms.TabPage) Access(*Private) WithEvents(*Yes)
+	DclFld richtextboxJsonArgs Type(System.Windows.Forms.RichTextBox) Access(*Private) WithEvents(*Yes)
+	DclFld tabControl1 Type(System.Windows.Forms.TabControl) Access(*Private) WithEvents(*Yes)
+	DclFld tabPage1 Type(System.Windows.Forms.TabPage) Access(*Private) WithEvents(*Yes)
+	DclFld comboboxDBName Type(System.Windows.Forms.ComboBox) Access(*Private) WithEvents(*Yes)
+	DclFld label18 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld label12 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld textboxOrderBy3Value Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
+	DclFld label13 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld textboxOrderBy3Field Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
+	DclFld label14 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld textboxOrderBy2Value Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
+	DclFld label15 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld textboxOrderBy2Field Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
+	DclFld label16 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld textboxOrderBy1Value Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
+	DclFld label17 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld textboxOrderBy1Field Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
+	DclFld label10 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld textboxQueryParm3Value Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
+	DclFld label11 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld textboxQueryParm3Field Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
+	DclFld label8 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld textboxQueryParm2Value Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
+	DclFld label9 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld textboxQueryParm2Field Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
+	DclFld label7 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld textboxQueryParm1Value Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
+	DclFld label6 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld textboxQueryParm1Field Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
+	DclFld label5 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld textboxQuery Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
+	DclFld label4 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld textboxRows Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
+	DclFld label3 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld textboxFieldsList Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
+	DclFld label2 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld textboxFile Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
+	DclFld label1 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld textboxLibrary Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
+	DclFld tabPage2 Type(System.Windows.Forms.TabPage) Access(*Private) WithEvents(*Yes)
+	DclFld datagridviewResults Type(System.Windows.Forms.DataGridView) Access(*Private) WithEvents(*Yes)
+	DclFld showQueryAsExcelToolStripMenuItem Type(System.Windows.Forms.ToolStripMenuItem) Access(*Private) WithEvents(*Yes)
+	DclFld viewToolStripMenuItem Type(System.Windows.Forms.ToolStripMenuItem) Access(*Private) WithEvents(*Yes)
+	DclFld openQueryToolStripMenuItem Type(System.Windows.Forms.ToolStripMenuItem) Access(*Private) WithEvents(*Yes)
+	DclFld openFileDialog1 Type(System.Windows.Forms.OpenFileDialog) Access(*Private) WithEvents(*Yes)
+	DclFld saveFileDialog1 Type(System.Windows.Forms.SaveFileDialog) Access(*Private) WithEvents(*Yes)
+	DclFld menuStrip1 Type(System.Windows.Forms.MenuStrip) Access(*Private) WithEvents(*Yes)
+	DclFld fileToolStripMenuItem Type(System.Windows.Forms.ToolStripMenuItem) Access(*Private) WithEvents(*Yes)
+	DclFld saveQueryAsToolStripMenuItem Type(System.Windows.Forms.ToolStripMenuItem) Access(*Private) WithEvents(*Yes)
+
+	// Required method for Designer support - do not modify
+	// the contents of this method with the code editor.
+	BegSr InitializeComponent
+		DclFld dataGridViewCellStyle1 Type(System.Windows.Forms.DataGridViewCellStyle) New(*Dft)
+		DclFld dataGridViewCellStyle2 Type(System.Windows.Forms.DataGridViewCellStyle) New(*Dft)
+		*this.menuStrip1 = *new System.Windows.Forms.MenuStrip()
+		*this.fileToolStripMenuItem = *new System.Windows.Forms.ToolStripMenuItem()
+		*this.saveQueryAsToolStripMenuItem = *new System.Windows.Forms.ToolStripMenuItem()
+		*this.openQueryToolStripMenuItem = *new System.Windows.Forms.ToolStripMenuItem()
+		*this.editToolStripMenuItem = *new System.Windows.Forms.ToolStripMenuItem()
+		*this.clearInputsToolStripMenuItem = *new System.Windows.Forms.ToolStripMenuItem()
+		*this.viewToolStripMenuItem = *new System.Windows.Forms.ToolStripMenuItem()
+		*this.showQueryAsExcelToolStripMenuItem = *new System.Windows.Forms.ToolStripMenuItem()
+		*this.saveFileDialog1 = *new System.Windows.Forms.SaveFileDialog()
+		*this.openFileDialog1 = *new System.Windows.Forms.OpenFileDialog()
+		*this.tabControl1 = *new System.Windows.Forms.TabControl()
+		*this.tabPage1 = *new System.Windows.Forms.TabPage()
+		*this.label20 = *new System.Windows.Forms.Label()
+		*this.label19 = *new System.Windows.Forms.Label()
+		*this.panelInputs = *new System.Windows.Forms.Panel()
+		*this.buttonPerformQuery = *new System.Windows.Forms.Button()
+		*this.comboboxDBName = *new System.Windows.Forms.ComboBox()
+		*this.label18 = *new System.Windows.Forms.Label()
+		*this.label12 = *new System.Windows.Forms.Label()
+		*this.textboxOrderBy3Value = *new System.Windows.Forms.TextBox()
+		*this.label13 = *new System.Windows.Forms.Label()
+		*this.textboxOrderBy3Field = *new System.Windows.Forms.TextBox()
+		*this.label14 = *new System.Windows.Forms.Label()
+		*this.textboxOrderBy2Value = *new System.Windows.Forms.TextBox()
+		*this.label15 = *new System.Windows.Forms.Label()
+		*this.textboxOrderBy2Field = *new System.Windows.Forms.TextBox()
+		*this.label16 = *new System.Windows.Forms.Label()
+		*this.textboxOrderBy1Value = *new System.Windows.Forms.TextBox()
+		*this.label17 = *new System.Windows.Forms.Label()
+		*this.textboxOrderBy1Field = *new System.Windows.Forms.TextBox()
+		*this.label10 = *new System.Windows.Forms.Label()
+		*this.textboxQueryParm3Value = *new System.Windows.Forms.TextBox()
+		*this.label11 = *new System.Windows.Forms.Label()
+		*this.textboxQueryParm3Field = *new System.Windows.Forms.TextBox()
+		*this.label8 = *new System.Windows.Forms.Label()
+		*this.textboxQueryParm2Value = *new System.Windows.Forms.TextBox()
+		*this.label9 = *new System.Windows.Forms.Label()
+		*this.textboxQueryParm2Field = *new System.Windows.Forms.TextBox()
+		*this.label7 = *new System.Windows.Forms.Label()
+		*this.textboxQueryParm1Value = *new System.Windows.Forms.TextBox()
+		*this.label6 = *new System.Windows.Forms.Label()
+		*this.textboxQueryParm1Field = *new System.Windows.Forms.TextBox()
+		*this.label5 = *new System.Windows.Forms.Label()
+		*this.textboxQuery = *new System.Windows.Forms.TextBox()
+		*this.label4 = *new System.Windows.Forms.Label()
+		*this.textboxRows = *new System.Windows.Forms.TextBox()
+		*this.label3 = *new System.Windows.Forms.Label()
+		*this.textboxFieldsList = *new System.Windows.Forms.TextBox()
+		*this.label2 = *new System.Windows.Forms.Label()
+		*this.textboxFile = *new System.Windows.Forms.TextBox()
+		*this.label1 = *new System.Windows.Forms.Label()
+		*this.textboxLibrary = *new System.Windows.Forms.TextBox()
+		*this.tabPage2 = *new System.Windows.Forms.TabPage()
+		*this.labelQueryTime = *new System.Windows.Forms.Label()
+		*this.linklableNextPage = *new System.Windows.Forms.LinkLabel()
+		*this.datagridviewResults = *new System.Windows.Forms.DataGridView()
+		*this.tabPage3 = *new System.Windows.Forms.TabPage()
+		*this.richtextboxJsonArgs = *new System.Windows.Forms.RichTextBox()
+		*this.tabPage4 = *new System.Windows.Forms.TabPage()
+		*this.richtextboxJsonResults = *new System.Windows.Forms.RichTextBox()
+		*this.tabPage5 = *new System.Windows.Forms.TabPage()
+		*this.linklabelToClipboard = *new System.Windows.Forms.LinkLabel()
+		*this.tabControl2 = *new System.Windows.Forms.TabControl()
+		*this.tabPage6 = *new System.Windows.Forms.TabPage()
+		*this.richtextboxAVR = *new System.Windows.Forms.RichTextBox()
+		*this.tabPage7 = *new System.Windows.Forms.TabPage()
+		*this.tabPage8 = *new System.Windows.Forms.TabPage()
+		*this.tabPage9 = *new System.Windows.Forms.TabPage()
+		*this.labelCurrentQueryFile = *new System.Windows.Forms.Label()
+		*this.menuStrip1.SuspendLayout()
+		*this.tabControl1.SuspendLayout()
+		*this.tabPage1.SuspendLayout()
+		*this.panelInputs.SuspendLayout()
+		*this.tabPage2.SuspendLayout()
+		(*this.datagridviewResults *As System.ComponentModel.ISupportInitialize).BeginInit()
+		*this.tabPage3.SuspendLayout()
+		*this.tabPage4.SuspendLayout()
+		*this.tabPage5.SuspendLayout()
+		*this.tabControl2.SuspendLayout()
+		*this.tabPage6.SuspendLayout()
+		*this.SuspendLayout()
+		//
+		//menuStrip1
+		//
+		*this.menuStrip1.Items.AddRange(*new System.Windows.Forms.ToolStripItem[] {*this.fileToolStripMenuItem, *this.editToolStripMenuItem, *this.viewToolStripMenuItem})
+		*this.menuStrip1.Location = *new System.Drawing.Point(0I, 0I)
+		*this.menuStrip1.Name = "menuStrip1"
+		*this.menuStrip1.Size = *new System.Drawing.Size(1168I, 24I)
+		*this.menuStrip1.TabIndex = 3I
+		*this.menuStrip1.Text = "menuStrip1"
+		//
+		//fileToolStripMenuItem
+		//
+		*this.fileToolStripMenuItem.DropDownItems.AddRange(*new System.Windows.Forms.ToolStripItem[] {*this.saveQueryAsToolStripMenuItem, *this.openQueryToolStripMenuItem})
+		*this.fileToolStripMenuItem.Name = "fileToolStripMenuItem"
+		*this.fileToolStripMenuItem.Size = *new System.Drawing.Size(37I, 20I)
+		*this.fileToolStripMenuItem.Text = "File"
+		//
+		//saveQueryAsToolStripMenuItem
+		//
+		*this.saveQueryAsToolStripMenuItem.Name = "saveQueryAsToolStripMenuItem"
+		*this.saveQueryAsToolStripMenuItem.Size = *new System.Drawing.Size(154I, 22I)
+		*this.saveQueryAsToolStripMenuItem.Text = "Save query as..."
+		//
+		//openQueryToolStripMenuItem
+		//
+		*this.openQueryToolStripMenuItem.Name = "openQueryToolStripMenuItem"
+		*this.openQueryToolStripMenuItem.Size = *new System.Drawing.Size(154I, 22I)
+		*this.openQueryToolStripMenuItem.Text = "Open query..."
+		//
+		//editToolStripMenuItem
+		//
+		*this.editToolStripMenuItem.DropDownItems.AddRange(*new System.Windows.Forms.ToolStripItem[] {*this.clearInputsToolStripMenuItem})
+		*this.editToolStripMenuItem.Name = "editToolStripMenuItem"
+		*this.editToolStripMenuItem.Size = *new System.Drawing.Size(39I, 20I)
+		*this.editToolStripMenuItem.Text = "Edit"
+		//
+		//clearInputsToolStripMenuItem
+		//
+		*this.clearInputsToolStripMenuItem.Name = "clearInputsToolStripMenuItem"
+		*this.clearInputsToolStripMenuItem.Size = *new System.Drawing.Size(137I, 22I)
+		*this.clearInputsToolStripMenuItem.Text = "Clear inputs"
+		//
+		//viewToolStripMenuItem
+		//
+		*this.viewToolStripMenuItem.DropDownItems.AddRange(*new System.Windows.Forms.ToolStripItem[] {*this.showQueryAsExcelToolStripMenuItem})
+		*this.viewToolStripMenuItem.Name = "viewToolStripMenuItem"
+		*this.viewToolStripMenuItem.Size = *new System.Drawing.Size(44I, 20I)
+		*this.viewToolStripMenuItem.Text = "View"
+		//
+		//showQueryAsExcelToolStripMenuItem
+		//
+		*this.showQueryAsExcelToolStripMenuItem.Name = "showQueryAsExcelToolStripMenuItem"
+		*this.showQueryAsExcelToolStripMenuItem.Size = *new System.Drawing.Size(179I, 22I)
+		*this.showQueryAsExcelToolStripMenuItem.Text = "Show query as Excel"
+		//
+		//saveFileDialog1
+		//
+		*this.saveFileDialog1.DefaultExt = "json"
+		*this.saveFileDialog1.Filter = "Json files|*.json|All files|*.*"
+		//
+		//openFileDialog1
+		//
+		*this.openFileDialog1.FileName = "openFileDialog1"
+		//
+		//tabControl1
+		//
+		*this.tabControl1.Anchor = ((((System.Windows.Forms.AnchorStyles.Top *BitOr System.Windows.Forms.AnchorStyles.Bottom) *BitOr System.Windows.Forms.AnchorStyles.Left) *BitOr System.Windows.Forms.AnchorStyles.Right) *As System.Windows.Forms.AnchorStyles)
+		*this.tabControl1.Controls.Add(*this.tabPage1)
+		*this.tabControl1.Controls.Add(*this.tabPage2)
+		*this.tabControl1.Controls.Add(*this.tabPage3)
+		*this.tabControl1.Controls.Add(*this.tabPage4)
+		*this.tabControl1.Controls.Add(*this.tabPage5)
+		*this.tabControl1.Font = *new System.Drawing.Font("Microsoft Sans Serif", 11, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.tabControl1.Location = *new System.Drawing.Point(18I, 43I)
+		*this.tabControl1.Name = "tabControl1"
+		*this.tabControl1.SelectedIndex = 0I
+		*this.tabControl1.Size = *new System.Drawing.Size(1132I, 713I)
+		*this.tabControl1.TabIndex = 4I
+		//
+		//tabPage1
+		//
+		*this.tabPage1.Controls.Add(*this.label20)
+		*this.tabPage1.Controls.Add(*this.label19)
+		*this.tabPage1.Controls.Add(*this.panelInputs)
+		*this.tabPage1.Location = *new System.Drawing.Point(4I, 27I)
+		*this.tabPage1.Name = "tabPage1"
+		*this.tabPage1.Padding = *new System.Windows.Forms.Padding(3I)
+		*this.tabPage1.Size = *new System.Drawing.Size(1124I, 682I)
+		*this.tabPage1.TabIndex = 0I
+		*this.tabPage1.Text = "Query"
+		*this.tabPage1.UseVisualStyleBackColor = *True
+		//
+		//label20
+		//
+		*this.label20.AutoSize = *True
+		*this.label20.Location = *new System.Drawing.Point(446I, 285I)
+		*this.label20.Name = "label20"
+		*this.label20.Size = *new System.Drawing.Size(0I, 18I)
+		*this.label20.TabIndex = 5I
+		//
+		//label19
+		//
+		*this.label19.AutoSize = *True
+		*this.label19.Location = *new System.Drawing.Point(438I, 277I)
+		*this.label19.Name = "label19"
+		*this.label19.Size = *new System.Drawing.Size(0I, 18I)
+		*this.label19.TabIndex = 4I
+		//
+		//panelInputs
+		//
+		*this.panelInputs.Anchor = System.Windows.Forms.AnchorStyles.None
+		*this.panelInputs.Controls.Add(*this.labelCurrentQueryFile)
+		*this.panelInputs.Controls.Add(*this.buttonPerformQuery)
+		*this.panelInputs.Controls.Add(*this.comboboxDBName)
+		*this.panelInputs.Controls.Add(*this.label18)
+		*this.panelInputs.Controls.Add(*this.label12)
+		*this.panelInputs.Controls.Add(*this.textboxOrderBy3Value)
+		*this.panelInputs.Controls.Add(*this.label13)
+		*this.panelInputs.Controls.Add(*this.textboxOrderBy3Field)
+		*this.panelInputs.Controls.Add(*this.label14)
+		*this.panelInputs.Controls.Add(*this.textboxOrderBy2Value)
+		*this.panelInputs.Controls.Add(*this.label15)
+		*this.panelInputs.Controls.Add(*this.textboxOrderBy2Field)
+		*this.panelInputs.Controls.Add(*this.label16)
+		*this.panelInputs.Controls.Add(*this.textboxOrderBy1Value)
+		*this.panelInputs.Controls.Add(*this.label17)
+		*this.panelInputs.Controls.Add(*this.textboxOrderBy1Field)
+		*this.panelInputs.Controls.Add(*this.label10)
+		*this.panelInputs.Controls.Add(*this.textboxQueryParm3Value)
+		*this.panelInputs.Controls.Add(*this.label11)
+		*this.panelInputs.Controls.Add(*this.textboxQueryParm3Field)
+		*this.panelInputs.Controls.Add(*this.label8)
+		*this.panelInputs.Controls.Add(*this.textboxQueryParm2Value)
+		*this.panelInputs.Controls.Add(*this.label9)
+		*this.panelInputs.Controls.Add(*this.textboxQueryParm2Field)
+		*this.panelInputs.Controls.Add(*this.label7)
+		*this.panelInputs.Controls.Add(*this.textboxQueryParm1Value)
+		*this.panelInputs.Controls.Add(*this.label6)
+		*this.panelInputs.Controls.Add(*this.textboxQueryParm1Field)
+		*this.panelInputs.Controls.Add(*this.label5)
+		*this.panelInputs.Controls.Add(*this.textboxQuery)
+		*this.panelInputs.Controls.Add(*this.label4)
+		*this.panelInputs.Controls.Add(*this.textboxRows)
+		*this.panelInputs.Controls.Add(*this.label3)
+		*this.panelInputs.Controls.Add(*this.textboxFieldsList)
+		*this.panelInputs.Controls.Add(*this.label2)
+		*this.panelInputs.Controls.Add(*this.textboxFile)
+		*this.panelInputs.Controls.Add(*this.label1)
+		*this.panelInputs.Controls.Add(*this.textboxLibrary)
+		*this.panelInputs.Location = *new System.Drawing.Point(52I, 45I)
+		*this.panelInputs.Name = "panelInputs"
+		*this.panelInputs.Size = *new System.Drawing.Size(1035I, 600I)
+		*this.panelInputs.TabIndex = 1I
+		//
+		//buttonPerformQuery
+		//
+		*this.buttonPerformQuery.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.buttonPerformQuery.Location = *new System.Drawing.Point(881I, 529I)
+		*this.buttonPerformQuery.Name = "buttonPerformQuery"
+		*this.buttonPerformQuery.Size = *new System.Drawing.Size(139I, 54I)
+		*this.buttonPerformQuery.TabIndex = 37I
+		*this.buttonPerformQuery.Text = "Perform query"
+		*this.buttonPerformQuery.UseVisualStyleBackColor = *True
+		//
+		//comboboxDBName
+		//
+		*this.comboboxDBName.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.comboboxDBName.FormattingEnabled = *True
+		*this.comboboxDBName.Location = *new System.Drawing.Point(143I, 21I)
+		*this.comboboxDBName.Name = "comboboxDBName"
+		*this.comboboxDBName.Size = *new System.Drawing.Size(267I, 28I)
+		*this.comboboxDBName.TabIndex = 36I
+		//
+		//label18
+		//
+		*this.label18.AutoSize = *True
+		*this.label18.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label18.Location = *new System.Drawing.Point(18I, 28I)
+		*this.label18.Name = "label18"
+		*this.label18.Size = *new System.Drawing.Size(74I, 20I)
+		*this.label18.TabIndex = 35I
+		*this.label18.Text = "DB Name"
+		//
+		//label12
+		//
+		*this.label12.AutoSize = *True
+		*this.label12.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label12.Location = *new System.Drawing.Point(362I, 430I)
+		*this.label12.Name = "label12"
+		*this.label12.Size = *new System.Drawing.Size(110I, 20I)
+		*this.label12.TabIndex = 33I
+		*this.label12.Text = "OrderBy3Value"
+		//
+		//textboxOrderBy3Value
+		//
+		*this.textboxOrderBy3Value.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.textboxOrderBy3Value.Location = *new System.Drawing.Point(511I, 427I)
+		*this.textboxOrderBy3Value.Name = "textboxOrderBy3Value"
+		*this.textboxOrderBy3Value.Size = *new System.Drawing.Size(120I, 28I)
+		*this.textboxOrderBy3Value.TabIndex = 32I
+		//
+		//label13
+		//
+		*this.label13.AutoSize = *True
+		*this.label13.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label13.Location = *new System.Drawing.Point(362I, 397I)
+		*this.label13.Name = "label13"
+		*this.label13.Size = *new System.Drawing.Size(106I, 20I)
+		*this.label13.TabIndex = 31I
+		*this.label13.Text = "OrderBy3Field"
+		//
+		//textboxOrderBy3Field
+		//
+		*this.textboxOrderBy3Field.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.textboxOrderBy3Field.Location = *new System.Drawing.Point(511I, 394I)
+		*this.textboxOrderBy3Field.Name = "textboxOrderBy3Field"
+		*this.textboxOrderBy3Field.Size = *new System.Drawing.Size(120I, 28I)
+		*this.textboxOrderBy3Field.TabIndex = 30I
+		//
+		//label14
+		//
+		*this.label14.AutoSize = *True
+		*this.label14.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label14.Location = *new System.Drawing.Point(362I, 355I)
+		*this.label14.Name = "label14"
+		*this.label14.Size = *new System.Drawing.Size(110I, 20I)
+		*this.label14.TabIndex = 29I
+		*this.label14.Text = "OrderBy2Value"
+		//
+		//textboxOrderBy2Value
+		//
+		*this.textboxOrderBy2Value.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.textboxOrderBy2Value.Location = *new System.Drawing.Point(511I, 352I)
+		*this.textboxOrderBy2Value.Name = "textboxOrderBy2Value"
+		*this.textboxOrderBy2Value.Size = *new System.Drawing.Size(120I, 28I)
+		*this.textboxOrderBy2Value.TabIndex = 28I
+		//
+		//label15
+		//
+		*this.label15.AutoSize = *True
+		*this.label15.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label15.Location = *new System.Drawing.Point(362I, 322I)
+		*this.label15.Name = "label15"
+		*this.label15.Size = *new System.Drawing.Size(106I, 20I)
+		*this.label15.TabIndex = 27I
+		*this.label15.Text = "OrderBy2Field"
+		//
+		//textboxOrderBy2Field
+		//
+		*this.textboxOrderBy2Field.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.textboxOrderBy2Field.Location = *new System.Drawing.Point(511I, 319I)
+		*this.textboxOrderBy2Field.Name = "textboxOrderBy2Field"
+		*this.textboxOrderBy2Field.Size = *new System.Drawing.Size(120I, 28I)
+		*this.textboxOrderBy2Field.TabIndex = 26I
+		//
+		//label16
+		//
+		*this.label16.AutoSize = *True
+		*this.label16.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label16.Location = *new System.Drawing.Point(362I, 279I)
+		*this.label16.Name = "label16"
+		*this.label16.Size = *new System.Drawing.Size(110I, 20I)
+		*this.label16.TabIndex = 25I
+		*this.label16.Text = "OrderBy1Value"
+		//
+		//textboxOrderBy1Value
+		//
+		*this.textboxOrderBy1Value.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.textboxOrderBy1Value.Location = *new System.Drawing.Point(511I, 276I)
+		*this.textboxOrderBy1Value.Name = "textboxOrderBy1Value"
+		*this.textboxOrderBy1Value.Size = *new System.Drawing.Size(120I, 28I)
+		*this.textboxOrderBy1Value.TabIndex = 24I
+		//
+		//label17
+		//
+		*this.label17.AutoSize = *True
+		*this.label17.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label17.Location = *new System.Drawing.Point(362I, 247I)
+		*this.label17.Name = "label17"
+		*this.label17.Size = *new System.Drawing.Size(106I, 20I)
+		*this.label17.TabIndex = 23I
+		*this.label17.Text = "OrderBy1Field"
+		//
+		//textboxOrderBy1Field
+		//
+		*this.textboxOrderBy1Field.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.textboxOrderBy1Field.Location = *new System.Drawing.Point(511I, 244I)
+		*this.textboxOrderBy1Field.Name = "textboxOrderBy1Field"
+		*this.textboxOrderBy1Field.Size = *new System.Drawing.Size(120I, 28I)
+		*this.textboxOrderBy1Field.TabIndex = 22I
+		//
+		//label10
+		//
+		*this.label10.AutoSize = *True
+		*this.label10.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label10.Location = *new System.Drawing.Point(41I, 430I)
+		*this.label10.Name = "label10"
+		*this.label10.Size = *new System.Drawing.Size(130I, 20I)
+		*this.label10.TabIndex = 21I
+		*this.label10.Text = "QueryParm3Value"
+		//
+		//textboxQueryParm3Value
+		//
+		*this.textboxQueryParm3Value.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.textboxQueryParm3Value.Location = *new System.Drawing.Point(208I, 427I)
+		*this.textboxQueryParm3Value.Name = "textboxQueryParm3Value"
+		*this.textboxQueryParm3Value.Size = *new System.Drawing.Size(120I, 28I)
+		*this.textboxQueryParm3Value.TabIndex = 20I
+		//
+		//label11
+		//
+		*this.label11.AutoSize = *True
+		*this.label11.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label11.Location = *new System.Drawing.Point(41I, 397I)
+		*this.label11.Name = "label11"
+		*this.label11.Size = *new System.Drawing.Size(126I, 20I)
+		*this.label11.TabIndex = 19I
+		*this.label11.Text = "QueryParm3Field"
+		//
+		//textboxQueryParm3Field
+		//
+		*this.textboxQueryParm3Field.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.textboxQueryParm3Field.Location = *new System.Drawing.Point(208I, 394I)
+		*this.textboxQueryParm3Field.Name = "textboxQueryParm3Field"
+		*this.textboxQueryParm3Field.Size = *new System.Drawing.Size(120I, 28I)
+		*this.textboxQueryParm3Field.TabIndex = 18I
+		//
+		//label8
+		//
+		*this.label8.AutoSize = *True
+		*this.label8.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label8.Location = *new System.Drawing.Point(41I, 355I)
+		*this.label8.Name = "label8"
+		*this.label8.Size = *new System.Drawing.Size(130I, 20I)
+		*this.label8.TabIndex = 17I
+		*this.label8.Text = "QueryParm2Value"
+		//
+		//textboxQueryParm2Value
+		//
+		*this.textboxQueryParm2Value.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.textboxQueryParm2Value.Location = *new System.Drawing.Point(208I, 352I)
+		*this.textboxQueryParm2Value.Name = "textboxQueryParm2Value"
+		*this.textboxQueryParm2Value.Size = *new System.Drawing.Size(120I, 28I)
+		*this.textboxQueryParm2Value.TabIndex = 16I
+		//
+		//label9
+		//
+		*this.label9.AutoSize = *True
+		*this.label9.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label9.Location = *new System.Drawing.Point(41I, 322I)
+		*this.label9.Name = "label9"
+		*this.label9.Size = *new System.Drawing.Size(126I, 20I)
+		*this.label9.TabIndex = 15I
+		*this.label9.Text = "QueryParm2Field"
+		//
+		//textboxQueryParm2Field
+		//
+		*this.textboxQueryParm2Field.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.textboxQueryParm2Field.Location = *new System.Drawing.Point(208I, 319I)
+		*this.textboxQueryParm2Field.Name = "textboxQueryParm2Field"
+		*this.textboxQueryParm2Field.Size = *new System.Drawing.Size(120I, 28I)
+		*this.textboxQueryParm2Field.TabIndex = 14I
+		//
+		//label7
+		//
+		*this.label7.AutoSize = *True
+		*this.label7.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label7.Location = *new System.Drawing.Point(41I, 279I)
+		*this.label7.Name = "label7"
+		*this.label7.Size = *new System.Drawing.Size(130I, 20I)
+		*this.label7.TabIndex = 13I
+		*this.label7.Text = "QueryParm1Value"
+		//
+		//textboxQueryParm1Value
+		//
+		*this.textboxQueryParm1Value.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.textboxQueryParm1Value.Location = *new System.Drawing.Point(208I, 276I)
+		*this.textboxQueryParm1Value.Name = "textboxQueryParm1Value"
+		*this.textboxQueryParm1Value.Size = *new System.Drawing.Size(120I, 28I)
+		*this.textboxQueryParm1Value.TabIndex = 12I
+		//
+		//label6
+		//
+		*this.label6.AutoSize = *True
+		*this.label6.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label6.Location = *new System.Drawing.Point(41I, 247I)
+		*this.label6.Name = "label6"
+		*this.label6.Size = *new System.Drawing.Size(126I, 20I)
+		*this.label6.TabIndex = 11I
+		*this.label6.Text = "QueryParm1Field"
+		//
+		//textboxQueryParm1Field
+		//
+		*this.textboxQueryParm1Field.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.textboxQueryParm1Field.Location = *new System.Drawing.Point(208I, 244I)
+		*this.textboxQueryParm1Field.Name = "textboxQueryParm1Field"
+		*this.textboxQueryParm1Field.Size = *new System.Drawing.Size(120I, 28I)
+		*this.textboxQueryParm1Field.TabIndex = 10I
+		//
+		//label5
+		//
+		*this.label5.AutoSize = *True
+		*this.label5.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label5.Location = *new System.Drawing.Point(18I, 201I)
+		*this.label5.Name = "label5"
+		*this.label5.Size = *new System.Drawing.Size(50I, 20I)
+		*this.label5.TabIndex = 9I
+		*this.label5.Text = "Query"
+		//
+		//textboxQuery
+		//
+		*this.textboxQuery.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.textboxQuery.Location = *new System.Drawing.Point(143I, 198I)
+		*this.textboxQuery.Name = "textboxQuery"
+		*this.textboxQuery.Size = *new System.Drawing.Size(877I, 28I)
+		*this.textboxQuery.TabIndex = 8I
+		//
+		//label4
+		//
+		*this.label4.AutoSize = *True
+		*this.label4.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label4.Location = *new System.Drawing.Point(18I, 167I)
+		*this.label4.Name = "label4"
+		*this.label4.Size = *new System.Drawing.Size(45I, 20I)
+		*this.label4.TabIndex = 7I
+		*this.label4.Text = "Rows"
+		//
+		//textboxRows
+		//
+		*this.textboxRows.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.textboxRows.Location = *new System.Drawing.Point(143I, 164I)
+		*this.textboxRows.Name = "textboxRows"
+		*this.textboxRows.Size = *new System.Drawing.Size(100I, 28I)
+		*this.textboxRows.TabIndex = 6I
+		//
+		//label3
+		//
+		*this.label3.AutoSize = *True
+		*this.label3.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label3.Location = *new System.Drawing.Point(18I, 131I)
+		*this.label3.Name = "label3"
+		*this.label3.Size = *new System.Drawing.Size(75I, 20I)
+		*this.label3.TabIndex = 5I
+		*this.label3.Text = "FieldsList"
+		//
+		//textboxFieldsList
+		//
+		*this.textboxFieldsList.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.textboxFieldsList.Location = *new System.Drawing.Point(143I, 128I)
+		*this.textboxFieldsList.Name = "textboxFieldsList"
+		*this.textboxFieldsList.Size = *new System.Drawing.Size(877I, 28I)
+		*this.textboxFieldsList.TabIndex = 4I
+		//
+		//label2
+		//
+		*this.label2.AutoSize = *True
+		*this.label2.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label2.Location = *new System.Drawing.Point(18I, 95I)
+		*this.label2.Name = "label2"
+		*this.label2.Size = *new System.Drawing.Size(34I, 20I)
+		*this.label2.TabIndex = 3I
+		*this.label2.Text = "File"
+		//
+		//textboxFile
+		//
+		*this.textboxFile.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.textboxFile.Location = *new System.Drawing.Point(143I, 92I)
+		*this.textboxFile.Name = "textboxFile"
+		*this.textboxFile.Size = *new System.Drawing.Size(267I, 28I)
+		*this.textboxFile.TabIndex = 2I
+		//
+		//label1
+		//
+		*this.label1.AutoSize = *True
+		*this.label1.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label1.Location = *new System.Drawing.Point(18I, 60I)
+		*this.label1.Name = "label1"
+		*this.label1.Size = *new System.Drawing.Size(59I, 20I)
+		*this.label1.TabIndex = 1I
+		*this.label1.Text = "Library"
+		//
+		//textboxLibrary
+		//
+		*this.textboxLibrary.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.textboxLibrary.Location = *new System.Drawing.Point(143I, 57I)
+		*this.textboxLibrary.Name = "textboxLibrary"
+		*this.textboxLibrary.Size = *new System.Drawing.Size(267I, 28I)
+		*this.textboxLibrary.TabIndex = 0I
+		//
+		//tabPage2
+		//
+		*this.tabPage2.Controls.Add(*this.labelQueryTime)
+		*this.tabPage2.Controls.Add(*this.linklableNextPage)
+		*this.tabPage2.Controls.Add(*this.datagridviewResults)
+		*this.tabPage2.Location = *new System.Drawing.Point(4I, 27I)
+		*this.tabPage2.Name = "tabPage2"
+		*this.tabPage2.Padding = *new System.Windows.Forms.Padding(3I)
+		*this.tabPage2.Size = *new System.Drawing.Size(1124I, 682I)
+		*this.tabPage2.TabIndex = 1I
+		*this.tabPage2.Text = "Output: DataTable"
+		*this.tabPage2.UseVisualStyleBackColor = *True
+		//
+		//labelQueryTime
+		//
+		*this.labelQueryTime.AutoSize = *True
+		*this.labelQueryTime.Location = *new System.Drawing.Point(21I, 17I)
+		*this.labelQueryTime.Name = "labelQueryTime"
+		*this.labelQueryTime.Size = *new System.Drawing.Size(32I, 18I)
+		*this.labelQueryTime.TabIndex = 4I
+		*this.labelQueryTime.Text = "ddd"
+		//
+		//linklableNextPage
+		//
+		*this.linklableNextPage.AutoSize = *True
+		*this.linklableNextPage.Location = *new System.Drawing.Point(1034I, 39I)
+		*this.linklableNextPage.Name = "linklableNextPage"
+		*this.linklableNextPage.Size = *new System.Drawing.Size(74I, 18I)
+		*this.linklableNextPage.TabIndex = 1I
+		*this.linklableNextPage.TabStop = *True
+		*this.linklableNextPage.Text = "Next page"
+		//
+		//datagridviewResults
+		//
+		*this.datagridviewResults.AllowUserToAddRows = *False
+		*this.datagridviewResults.AllowUserToDeleteRows = *False
+		*this.datagridviewResults.AllowUserToOrderColumns = *True
+		*this.datagridviewResults.AllowUserToResizeRows = *False
+		dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((192 *As System.Byte) *As *Integer4), ((255 *As System.Byte) *As *Integer4), ((192 *As System.Byte) *As *Integer4))
+		*this.datagridviewResults.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1
+		*this.datagridviewResults.Anchor = ((((System.Windows.Forms.AnchorStyles.Top *BitOr System.Windows.Forms.AnchorStyles.Bottom) *BitOr System.Windows.Forms.AnchorStyles.Left) *BitOr System.Windows.Forms.AnchorStyles.Right) *As System.Windows.Forms.AnchorStyles)
+		*this.datagridviewResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+		*this.datagridviewResults.Location = *new System.Drawing.Point(15I, 70I)
+		*this.datagridviewResults.Name = "datagridviewResults"
+		dataGridViewCellStyle2.Padding = *new System.Windows.Forms.Padding(0I, 4I, 0I, 4I)
+		*this.datagridviewResults.RowsDefaultCellStyle = dataGridViewCellStyle2
+		*this.datagridviewResults.RowTemplate.Height = 32I
+		*this.datagridviewResults.Size = *new System.Drawing.Size(1093I, 593I)
+		*this.datagridviewResults.TabIndex = 0I
+		//
+		//tabPage3
+		//
+		*this.tabPage3.Controls.Add(*this.richtextboxJsonArgs)
+		*this.tabPage3.Location = *new System.Drawing.Point(4I, 27I)
+		*this.tabPage3.Name = "tabPage3"
+		*this.tabPage3.Padding = *new System.Windows.Forms.Padding(3I)
+		*this.tabPage3.Size = *new System.Drawing.Size(1124I, 682I)
+		*this.tabPage3.TabIndex = 2I
+		*this.tabPage3.Text = "Json: Query args"
+		*this.tabPage3.UseVisualStyleBackColor = *True
+		//
+		//richtextboxJsonArgs
+		//
+		*this.richtextboxJsonArgs.Anchor = ((((System.Windows.Forms.AnchorStyles.Top *BitOr System.Windows.Forms.AnchorStyles.Bottom) *BitOr System.Windows.Forms.AnchorStyles.Left) *BitOr System.Windows.Forms.AnchorStyles.Right) *As System.Windows.Forms.AnchorStyles)
+		*this.richtextboxJsonArgs.Font = *new System.Drawing.Font("Source Code Pro", 12.5, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.richtextboxJsonArgs.Location = *new System.Drawing.Point(19I, 15I)
+		*this.richtextboxJsonArgs.Name = "richtextboxJsonArgs"
+		*this.richtextboxJsonArgs.Size = *new System.Drawing.Size(1089I, 650I)
+		*this.richtextboxJsonArgs.TabIndex = 0I
+		*this.richtextboxJsonArgs.Text = ""
+		//
+		//tabPage4
+		//
+		*this.tabPage4.Controls.Add(*this.richtextboxJsonResults)
+		*this.tabPage4.Location = *new System.Drawing.Point(4I, 27I)
+		*this.tabPage4.Name = "tabPage4"
+		*this.tabPage4.Padding = *new System.Windows.Forms.Padding(3I)
+		*this.tabPage4.Size = *new System.Drawing.Size(1124I, 682I)
+		*this.tabPage4.TabIndex = 3I
+		*this.tabPage4.Text = "Json: Query results"
+		*this.tabPage4.UseVisualStyleBackColor = *True
+		//
+		//richtextboxJsonResults
+		//
+		*this.richtextboxJsonResults.Anchor = ((((System.Windows.Forms.AnchorStyles.Top *BitOr System.Windows.Forms.AnchorStyles.Bottom) *BitOr System.Windows.Forms.AnchorStyles.Left) *BitOr System.Windows.Forms.AnchorStyles.Right) *As System.Windows.Forms.AnchorStyles)
+		*this.richtextboxJsonResults.Font = *new System.Drawing.Font("Source Code Pro", 12.5, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.richtextboxJsonResults.Location = *new System.Drawing.Point(18I, 16I)
+		*this.richtextboxJsonResults.Name = "richtextboxJsonResults"
+		*this.richtextboxJsonResults.Size = *new System.Drawing.Size(1089I, 650I)
+		*this.richtextboxJsonResults.TabIndex = 1I
+		*this.richtextboxJsonResults.Text = ""
+		//
+		//tabPage5
+		//
+		*this.tabPage5.Controls.Add(*this.linklabelToClipboard)
+		*this.tabPage5.Controls.Add(*this.tabControl2)
+		*this.tabPage5.Location = *new System.Drawing.Point(4I, 27I)
+		*this.tabPage5.Name = "tabPage5"
+		*this.tabPage5.Padding = *new System.Windows.Forms.Padding(3I)
+		*this.tabPage5.Size = *new System.Drawing.Size(1124I, 682I)
+		*this.tabPage5.TabIndex = 4I
+		*this.tabPage5.Text = "AVR code"
+		*this.tabPage5.UseVisualStyleBackColor = *True
+		//
+		//linklabelToClipboard
+		//
+		*this.linklabelToClipboard.AutoSize = *True
+		*this.linklabelToClipboard.Location = *new System.Drawing.Point(899I, 15I)
+		*this.linklabelToClipboard.Name = "linklabelToClipboard"
+		*this.linklabelToClipboard.Size = *new System.Drawing.Size(212I, 18I)
+		*this.linklabelToClipboard.TabIndex = 5I
+		*this.linklabelToClipboard.TabStop = *True
+		*this.linklabelToClipboard.Text = "Copy this code to the clipboard"
+		//
+		//tabControl2
+		//
+		*this.tabControl2.Anchor = ((((System.Windows.Forms.AnchorStyles.Top *BitOr System.Windows.Forms.AnchorStyles.Bottom) *BitOr System.Windows.Forms.AnchorStyles.Left) *BitOr System.Windows.Forms.AnchorStyles.Right) *As System.Windows.Forms.AnchorStyles)
+		*this.tabControl2.Controls.Add(*this.tabPage6)
+		*this.tabControl2.Controls.Add(*this.tabPage7)
+		*this.tabControl2.Controls.Add(*this.tabPage8)
+		*this.tabControl2.Controls.Add(*this.tabPage9)
+		*this.tabControl2.Location = *new System.Drawing.Point(6I, 27I)
+		*this.tabControl2.Name = "tabControl2"
+		*this.tabControl2.SelectedIndex = 0I
+		*this.tabControl2.Size = *new System.Drawing.Size(1112I, 649I)
+		*this.tabControl2.TabIndex = 3I
+		//
+		//tabPage6
+		//
+		*this.tabPage6.Controls.Add(*this.richtextboxAVR)
+		*this.tabPage6.Location = *new System.Drawing.Point(4I, 27I)
+		*this.tabPage6.Name = "tabPage6"
+		*this.tabPage6.Padding = *new System.Windows.Forms.Padding(3I)
+		*this.tabPage6.Size = *new System.Drawing.Size(1104I, 618I)
+		*this.tabPage6.TabIndex = 0I
+		*this.tabPage6.Text = "To DataTable"
+		*this.tabPage6.UseVisualStyleBackColor = *True
+		//
+		//richtextboxAVR
+		//
+		*this.richtextboxAVR.Anchor = ((((System.Windows.Forms.AnchorStyles.Top *BitOr System.Windows.Forms.AnchorStyles.Bottom) *BitOr System.Windows.Forms.AnchorStyles.Left) *BitOr System.Windows.Forms.AnchorStyles.Right) *As System.Windows.Forms.AnchorStyles)
+		*this.richtextboxAVR.Font = *new System.Drawing.Font("Source Code Pro", 12.5, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.richtextboxAVR.Location = *new System.Drawing.Point(12I, 8I)
+		*this.richtextboxAVR.Name = "richtextboxAVR"
+		*this.richtextboxAVR.Size = *new System.Drawing.Size(1076I, 593I)
+		*this.richtextboxAVR.TabIndex = 3I
+		*this.richtextboxAVR.Text = ""
+		//
+		//tabPage7
+		//
+		*this.tabPage7.Location = *new System.Drawing.Point(4I, 27I)
+		*this.tabPage7.Name = "tabPage7"
+		*this.tabPage7.Padding = *new System.Windows.Forms.Padding(3I)
+		*this.tabPage7.Size = *new System.Drawing.Size(1104I, 618I)
+		*this.tabPage7.TabIndex = 1I
+		*this.tabPage7.Text = "To Json"
+		*this.tabPage7.UseVisualStyleBackColor = *True
+		//
+		//tabPage8
+		//
+		*this.tabPage8.Location = *new System.Drawing.Point(4I, 27I)
+		*this.tabPage8.Name = "tabPage8"
+		*this.tabPage8.Padding = *new System.Windows.Forms.Padding(3I)
+		*this.tabPage8.Size = *new System.Drawing.Size(1104I, 618I)
+		*this.tabPage8.TabIndex = 2I
+		*this.tabPage8.Text = "To Excel"
+		*this.tabPage8.UseVisualStyleBackColor = *True
+		//
+		//tabPage9
+		//
+		*this.tabPage9.Location = *new System.Drawing.Point(4I, 27I)
+		*this.tabPage9.Name = "tabPage9"
+		*this.tabPage9.Padding = *new System.Windows.Forms.Padding(3I)
+		*this.tabPage9.Size = *new System.Drawing.Size(1104I, 618I)
+		*this.tabPage9.TabIndex = 3I
+		*this.tabPage9.Text = "To ListItemArray"
+		*this.tabPage9.UseVisualStyleBackColor = *True
+		//
+		//labelCurrentQueryFile
+		//
+		*this.labelCurrentQueryFile.AutoSize = *True
+		*this.labelCurrentQueryFile.Location = *new System.Drawing.Point(23I, 565I)
+		*this.labelCurrentQueryFile.Name = "labelCurrentQueryFile"
+		*this.labelCurrentQueryFile.Size = *new System.Drawing.Size(54I, 18I)
+		*this.labelCurrentQueryFile.TabIndex = 38I
+		*this.labelCurrentQueryFile.Text = "label21"
+		//
+		//Form1
+		//
+		*this.AutoScaleDimensions = *new System.Drawing.SizeF(6, 13)
+		*this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+		*this.ClientSize = *new System.Drawing.Size(1168I, 771I)
+		*this.Controls.Add(*this.tabControl1)
+		*this.Controls.Add(*this.menuStrip1)
+		*this.MainMenuStrip = *this.menuStrip1
+		*this.Name = "Form1"
+		*this.Text = "Walter Query Tester"
+		*this.menuStrip1.ResumeLayout(*False)
+		*this.menuStrip1.PerformLayout()
+		*this.tabControl1.ResumeLayout(*False)
+		*this.tabPage1.ResumeLayout(*False)
+		*this.tabPage1.PerformLayout()
+		*this.panelInputs.ResumeLayout(*False)
+		*this.panelInputs.PerformLayout()
+		*this.tabPage2.ResumeLayout(*False)
+		*this.tabPage2.PerformLayout()
+		(*this.datagridviewResults *As System.ComponentModel.ISupportInitialize).EndInit()
+		*this.tabPage3.ResumeLayout(*False)
+		*this.tabPage4.ResumeLayout(*False)
+		*this.tabPage5.ResumeLayout(*False)
+		*this.tabPage5.PerformLayout()
+		*this.tabControl2.ResumeLayout(*False)
+		*this.tabPage6.ResumeLayout(*False)
+		*this.ResumeLayout(*False)
+		*this.PerformLayout()
+	EndSr
+	
+	//Required by the Windows Form Designer
+	DclFld components Type(System.ComponentModel.IContainer) Inz(*Nothing)
+	
+	// Clean up any resources being used.
+	// "disposing" is true if managed resources should be disposed; otherwise, false.
+	BegSr Dispose Access(*Protected) Modifier(*Overrides)
+		DclSrParm disposing Type(*Boolean)
+
+		If (disposing *And (components *NE *Nothing))
+			components.Dispose()
+		EndIf
+			
+		*Base.Dispose(disposing)
+	EndSr
+	
+EndClass
