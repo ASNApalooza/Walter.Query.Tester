@@ -1,9 +1,24 @@
 ﻿Using System
 Using System.Text
+Using System.Text.RegularExpressions
 
 DclNamespace QueryTester
 
 BegClass AVRXLate Access(*Public)
+
+    BegFunc GetExampleCode Type(*String)
+        DclSrParm Query Type(ASNA.Helpers.DataServices.QueryDriver) 
+        DclSrParm sb    Type(StringBuilder) 
+
+        sb.Replace('{library}', Query.Args.Inputs.Library)
+        sb.Replace('{file}',Query.Args.Inputs.File)
+        sb.Replace('{fieldsList}',Query.Args.Inputs.FieldsList)
+        sb.Replace('{rows}',Query.Args.Inputs.Rows.ToString())
+        sb.Replace('{query}',Query.Args.Inputs.Query.Trim())
+        sb.Replace('{parms}', GetAvrQueryAndOrderByParms(Query))
+
+        LeaveSr sb.ToString() 
+    EndFunc 
 
 
     BegFunc  ToDataTableCode Type(*String) Access(*Public) 
@@ -11,38 +26,9 @@ BegClass AVRXLate Access(*Public)
 
         DclFld sb Type(StringBuilder) New()
 
-        sb.AppendLine('DclConst DBNAME   Value("*Public/MYDB")')
-        sb.AppendLine('')
-        sb.AppendLine('DclFld db         Type(ASNA.DataGate.Client.AdgConnection)') 
-        sb.AppendLine('DclFld Query      Type(ASNA.Helpers.DataServices.QueryDriver)') 
-        sb.AppendLine('')
-        sb.AppendLine('db = *New AdgConnection(DBNAME)') 
-        sb.AppendLine('')
-        sb.AppendLine('Query = *New ASNA.Helpers.DataServices.QueryDriver(db)')        
-        sb.AppendLine('Query.Args.Inputs.Library      = {library}')
-        sb.AppendLine('Query.Args.Inputs.File         = {file}')
-        sb.AppendLine('Query.Args.Inputs.FieldsList   = {fieldsList}')
-        sb.AppendLine('Query.Args.Inputs.Rows         = {rows}')
-        sb.AppendLine('')
-        sb.AppendLine('Query.Args.Query = {query}')
-        sb.AppendLine('{parms}')
-        sb.AppendLine('dt = Query.Exec() *As DataTable')
-        sb.AppendLine('If (Query.Args.Error.ErrorException <> *Nothing)')
-        sb.AppendLine('    // Work with exception here')
-        sb.AppendLine('EndIf ')
+        sb.Append(Resources.AVRToDataTable) 
 
-        sb.Replace('{library}', Query.Args.Inputs.Library)
-        sb.Replace('{file}',Query.Args.Inputs.File)
-        sb.Replace('{fieldsList}',Query.Args.Inputs.FieldsList)
-        sb.Replace('{rows}',Query.Args.Inputs.Rows.ToString())
-        If (String.IsNullOrEmpty(Query.Args.Inputs.Query))
-            sb.Replace('{query}','""')
-        Else
-            sb.Replace('{query}',Query.Args.Inputs.Query)
-        EndIf  
-        sb.Replace('{parms}', GetAvrQueryAndOrderByParms(Query))
-
-        LeaveSr sb.ToString() 
+        LeaveSr GetExampleCode(Query,sb) 
     EndFunc             
 
     BegFunc  ToJsonCode Type(*String) Access(*Public) 
@@ -50,41 +36,8 @@ BegClass AVRXLate Access(*Public)
 
         DclFld sb Type(StringBuilder) New()
 
-        sb.AppendLine('DclConst DBNAME Value("*Public/MYDB")')
-        sb.AppendLine('')
-        sb.AppendLine('DclFld db       Type(ASNA.DataGate.Client.AdgConnection)') 
-        sb.AppendLine('DclFld Query    Type(ASNA.Helpers.DataServices.QueryDriver)') 
-        sb.AppendLine('DclFld  Json    Type(*String)')
-        sb.AppendLine('')
-        sb.AppendLine('db = *New AdgConnection(DBNAME)') 
-        sb.AppendLine('')
-        sb.AppendLine('Query = *New ASNA.Helpers.DataServices.QueryDriver(db)')        
-        sb.AppendLine('Query.Args.Inputs.Library      = {library}')
-        sb.AppendLine('Query.Args.Inputs.File         = {file}')
-        sb.AppendLine('Query.Args.Inputs.FieldsList   = {fieldsList}')
-        sb.AppendLine('Query.Args.Inputs.Rows         = {rows}')
-        sb.AppendLine('Query.OverrideAdapter(*New ASNA.Helpers.DataServices.ToJsonAdapter(Query.Args))') 
-        sb.AppendLine('Query.Args.Inputs.Options.Add("indentJson",*True)')
-        sb.AppendLine('')
-        sb.AppendLine('Query.Args.Query = {query}')
-        sb.AppendLine('{parms}')
-        sb.AppendLine('Json = Query.Exec() *As *String')
-        sb.AppendLine('If (Query.Args.Error.ErrorException <> *Nothing)')
-        sb.AppendLine('    // Work with exception here')
-        sb.AppendLine('EndIf ')
-
-        sb.Replace('{library}', Query.Args.Inputs.Library)
-        sb.Replace('{file}',Query.Args.Inputs.File)
-        sb.Replace('{fieldsList}',Query.Args.Inputs.FieldsList)
-        sb.Replace('{rows}',Query.Args.Inputs.Rows.ToString())
-        If (String.IsNullOrEmpty(Query.Args.Inputs.Query))
-            sb.Replace('{query}','""')
-        Else
-            sb.Replace('{query}',Query.Args.Inputs.Query)
-        EndIf  
-        sb.Replace('{parms}', GetAvrQueryAndOrderByParms(Query))
-
-        LeaveSr sb.ToString() 
+        sb.Append(Resources.AVRToJson) 
+        LeaveSr GetExampleCode(Query,sb) 
     EndFunc             
 
     BegFunc  ToExcelCode Type(*String) Access(*Public) 
@@ -92,47 +45,9 @@ BegClass AVRXLate Access(*Public)
 
         DclFld sb Type(StringBuilder) New()
 
-        sb.AppendLine('DclConst DBNAME     Value("*Public/MYDB")')
-        sb.AppendLine('DclConst EXCEL_FILE Value("C:\Users\Roger\Documents\testing\table-cleared.xlsx")')
-        sb.AppendLine('')
-        sb.AppendLine('DclFld db           Type(ASNA.DataGate.Client.AdgConnection)') 
-        sb.AppendLine('DclFld Query        Type(ASNA.Helpers.DataServices.QueryDriver)') 
-        sb.AppendLine('DclFld ExcelAdapter Type(ASNA.Helpers.DataServices.ToExcelAdapter)')
-        sb.AppendLine('')
-        sb.AppendLine('db = *New AdgConnection(DBNAME)') 
-        sb.AppendLine('')
-        sb.AppendLine('Query = *New ASNA.Helpers.DataServices.QueryDriver(db)')        
-        sb.AppendLine('Query.Args.Inputs.Library      = {library}')
-        sb.AppendLine('Query.Args.Inputs.File         = {file}')
-        sb.AppendLine('Query.Args.Inputs.FieldsList   = {fieldsList}')
-        sb.AppendLine('Query.Args.Inputs.Rows         = {rows}')
-        sb.AppendLine('')
-        sb.AppendLine('Query.Args.Query = {query}')
-        sb.AppendLine('{parms}')
-        sb.AppendLine('ExcelAdapter = *New ASNA.Helpers.DataServices.ToExcelAdapter(Query.Args)')
-        sb.AppendLine('Query.OverrideAdapter(ExcelAdapter)')
-        sb.AppendLine('Query.Args.Inputs.Options.Add("heading","Customer Listing")')
-        sb.AppendLine('Query.Args.Inputs.Options.Add("worksheet_name","Customers")')
-        sb.AppendLine('')
-        sb.AppendLine('System.IO.File.Delete(EXCEL_FILE)')
-        sb.AppendLine('Query.Exec')
-        sb.AppendLine('If (Query.Args.Error.ErrorException <> *Nothing)')
-        sb.AppendLine('    // Work with exception here')
-        sb.AppendLine('EndIf ')
-        sb.AppendLine('ExcelAdapter.SaveToLocalFile(EXCEL_FILE)')
+        sb.Append(Resources.AVRToExcel)
 
-        sb.Replace('{library}', Query.Args.Inputs.Library)
-        sb.Replace('{file}',Query.Args.Inputs.File)
-        sb.Replace('{fieldsList}',Query.Args.Inputs.FieldsList)
-        sb.Replace('{rows}',Query.Args.Inputs.Rows.ToString())
-        If (String.IsNullOrEmpty(Query.Args.Inputs.Query))
-            sb.Replace('{query}','""')
-        Else
-            sb.Replace('{query}',Query.Args.Inputs.Query)
-        EndIf  
-        sb.Replace('{parms}', GetAvrQueryAndOrderByParms(Query))
-
-        LeaveSr sb.ToString() 
+        LeaveSr GetExampleCode(Query,sb) 
     EndFunc             
 
     BegFunc  ToListItemCode Type(*String) Access(*Public) 
@@ -140,43 +55,46 @@ BegClass AVRXLate Access(*Public)
 
         DclFld sb Type(StringBuilder) New()
 
-        sb.AppendLine('DclConst DBNAME     Value("*Public/MYDB")')
-        sb.AppendLine('')
-        sb.AppendLine('DclFld db           Type(ASNA.DataGate.Client.AdgConnection)') 
-        sb.AppendLine('DclFld Query        Type(ASNA.Helpers.DataServices.QueryDriver)') 
-        sb.AppendLine('')
-        sb.AppendLine('DclArray ListItems  Type(System.Web.UI.WebControls.ListItem) Rank(1)')
-        sb.AppendLine('')
-        sb.AppendLine('db = *New AdgConnection(DBNAME)') 
-        sb.AppendLine('')
-        sb.AppendLine('Query = *New ASNA.Helpers.DataServices.QueryDriver(db)')        
-        sb.AppendLine('Query.Args.Inputs.Library      = {library}')
-        sb.AppendLine('Query.Args.Inputs.File         = {file}')
-        sb.AppendLine('Query.Args.Inputs.FieldsList   = {fieldsList}')
-        sb.AppendLine('Query.Args.Inputs.Rows         = {rows}')
-        sb.AppendLine('Query.OverrideAdapter(*New ASNA.Helpers.DataServices.ToLisItemArrayAdapter(Query.Args))') 
-        sb.AppendLine('')
-        sb.AppendLine('Query.Args.Query = {query}')
-        sb.AppendLine('{parms}')
-        sb.AppendLine('ListItems = Query.Exec() *As System.Web.UI.WebControls.ListItem[]')
-        sb.AppendLine('If (Query.Args.Error.ErrorException <> *Nothing)')
-        sb.AppendLine('    // Work with exception here')
-        sb.AppendLine('EndIf ')
+        sb.Append(Resources.AVRToListItemArray)
 
-        sb.Replace('{library}', Query.Args.Inputs.Library)
-        sb.Replace('{file}',Query.Args.Inputs.File)
-        sb.Replace('{fieldsList}',Query.Args.Inputs.FieldsList)
-        sb.Replace('{rows}',Query.Args.Inputs.Rows.ToString())
-        If (String.IsNullOrEmpty(Query.Args.Inputs.Query))
-            sb.Replace('{query}','""')
-        Else
-            sb.Replace('{query}',Query.Args.Inputs.Query)
-        EndIf  
-        sb.Replace('{parms}', GetAvrQueryAndOrderByParms(Query))
-
-        LeaveSr sb.ToString() 
+        LeaveSr GetExampleCode(Query,sb) 
+//
+//        sb.AppendLine('DclConst DBNAME     Value("*Public/MYDB")')
+//        sb.AppendLine('')
+//        sb.AppendLine('DclFld db           Type(ASNA.DataGate.Client.AdgConnection)') 
+//        sb.AppendLine('DclFld Query        Type(ASNA.Helpers.DataServices.QueryDriver)') 
+//        sb.AppendLine('')
+//        sb.AppendLine('DclArray ListItems  Type(System.Web.UI.WebControls.ListItem) Rank(1)')
+//        sb.AppendLine('')
+//        sb.AppendLine('db = *New AdgConnection(DBNAME)') 
+//        sb.AppendLine('')
+//        sb.AppendLine('Query = *New ASNA.Helpers.DataServices.QueryDriver(db)')        
+//        sb.AppendLine('Query.Args.Inputs.Library      = {library}')
+//        sb.AppendLine('Query.Args.Inputs.File         = {file}')
+//        sb.AppendLine('Query.Args.Inputs.FieldsList   = {fieldsList}')
+//        sb.AppendLine('Query.Args.Inputs.Rows         = {rows}')
+//        sb.AppendLine('Query.OverrideAdapter(*New ASNA.Helpers.DataServices.ToLisItemArrayAdapter(Query.Args))') 
+//        sb.AppendLine('')
+//        sb.AppendLine('Query.Args.Query = {query}')
+//        sb.AppendLine('{parms}')
+//        sb.AppendLine('ListItems = Query.Exec() *As System.Web.UI.WebControls.ListItem[]')
+//        sb.AppendLine('If (Query.Args.Error.ErrorException <> *Nothing)')
+//        sb.AppendLine('    // Work with exception here')
+//        sb.AppendLine('EndIf ')
+//
+//        sb.Replace('{library}', Query.Args.Inputs.Library)
+//        sb.Replace('{file}',Query.Args.Inputs.File)
+//        sb.Replace('{fieldsList}',Query.Args.Inputs.FieldsList)
+//        sb.Replace('{rows}',Query.Args.Inputs.Rows.ToString())
+//        If (String.IsNullOrEmpty(Query.Args.Inputs.Query))
+//            sb.Replace('{query}','""')
+//        Else
+//            sb.Replace('{query}',Query.Args.Inputs.Query)
+//        EndIf  
+//        sb.Replace('{parms}', GetAvrQueryAndOrderByParms(Query))
+//
+//        LeaveSr sb.ToString() 
     EndFunc             
-
 
     BegFunc GetAvrQueryAndOrderByParms Type(*String) 
         DclSrParm Query Type(ASNA.Helpers.DataServices.QueryDriver) 
@@ -186,13 +104,19 @@ BegClass AVRXLate Access(*Public)
         DclFld OrderByMask    Type(*String) 
         DclFld Mask           Type(*String) 
         
-        QueryParmsMask = "Query.Args.Inputs.QueryParms.Add(*New ASNA.Helpers.DataServices.QueryField({field},{value})"
-        OrderByMask    = "Query.Args.Inputs.OrderBy.Add(*New ASNA.Helpers.DataServices.QueryOrderByField({field},{value})"
+        QueryParmsMask = 'Query.Args.Inputs.QueryParms.Add(*New ASNA.Helpers.DataServices.QueryField("{field}",{value}))'
+        OrderByMask    = 'Query.Args.Inputs.OrderBy.Add(*New ASNA.Helpers.DataServices.QueryOrderByField("{field}",{value}))'
 
         ForEach qf Type(ASNA.Helpers.DataServices.QueryField) Collection(Query.Args.Inputs.QueryParms) 
             Mask = QueryParmsMask
             Mask = Mask.Replace("{field}", qf.FieldName) 
-            Mask = Mask.Replace("{value}", qf.FieldValue.ToString()) 
+
+            If (Regex.Match(qf.FieldValue.ToString().Trim(),"^\d*$").Success)
+                Mask = Mask.Replace("{value}", qf.FieldValue.ToString().Trim()) 
+            Else 
+                Mask = Mask.Replace("{value}", '"' + qf.FieldValue.ToString().Trim() + '"' )
+            EndIf
+
             sb.Append(Mask) 
             sb.AppendLine("")
         EndFor 
@@ -200,12 +124,12 @@ BegClass AVRXLate Access(*Public)
         ForEach qo Type(ASNA.Helpers.DataServices.QueryOrderByField) Collection(Query.Args.Inputs.OrderBy) 
             Mask = OrderByMask
             Mask = Mask.Replace("{field}", qo.FieldName) 
+
             Mask = Mask.Replace("{value}", qo.SortOrder.ToString()) 
             sb.AppendLine(Mask) 
         EndFor 
 
         LeaveSr sb.ToString() 
     EndFunc
-
-
+    
 EndClass
