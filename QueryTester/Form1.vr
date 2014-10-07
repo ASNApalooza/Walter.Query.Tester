@@ -34,10 +34,15 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
     DclFld Query          Type(ASNA.Helpers.DataServices.QueryDriver) 
     DclFld ArgsJson       Type(*String) 
     DclFld QueryAvailable Type(*Boolean) 
+    DclFld Translate      Type(AVRXLate) 
+
 
 	BegSr Form1_Load Access(*Private) Event(*this.Load)
 		DclSrParm sender *Object
 		DclSrParm e System.EventArgs
+        
+        Translate = *New AVRXLate(0) 
+        comboboxLanguage.SelectedIndex = 0
 
         comboboxDBName.Items.Add(*New ListItem("Local", "*Public/DG Net Local"))
         comboboxDBName.Items.Add(*New ListItem("IBM i", "*Public/Cypress"))
@@ -300,9 +305,7 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
 		DclSrParm sender Type(*Object)
 		DclSrParm e Type(System.Windows.Forms.TabControlEventArgs)
 
-        DclFld AVRXlate Type(AVRXLate) New()
         DclFld Json Type(*String)
-
 
         If (e.TabPageIndex = 0)
 
@@ -323,7 +326,7 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
             *This.Cursor = Cursors.Default
             richtextboxJsonResults.Text = Json 
         ElseIf (e.TabPageIndex = 4)
-            richtextboxAVR.Text = AVRXLate.ToDataTableCode(Query) 
+            richtextboxAVR.Text = Translate.ToDataTableCode(Query) 
         EndIf 
 
 	EndSr
@@ -339,34 +342,50 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
 		DclSrParm sender Type(*Object)
 		DclSrParm e Type(System.Windows.Forms.TabControlEventArgs)
 
-        DclFld AVRXlate Type(AVRXLate) New()
+        ShowTranslatedCode(e.TabPageIndex)
 
-        If (e.TabPageIndex = 0)
-            richtextboxAVR.Text = AVRXLate.ToDataTableCode(Query) 
-
-        ElseIf (e.TabPageIndex = 1)
-            richtextboxAVR.Text = AVRXLate.ToJsonCode(Query) 
-
-        ElseIf (e.TabPageIndex = 2)
-            richtextboxAVR.Text = AVRXLate.ToExcelCode(Query) 
-
-        ElseIf (e.TabPageIndex = 3)
-            richtextboxAVR.Text = AVRXLate.ToListItemCode(Query)
-
-        EndIf 
+//        If (e.TabPageIndex = 0)
+//            richtextboxAVR.Text = Translate.ToDataTableCode(Query) 
+//
+//        ElseIf (e.TabPageIndex = 1)
+//            richtextboxAVR.Text = Translate.ToJsonCode(Query) 
+//
+//        ElseIf (e.TabPageIndex = 2)
+//            richtextboxAVR.Text = Translate.ToExcelCode(Query) 
+//
+//        ElseIf (e.TabPageIndex = 3)
+//            richtextboxAVR.Text = Translate.ToListItemCode(Query)
+//
+//        EndIf 
 
 
 	EndSr
-	
-	BegSr linklabelToClipboard_LinkClicked Access(*Private) Event(*this.linklabelToClipboard.LinkClicked)
+    
+    BegSr ShowTranslatedCode
+        DclSrParm TabPageIndex Type(*Integer4) 
+
+        If (TabPageIndex = 0)
+            richtextboxAVR.Text = Translate.ToDataTableCode(Query) 
+
+        ElseIf (TabPageIndex = 1)
+            richtextboxAVR.Text = Translate.ToJsonCode(Query) 
+
+        ElseIf (TabPageIndex = 2)
+            richtextboxAVR.Text = Translate.ToExcelCode(Query) 
+
+        ElseIf (TabPageIndex = 3)
+            richtextboxAVR.Text = Translate.ToListItemCode(Query)
+
+        EndIf 
+    EndSr
+    	
+	BegSr linklabelToClipboard_LinkClicked Access(*Private)  Event(*this.linklabelToClipboard.LinkClicked)
 		DclSrParm sender Type(*Object)
 		DclSrParm e Type(System.Windows.Forms.LinkLabelLinkClickedEventArgs)
 
         Clipboard.SetText(richtextboxAVR.Text) 
 	EndSr
-
-
-	
+    	
 	BegSr clearInputsToolStripMenuItem_Click Access(*Private) Event(*this.clearInputsToolStripMenuItem.Click)
 		DclSrParm sender Type(*Object)
 		DclSrParm e Type(System.EventArgs)
@@ -412,5 +431,24 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
 
         ArgsJson = JsonConvert.SerializeObject(Query.Args,Formatting.Indented)
 	EndSr
+	
+	BegSr comboboxLanguage_SelectedIndexChanged Access(*Private) Event(*this.comboboxLanguage.SelectedIndexChanged)
+		DclSrParm sender Type(*Object)
+		DclSrParm e Type(System.EventArgs)
+
+        DclFld LanguageType Type(*Integer4) 
+
+        LanguageType = comboboxLanguage.SelectedIndex
+
+
+        If (tabControl1.SelectedIndex = 4)
+            Translate.SetLanguageType(LanguageType)
+            tabControl2.SelectedIndex = 0
+            tabPage6.Focus()
+            ShowTranslatedCode(0)
+        EndIf 
+
+	EndSr
+
 	
 EndClass

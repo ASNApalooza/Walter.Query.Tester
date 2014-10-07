@@ -126,7 +126,6 @@ BegClass Resources Access(*Internal) Attributes(System.CodeDom.Compiler.Generate
     ///...
     ///
     ///DclConst DBNAME     Value(&quot;*Public/Cypress&quot;)
-    ///DclConst EXCEL_FILE Value(&quot;C:\spreadsheets\customers.xlsx&quot;)
     ///
     ///DclFld db           Type(ASNA.DataGate.Client.AdgConnection)        
     ///DclFld Query        Type(ASNA.Helpers.DataServices.QueryDriver)
@@ -136,11 +135,119 @@ BegClass Resources Access(*Internal) Attributes(System.CodeDom.Compiler.Generate
     ///db = *New AdgConnection(DBNAME) 
     ///
     ///Query = *New ASNA.Helpers.DataServices.QueryDriver(db)
-    ///Query.Args [rest of string was truncated]&quot;;.
+    ///Query.Args.Inputs.Library      = &quot;{library}&quot;
+    ///Query.Args.Inputs.File    [rest of string was truncated]&quot;;.
     ///</summary>
     BegProp AVRToListItemArray Type(*String) Access(*Internal) Shared(*Yes)
         BegGet
             LeaveSr ResourceManager.GetString("AVRToListItemArray", resourceCulture)
+        EndGet
+    EndProp
+    
+    ///<summary>
+    ///  Looks up a localized string similar to using ASNA.DataGate.Client;
+    ///
+    ///...
+    ///
+    ///string const DBNAME value(@&quot;*Public/Cypress&quot;);
+    ///
+    ///ASNA.DataGate.Client.AdgConnection db;
+    ///ASNA.Helpers.DataServices.QueryDriver Query;
+    ///DataTable dt;
+    ///
+    ///db = new AdgConnection(DBNAME); 
+    ///
+    ///Query = *New ASNA.Helpers.DataServices.QueryDriver(db);
+    ///Query.Args.Inputs.Library      = &quot;{library}&quot;;
+    ///Query.Args.Inputs.File         = &quot;{file}&quot;;
+    ///Query.Args.Inputs.FieldsList   = &quot;{fieldsList}&quot;;
+    ///Query.Args.Inputs.Rows         = {rows};
+    ///Query.Args.Inputs.Query        = &quot;{query}&quot;;
+    /// [rest of string was truncated]&quot;;.
+    ///</summary>
+    BegProp CSToDataTable Type(*String) Access(*Internal) Shared(*Yes)
+        BegGet
+            LeaveSr ResourceManager.GetString("CSToDataTable", resourceCulture)
+        EndGet
+    EndProp
+    
+    ///<summary>
+    ///  Looks up a localized string similar to using ASNA.DataGate.Client;
+    ///
+    ///...
+    ///
+    ///string const DBNAME value(@&quot;*Public/Cypress&quot;);
+    ///strong const EXCEL_FILE Value(@&quot;C:\spreadsheets\customers.xlsx&quot;);
+    ///
+    ///ASNA.DataGate.Client.AdgConnection db;
+    ///ASNA.Helpers.DataServices.QueryDriver Query;
+    ///DataTable dt;
+    ///ASNA.Helpers.DataServices.ToExcelAdapter ExcelAdapter;
+    ///
+    ///db = new AdgConnection(DBNAME); 
+    ///
+    ///Query = *New ASNA.Helpers.DataServices.QueryDriver(db);
+    ///Query.Args.Inputs.Library      = &quot;{library}&quot;;
+    ///Query.Args.Inputs.File         = &quot;{file}&quot;;
+    ///Query.Args.Inp [rest of string was truncated]&quot;;.
+    ///</summary>
+    BegProp CSToExcel Type(*String) Access(*Internal) Shared(*Yes)
+        BegGet
+            LeaveSr ResourceManager.GetString("CSToExcel", resourceCulture)
+        EndGet
+    EndProp
+    
+    ///<summary>
+    ///  Looks up a localized string similar to using ASNA.DataGate.Client;
+    ///
+    ///...
+    ///
+    ///string const DBNAME value(@&quot;*Public/Cypress&quot;);
+    ///
+    ///ASNA.DataGate.Client.AdgConnection db;
+    ///ASNA.Helpers.DataServices.QueryDriver Query;
+    ///DataTable dt;
+    ///string Json;
+    ///
+    ///db = new AdgConnection(DBNAME); 
+    ///
+    ///Query = *New ASNA.Helpers.DataServices.QueryDriver(db);
+    ///Query.Args.Inputs.Library      = &quot;{library}&quot;;
+    ///Query.Args.Inputs.File         = &quot;{file}&quot;;
+    ///Query.Args.Inputs.FieldsList   = &quot;{fieldsList}&quot;;
+    ///Query.Args.Inputs.Rows         = {rows};
+    ///Query.Args.Inputs.Query         [rest of string was truncated]&quot;;.
+    ///</summary>
+    BegProp CSToJson Type(*String) Access(*Internal) Shared(*Yes)
+        BegGet
+            LeaveSr ResourceManager.GetString("CSToJson", resourceCulture)
+        EndGet
+    EndProp
+    
+    ///<summary>
+    ///  Looks up a localized string similar to using ASNA.DataGate.Client;
+    ///using System.Web;
+    ///
+    ///...
+    ///
+    ///string const DBNAME value(@&quot;*Public/Cypress&quot;);
+    ///
+    ///ASNA.DataGate.Client.AdgConnection db;
+    ///ASNA.Helpers.DataServices.QueryDriver Query;
+    ///DataTable dt;
+    ///System.Web.UI.WebControls.ListItem[] ListItems;
+    ///
+    ///db = new AdgConnection(DBNAME); 
+    ///
+    ///Query = *New ASNA.Helpers.DataServices.QueryDriver(db);
+    ///Query.Args.Inputs.Library      = &quot;{library}&quot;;
+    ///Query.Args.Inputs.File         = &quot;{file}&quot;;
+    ///Query.Args.Inputs.FieldsList   = &quot;{fieldsList}&quot;;
+    ///Query.Args.Inputs.R [rest of string was truncated]&quot;;.
+    ///</summary>
+    BegProp CSToListItemArray Type(*String) Access(*Internal) Shared(*Yes)
+        BegGet
+            LeaveSr ResourceManager.GetString("CSToListItemArray", resourceCulture)
         EndGet
     EndProp
     

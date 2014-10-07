@@ -1,11 +1,13 @@
 ﻿BegClass Form1 Partial(*Yes)
+	DclFld panel1 Type(System.Windows.Forms.Panel) Access(*Private) WithEvents(*Yes)
+	DclFld linklabelToClipboard Type(System.Windows.Forms.LinkLabel) Access(*Private) WithEvents(*Yes)
+	DclFld comboboxLanguage Type(System.Windows.Forms.ComboBox) Access(*Private) WithEvents(*Yes)
 	DclFld labelCurrentQueryFile Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
 	DclFld labelQueryTime Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
 	DclFld linklableNextPage Type(System.Windows.Forms.LinkLabel) Access(*Private) WithEvents(*Yes)
 	DclFld editToolStripMenuItem Type(System.Windows.Forms.ToolStripMenuItem) Access(*Private) WithEvents(*Yes)
 	DclFld clearInputsToolStripMenuItem Type(System.Windows.Forms.ToolStripMenuItem) Access(*Private) WithEvents(*Yes)
 	DclFld panelInputs Type(System.Windows.Forms.Panel) Access(*Private) WithEvents(*Yes)
-	DclFld linklabelToClipboard Type(System.Windows.Forms.LinkLabel) Access(*Private) WithEvents(*Yes)
 	DclFld tabPage8 Type(System.Windows.Forms.TabPage) Access(*Private) WithEvents(*Yes)
 	DclFld tabPage9 Type(System.Windows.Forms.TabPage) Access(*Private) WithEvents(*Yes)
 	DclFld tabControl2 Type(System.Windows.Forms.TabControl) Access(*Private) WithEvents(*Yes)
@@ -89,6 +91,7 @@
 		*this.label20 = *new System.Windows.Forms.Label()
 		*this.label19 = *new System.Windows.Forms.Label()
 		*this.panelInputs = *new System.Windows.Forms.Panel()
+		*this.labelCurrentQueryFile = *new System.Windows.Forms.Label()
 		*this.buttonPerformQuery = *new System.Windows.Forms.Button()
 		*this.comboboxDBName = *new System.Windows.Forms.ComboBox()
 		*this.label18 = *new System.Windows.Forms.Label()
@@ -135,14 +138,15 @@
 		*this.tabPage4 = *new System.Windows.Forms.TabPage()
 		*this.richtextboxJsonResults = *new System.Windows.Forms.RichTextBox()
 		*this.tabPage5 = *new System.Windows.Forms.TabPage()
+		*this.panel1 = *new System.Windows.Forms.Panel()
 		*this.linklabelToClipboard = *new System.Windows.Forms.LinkLabel()
+		*this.comboboxLanguage = *new System.Windows.Forms.ComboBox()
 		*this.tabControl2 = *new System.Windows.Forms.TabControl()
 		*this.tabPage6 = *new System.Windows.Forms.TabPage()
 		*this.richtextboxAVR = *new System.Windows.Forms.RichTextBox()
 		*this.tabPage7 = *new System.Windows.Forms.TabPage()
 		*this.tabPage8 = *new System.Windows.Forms.TabPage()
 		*this.tabPage9 = *new System.Windows.Forms.TabPage()
-		*this.labelCurrentQueryFile = *new System.Windows.Forms.Label()
 		*this.menuStrip1.SuspendLayout()
 		*this.tabControl1.SuspendLayout()
 		*this.tabPage1.SuspendLayout()
@@ -152,6 +156,7 @@
 		*this.tabPage3.SuspendLayout()
 		*this.tabPage4.SuspendLayout()
 		*this.tabPage5.SuspendLayout()
+		*this.panel1.SuspendLayout()
 		*this.tabControl2.SuspendLayout()
 		*this.tabPage6.SuspendLayout()
 		*this.SuspendLayout()
@@ -308,6 +313,15 @@
 		*this.panelInputs.Name = "panelInputs"
 		*this.panelInputs.Size = *new System.Drawing.Size(1035I, 600I)
 		*this.panelInputs.TabIndex = 1I
+		//
+		//labelCurrentQueryFile
+		//
+		*this.labelCurrentQueryFile.AutoSize = *True
+		*this.labelCurrentQueryFile.Location = *new System.Drawing.Point(23I, 565I)
+		*this.labelCurrentQueryFile.Name = "labelCurrentQueryFile"
+		*this.labelCurrentQueryFile.Size = *new System.Drawing.Size(54I, 18I)
+		*this.labelCurrentQueryFile.TabIndex = 38I
+		*this.labelCurrentQueryFile.Text = "label21"
 		//
 		//buttonPerformQuery
 		//
@@ -738,25 +752,45 @@
 		//
 		//tabPage5
 		//
-		*this.tabPage5.Controls.Add(*this.linklabelToClipboard)
+		*this.tabPage5.Controls.Add(*this.panel1)
 		*this.tabPage5.Controls.Add(*this.tabControl2)
 		*this.tabPage5.Location = *new System.Drawing.Point(4I, 27I)
 		*this.tabPage5.Name = "tabPage5"
 		*this.tabPage5.Padding = *new System.Windows.Forms.Padding(3I)
 		*this.tabPage5.Size = *new System.Drawing.Size(1124I, 682I)
 		*this.tabPage5.TabIndex = 4I
-		*this.tabPage5.Text = "AVR code"
+		*this.tabPage5.Text = "Code"
 		*this.tabPage5.UseVisualStyleBackColor = *True
+		//
+		//panel1
+		//
+		*this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles.Top *BitOr System.Windows.Forms.AnchorStyles.Right) *As System.Windows.Forms.AnchorStyles)
+		*this.panel1.Controls.Add(*this.linklabelToClipboard)
+		*this.panel1.Controls.Add(*this.comboboxLanguage)
+		*this.panel1.Location = *new System.Drawing.Point(751I, 7I)
+		*this.panel1.Name = "panel1"
+		*this.panel1.Size = *new System.Drawing.Size(363I, 31I)
+		*this.panel1.TabIndex = 7I
 		//
 		//linklabelToClipboard
 		//
+		*this.linklabelToClipboard.Anchor = ((System.Windows.Forms.AnchorStyles.Top *BitOr System.Windows.Forms.AnchorStyles.Right) *As System.Windows.Forms.AnchorStyles)
 		*this.linklabelToClipboard.AutoSize = *True
-		*this.linklabelToClipboard.Location = *new System.Drawing.Point(899I, 15I)
+		*this.linklabelToClipboard.Location = *new System.Drawing.Point(132I, 7I)
 		*this.linklabelToClipboard.Name = "linklabelToClipboard"
 		*this.linklabelToClipboard.Size = *new System.Drawing.Size(212I, 18I)
-		*this.linklabelToClipboard.TabIndex = 5I
+		*this.linklabelToClipboard.TabIndex = 8I
 		*this.linklabelToClipboard.TabStop = *True
 		*this.linklabelToClipboard.Text = "Copy this code to the clipboard"
+		//
+		//comboboxLanguage
+		//
+		*this.comboboxLanguage.FormattingEnabled = *True
+		*this.comboboxLanguage.Items.AddRange(*new *Object[] {"AVR", "C#"})
+		*this.comboboxLanguage.Location = *new System.Drawing.Point(3I, 2I)
+		*this.comboboxLanguage.Name = "comboboxLanguage"
+		*this.comboboxLanguage.Size = *new System.Drawing.Size(121I, 26I)
+		*this.comboboxLanguage.TabIndex = 7I
 		//
 		//tabControl2
 		//
@@ -822,15 +856,6 @@
 		*this.tabPage9.Text = "To ListItemArray"
 		*this.tabPage9.UseVisualStyleBackColor = *True
 		//
-		//labelCurrentQueryFile
-		//
-		*this.labelCurrentQueryFile.AutoSize = *True
-		*this.labelCurrentQueryFile.Location = *new System.Drawing.Point(23I, 565I)
-		*this.labelCurrentQueryFile.Name = "labelCurrentQueryFile"
-		*this.labelCurrentQueryFile.Size = *new System.Drawing.Size(54I, 18I)
-		*this.labelCurrentQueryFile.TabIndex = 38I
-		*this.labelCurrentQueryFile.Text = "label21"
-		//
 		//Form1
 		//
 		*this.AutoScaleDimensions = *new System.Drawing.SizeF(6, 13)
@@ -854,7 +879,8 @@
 		*this.tabPage3.ResumeLayout(*False)
 		*this.tabPage4.ResumeLayout(*False)
 		*this.tabPage5.ResumeLayout(*False)
-		*this.tabPage5.PerformLayout()
+		*this.panel1.ResumeLayout(*False)
+		*this.panel1.PerformLayout()
 		*this.tabControl2.ResumeLayout(*False)
 		*this.tabPage6.ResumeLayout(*False)
 		*this.ResumeLayout(*False)

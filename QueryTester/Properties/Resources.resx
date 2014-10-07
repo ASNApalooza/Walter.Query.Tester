@@ -224,7 +224,6 @@ Using System.Web
 ...
 
 DclConst DBNAME     Value("*Public/Cypress")
-DclConst EXCEL_FILE Value("C:\spreadsheets\customers.xlsx")
 
 DclFld db           Type(ASNA.DataGate.Client.AdgConnection)        
 DclFld Query        Type(ASNA.Helpers.DataServices.QueryDriver)
@@ -249,5 +248,137 @@ If (Query.Args.Error.ErrorException &lt;&gt; *Nothing)
     // Work with exception here
 EndIf 
 db.Close()</value>
+  </data>
+  <data name="CSToDataTable" xml:space="preserve">
+    <value>using ASNA.DataGate.Client;
+
+...
+
+string const DBNAME value(@"*Public/Cypress");
+
+ASNA.DataGate.Client.AdgConnection db;
+ASNA.Helpers.DataServices.QueryDriver Query;
+DataTable dt;
+
+db = new AdgConnection(DBNAME); 
+
+Query = *New ASNA.Helpers.DataServices.QueryDriver(db);
+Query.Args.Inputs.Library      = "{library}";
+Query.Args.Inputs.File         = "{file}";
+Query.Args.Inputs.FieldsList   = "{fieldsList}";
+Query.Args.Inputs.Rows         = {rows};
+Query.Args.Inputs.Query        = "{query}";
+
+{parms}
+dt = Query.Exec() *As DataTable;
+// DataTable now available for databinding or other use. Generally you'll assign this 
+// DataTable to a grid's or some other control's DataSource property. 
+if (Query.Args.Error.ErrorException != null) {
+    // Work with exception here
+}
+db.Close();</value>
+  </data>
+  <data name="CSToExcel" xml:space="preserve">
+    <value>using ASNA.DataGate.Client;
+
+...
+
+string const DBNAME value(@"*Public/Cypress");
+strong const EXCEL_FILE Value(@"C:\spreadsheets\customers.xlsx");
+
+ASNA.DataGate.Client.AdgConnection db;
+ASNA.Helpers.DataServices.QueryDriver Query;
+DataTable dt;
+ASNA.Helpers.DataServices.ToExcelAdapter ExcelAdapter;
+
+db = new AdgConnection(DBNAME); 
+
+Query = *New ASNA.Helpers.DataServices.QueryDriver(db);
+Query.Args.Inputs.Library      = "{library}";
+Query.Args.Inputs.File         = "{file}";
+Query.Args.Inputs.FieldsList   = "{fieldsList}";
+Query.Args.Inputs.Rows         = {rows};
+Query.Args.Inputs.Query        = "{query}";
+
+ExcelAdapter = new ASNA.Helpers.DataServices.ToExcelAdapter(Query.Args);
+Query.OverrideAdapter(ExcelAdapter);
+Query.Args.Inputs.Options.Add("heading","Customer Listing");
+Query.Args.Inputs.Options.Add("worksheet_name","Customers");
+
+{parms}
+dt = Query.Exec() *As DataTable;
+// Excel spreadsheet is now available in the Query object. In a Windows you'll
+// probably use the ToExcelAdapter's SaveToLocalFile() method to save 
+// save the spreadsheeet.
+if (Query.Args.Error.ErrorException != null) {
+    // Work with exception here
+}
+ExcelAdapter.SaveToLocalFile(EXCEL_FILE);
+db.Close();</value>
+  </data>
+  <data name="CSToJson" xml:space="preserve">
+    <value>using ASNA.DataGate.Client;
+
+...
+
+string const DBNAME value(@"*Public/Cypress");
+
+ASNA.DataGate.Client.AdgConnection db;
+ASNA.Helpers.DataServices.QueryDriver Query;
+DataTable dt;
+string Json;
+
+db = new AdgConnection(DBNAME); 
+
+Query = *New ASNA.Helpers.DataServices.QueryDriver(db);
+Query.Args.Inputs.Library      = "{library}";
+Query.Args.Inputs.File         = "{file}";
+Query.Args.Inputs.FieldsList   = "{fieldsList}";
+Query.Args.Inputs.Rows         = {rows};
+Query.Args.Inputs.Query        = "{query}";
+
+Query.OverrideAdapter(new ASNA.Helpers.DataServices.ToJsonAdapter(Query.Args)); 
+Query.Args.Inputs.Options.Add("indentJson",true);
+
+{parms}
+dt = Query.Exec() *As DataTable;
+// The Json data is now available. Generally you'll emit this data in a Web 
+// app for JavaScript use.
+if (Query.Args.Error.ErrorException != null) {
+    // Work with exception here
+}
+db.Close();</value>
+  </data>
+  <data name="CSToListItemArray" xml:space="preserve">
+    <value>using ASNA.DataGate.Client;
+using System.Web;
+
+...
+
+string const DBNAME value(@"*Public/Cypress");
+
+ASNA.DataGate.Client.AdgConnection db;
+ASNA.Helpers.DataServices.QueryDriver Query;
+DataTable dt;
+System.Web.UI.WebControls.ListItem[] ListItems;
+
+db = new AdgConnection(DBNAME); 
+
+Query = *New ASNA.Helpers.DataServices.QueryDriver(db);
+Query.Args.Inputs.Library      = "{library}";
+Query.Args.Inputs.File         = "{file}";
+Query.Args.Inputs.FieldsList   = "{fieldsList}";
+Query.Args.Inputs.Rows         = {rows};
+Query.Args.Inputs.Query        = "{query}";
+Query.OverrideAdapter(new ASNA.Helpers.DataServices.ToLisItemArrayAdapter(Query.Args));
+
+{parms}
+dt = (System.Web.UI.WebControls.ListItem[])Query.Exec();
+// DataTable now available for databinding or other use. Generally you'll assign this 
+// DataTable to a grid's or some other control's DataSource property. 
+if (Query.Args.Error.ErrorException != null) {
+    // Work with exception here
+}
+db.Close();</value>
   </data>
 </root>

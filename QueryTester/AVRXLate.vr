@@ -6,6 +6,20 @@ DclNamespace QueryTester
 
 BegClass AVRXLate Access(*Public)
 
+    DclFld LanguageType Type(*Integer4) 
+
+    BegConstructor Access(*Public) 
+        DclSrParm LanguageType Type(*Integer4) 
+
+        *This.LanguageType = LanguageType 
+    EndConstructor 
+
+    BegSr SetLanguageType Access(*Public) 
+        DclSrParm LanguageType Type(*Integer4) 
+        
+        *This.LanguageType = LanguageType                      
+    EndSr
+
     BegFunc GetExampleCode Type(*String)
         DclSrParm Query Type(ASNA.Helpers.DataServices.QueryDriver) 
         DclSrParm sb    Type(StringBuilder) 
@@ -26,8 +40,11 @@ BegClass AVRXLate Access(*Public)
 
         DclFld sb Type(StringBuilder) New()
 
-        sb.Append(Resources.AVRToDataTable) 
-
+        If (LanguageType = 0)
+            sb.Append(Resources.AVRToDataTable) 
+        Else
+            sb.Append(Resources.CSToDataTable) 
+        EndIf 
         LeaveSr GetExampleCode(Query,sb) 
     EndFunc             
 
@@ -36,7 +53,11 @@ BegClass AVRXLate Access(*Public)
 
         DclFld sb Type(StringBuilder) New()
 
-        sb.Append(Resources.AVRToJson) 
+        If (LanguageType = 0)
+            sb.Append(Resources.AVRToJson) 
+        Else
+            sb.Append(Resources.CSToJson) 
+        EndIf 
         LeaveSr GetExampleCode(Query,sb) 
     EndFunc             
 
@@ -45,8 +66,11 @@ BegClass AVRXLate Access(*Public)
 
         DclFld sb Type(StringBuilder) New()
 
-        sb.Append(Resources.AVRToExcel)
-
+        If (LanguageType = 0)
+            sb.Append(Resources.AVRToExcel) 
+        Else
+            sb.Append(Resources.CSToExcel) 
+        EndIf 
         LeaveSr GetExampleCode(Query,sb) 
     EndFunc             
 
@@ -55,45 +79,12 @@ BegClass AVRXLate Access(*Public)
 
         DclFld sb Type(StringBuilder) New()
 
-        sb.Append(Resources.AVRToListItemArray)
-
+        If (LanguageType = 0)
+            sb.Append(Resources.AVRToListItemArray) 
+        Else
+            sb.Append(Resources.CSToListItemArray) 
+        EndIf 
         LeaveSr GetExampleCode(Query,sb) 
-//
-//        sb.AppendLine('DclConst DBNAME     Value("*Public/MYDB")')
-//        sb.AppendLine('')
-//        sb.AppendLine('DclFld db           Type(ASNA.DataGate.Client.AdgConnection)') 
-//        sb.AppendLine('DclFld Query        Type(ASNA.Helpers.DataServices.QueryDriver)') 
-//        sb.AppendLine('')
-//        sb.AppendLine('DclArray ListItems  Type(System.Web.UI.WebControls.ListItem) Rank(1)')
-//        sb.AppendLine('')
-//        sb.AppendLine('db = *New AdgConnection(DBNAME)') 
-//        sb.AppendLine('')
-//        sb.AppendLine('Query = *New ASNA.Helpers.DataServices.QueryDriver(db)')        
-//        sb.AppendLine('Query.Args.Inputs.Library      = {library}')
-//        sb.AppendLine('Query.Args.Inputs.File         = {file}')
-//        sb.AppendLine('Query.Args.Inputs.FieldsList   = {fieldsList}')
-//        sb.AppendLine('Query.Args.Inputs.Rows         = {rows}')
-//        sb.AppendLine('Query.OverrideAdapter(*New ASNA.Helpers.DataServices.ToLisItemArrayAdapter(Query.Args))') 
-//        sb.AppendLine('')
-//        sb.AppendLine('Query.Args.Query = {query}')
-//        sb.AppendLine('{parms}')
-//        sb.AppendLine('ListItems = Query.Exec() *As System.Web.UI.WebControls.ListItem[]')
-//        sb.AppendLine('If (Query.Args.Error.ErrorException <> *Nothing)')
-//        sb.AppendLine('    // Work with exception here')
-//        sb.AppendLine('EndIf ')
-//
-//        sb.Replace('{library}', Query.Args.Inputs.Library)
-//        sb.Replace('{file}',Query.Args.Inputs.File)
-//        sb.Replace('{fieldsList}',Query.Args.Inputs.FieldsList)
-//        sb.Replace('{rows}',Query.Args.Inputs.Rows.ToString())
-//        If (String.IsNullOrEmpty(Query.Args.Inputs.Query))
-//            sb.Replace('{query}','""')
-//        Else
-//            sb.Replace('{query}',Query.Args.Inputs.Query)
-//        EndIf  
-//        sb.Replace('{parms}', GetAvrQueryAndOrderByParms(Query))
-//
-//        LeaveSr sb.ToString() 
     EndFunc             
 
     BegFunc GetAvrQueryAndOrderByParms Type(*String) 
@@ -117,6 +108,9 @@ BegClass AVRXLate Access(*Public)
                 Mask = Mask.Replace("{value}", '"' + qf.FieldValue.ToString().Trim() + '"' )
             EndIf
 
+            If (LanguageType = 1)
+                Mask = Mask + ";"
+            EndIf
             sb.Append(Mask) 
             sb.AppendLine("")
         EndFor 
@@ -126,6 +120,10 @@ BegClass AVRXLate Access(*Public)
             Mask = Mask.Replace("{field}", qo.FieldName) 
 
             Mask = Mask.Replace("{value}", qo.SortOrder.ToString()) 
+
+            If (LanguageType = 1)
+                Mask = Mask + ";"
+            EndIf
             sb.AppendLine(Mask) 
         EndFor 
 
