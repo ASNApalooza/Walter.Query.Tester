@@ -663,6 +663,7 @@
 		*this.tabPage2.Controls.Add(*this.labelQueryTime)
 		*this.tabPage2.Controls.Add(*this.linklableNextPage)
 		*this.tabPage2.Controls.Add(*this.datagridviewResults)
+		*this.tabPage2.ForeColor = System.Drawing.SystemColors.ControlText
 		*this.tabPage2.Location = *new System.Drawing.Point(4I, 27I)
 		*this.tabPage2.Name = "tabPage2"
 		*this.tabPage2.Padding = *new System.Windows.Forms.Padding(3I)

@@ -28,14 +28,13 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
 
 	/endregion
 
-    
+    DclConst EXCEL_FILE   Value("C:\Users\Roger\Documents\testing\example.xlsx")
 
     DclFld db             Type(AdgConnection) 
     DclFld Query          Type(ASNA.Helpers.DataServices.QueryDriver) 
     DclFld ArgsJson       Type(*String) 
     DclFld QueryAvailable Type(*Boolean) 
     DclFld Translate      Type(AVRXLate) 
-
 
 	BegSr Form1_Load Access(*Private) Event(*this.Load)
 		DclSrParm sender *Object
@@ -49,6 +48,8 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
         comboboxDBName.SelectedIndex = 1
 
         labelCurrentQueryFile.Text = String.Empty 
+
+        DisableTabs()
 	EndSr
 
 	BegSr Form1_FormClosing Access(*Private) Event(*this.FormClosing)
@@ -61,6 +62,20 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
 
     BegSr ConfigureShowNextPage
         linklableNextPage.Enabled = Query.Args.Outputs.MoreRowsForward
+    EndSr
+
+    BegSr DisableTabs
+        tabControl1.Controls.Remove(tabPage2)
+        tabControl1.Controls.Remove(tabPage3)
+        tabControl1.Controls.Remove(tabPage4)
+        tabControl1.Controls.Remove(tabPage5)
+    EndSr
+
+    BegSr EnableTabs
+        tabControl1.Controls.Add(tabPage2)
+        tabControl1.Controls.Add(tabPage3)
+        tabControl1.Controls.Add(tabPage4)
+        tabControl1.Controls.Add(tabPage5)
     EndSr
 
 	BegSr buttonPerformQuery_Click Access(*Private) Event(*this.buttonPerformQuery.Click)
@@ -79,20 +94,32 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
             LeaveSr 
         EndIf
 
+        *This.Cursor = Cursors.WaitCursor
+
         datagridviewResults.DataSource = *Nothing 
 
         DBName = (comboboxDBName.SelectedItem *As ListItem).Value 
         db = *New AdgConnection(DBName) 
-        //db.Open()       
+        Try 
+            db.Open()
+        Catch dgex Type(ASNA.DataGate.Common.dgException)
+            *This.Cursor = Cursors.Default 
+            MsgBox Msg(dgex.Message) Title("DataGate error")
+            LeaveSr 
 
-        *This.Cursor = Cursors.WaitCursor
+        Catch ex Type(Exception)
+            *This.Cursor = Cursors.Default 
+            MsgBox Msg(ex.Message) Title("Error")
+            LeaveSr 
+
+        EndTry 
 
         Query = *New ASNA.Helpers.DataServices.QueryDriver(db)        
         SetQueryProperties(Query) 
 
         dt = Query.Exec() *As DataTable
         If (Query.Args.Error.ErrorException <> *Nothing)
-            MsgBox Query.Args.Error.ErrorMessage
+            MsgBox Msg(Query.Args.Error.ErrorMessage) Title("Query error")
         Else 
             *This.QueryAvailable = *True 
         EndIf 
@@ -103,6 +130,8 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
         
         *This.Cursor = Cursors.Default 
         db.Close() 
+
+        EnableTabs()
 
         ArgsJson = JsonConvert.SerializeObject(Query.Args,Formatting.Indented)
 
@@ -143,9 +172,9 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
     EndSr
 
     BegSr AddQueryField
-        DclSrParm Query     Type(ASNA.Helpers.DataServices.QueryDriver)
-        DclSrParm Field Type(TextBox)
-        DclSrParm Value Type(TextBox) 
+        DclSrParm Query  Type(ASNA.Helpers.DataServices.QueryDriver)
+        DclSrParm Field  Type(TextBox)
+        DclSrParm Value  Type(TextBox) 
 
         DclFld o Type(*Object) 
 
@@ -188,8 +217,8 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
 		DclSrParm sender Type(*Object)
 		DclSrParm e Type(System.EventArgs)
 
-        DclFld ArgsJson     Type(*String) 
-        DclFld DBName       Type(*String) 
+        DclFld Args      Type(ASNA.Helpers.DataServices.QueryFileInstanceArgs) 
+        DclFld ArgsJson  Type(*String) 
         
         openfiledialog1.Filter = savefiledialog1.Filter
         openfiledialog1.FilterIndex = 0
@@ -197,41 +226,31 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
 
         openfiledialog1.ShowDialog() 
         If ( openfiledialog1.FileName <> "") 
-            *This.Cursor = Cursors.WaitCursor
+            DisableTabs()
             ArgsJson = File.ReadAllText(openfiledialog1.FileName) 
-            DBName = (comboboxDBName.SelectedItem *As ListItem).Value 
-            db = *New AdgConnection(DBName) 
-            db.Open()       
-            Query = *New ASNA.Helpers.DataServices.QueryDriver(db)   
-            
-            Query.Args = JsonConvert.DeserializeObject(ArgsJson, Query.Args.GetType()) *AS ASNA.Helpers.DataServices.QueryFileInstanceArgs
-            //Query.Args = JsonConvert.DeserializeObject(ArgsJson, *TypeOf( ASNA.Helpers.DataServices.QueryFileInstanceArgs)) *AS ASNA.Helpers.DataServices.QueryFileInstanceArgs
-            
-            //Query.Args.GetType()) *AS ASNA.Helpers.DataServices.QueryFileInstanceArgs
-            RefreshFormInputs(Query)
-            db.Close() 
-            *This.Cursor = Cursors.Default
+            Args = JsonConvert.DeserializeObject(ArgsJson, *TypeOf(ASNA.Helpers.DataServices.QueryFileInstanceArgs)) *AS ASNA.Helpers.DataServices.QueryFileInstanceArgs
+            RefreshFormInputs(Args)
             *This.QueryAvailable = *False
             labelCurrentQueryFile.Text = openfiledialog1.FileName  
         EndIf
 	EndSr
 
     BegSr RefreshFormInputs
-        DclSrParm Query     Type(ASNA.Helpers.DataServices.QueryDriver)
+        DclSrParm Args  Type(ASNA.Helpers.DataServices.QueryFileInstanceArgs)
 
         DclFld i  Type(*Integer4) 
         DclFld tb Type(TextBox) 
 
         ClearInputs()
 
-        textboxLibrary.Text     =   Query.Args.Inputs.Library
-        textboxFile.Text        =   Query.Args.Inputs.File
-        textboxFieldsList.Text  =   Query.Args.Inputs.FieldsList
-        textboxRows.Text        =   Query.Args.Inputs.Rows.ToString() 
-        textboxQuery.Text       =   Query.Args.Inputs.Query
+        textboxLibrary.Text     =   Args.Inputs.Library
+        textboxFile.Text        =   Args.Inputs.File
+        textboxFieldsList.Text  =   Args.Inputs.FieldsList
+        textboxRows.Text        =   Args.Inputs.Rows.ToString() 
+        textboxQuery.Text       =   Args.Inputs.Query
 
         i = 1
-        ForEach qf Type(ASNA.Helpers.DataServices.QueryField) Collection(Query.Args.Inputs.QueryParms) 
+        ForEach qf Type(ASNA.Helpers.DataServices.QueryField) Collection(Args.Inputs.QueryParms) 
             tb = *This.Controls.Find(String.Format("textboxQueryParm{0}Field",i),*True)[0] *As TextBox 
             tb.Text = qf.FieldName
             tb = *This.Controls.Find(String.Format("textboxQueryParm{0}Value",i),*True)[0] *As TextBox  
@@ -240,7 +259,7 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
         EndFor 
 
         i = 1
-        ForEach qo Type(ASNA.Helpers.DataServices.QueryOrderByField) Collection(Query.Args.Inputs.OrderBy) 
+        ForEach qo Type(ASNA.Helpers.DataServices.QueryOrderByField) Collection(Args.Inputs.OrderBy) 
             tb = *This.Controls.Find(String.Format("textboxOrderBy{0}Field",i),*True)[0] *As TextBox 
             tb.Text = qo.FieldName
             tb = *This.Controls.Find(String.Format("textboxOrderBy{0}Value",i),*True)[0] *As TextBox 
@@ -260,8 +279,6 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
 		DclSrParm sender Type(*Object)
 		DclSrParm e Type(System.EventArgs)
 
-        DclConst EXCEL_FILE Value("C:\Users\Roger\Documents\testing\example.xlsx")
-
         DclFld ExcelAdapter Type(ASNA.Helpers.DataServices.ToExcelAdapter)
 
         *This.Cursor = Cursors.WaitCursor
@@ -276,15 +293,7 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
 
         OsExec CmdLine(EXCEL_FILE) 
 	EndSr
-	
 
-	BegSr tabControl1_SelectedIndexChanged Access(*Private) Event(*this.tabControl1.SelectedIndexChanged)
-		DclSrParm sender Type(*Object)
-		DclSrParm e Type(System.EventArgs)
-
-
-	EndSr
-	
 	BegSr tabControl1_Selecting Access(*Private) Event(*this.tabControl1.Selecting)
 		DclSrParm sender Type(*Object)
 		DclSrParm e Type(System.Windows.Forms.TabControlCancelEventArgs)
@@ -294,7 +303,6 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
             LeaveSr 
         EndIf
 
-        //*This.Text = "Selecting: " + e.TabPageIndex.ToString() 
         If (e.TabPageIndex = 3) 
             richtextboxJsonResults.Text = String.Empty
         EndIf
@@ -343,22 +351,6 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
 		DclSrParm e Type(System.Windows.Forms.TabControlEventArgs)
 
         ShowTranslatedCode(e.TabPageIndex)
-
-//        If (e.TabPageIndex = 0)
-//            richtextboxAVR.Text = Translate.ToDataTableCode(Query) 
-//
-//        ElseIf (e.TabPageIndex = 1)
-//            richtextboxAVR.Text = Translate.ToJsonCode(Query) 
-//
-//        ElseIf (e.TabPageIndex = 2)
-//            richtextboxAVR.Text = Translate.ToExcelCode(Query) 
-//
-//        ElseIf (e.TabPageIndex = 3)
-//            richtextboxAVR.Text = Translate.ToListItemCode(Query)
-//
-//        EndIf 
-
-
 	EndSr
     
     BegSr ShowTranslatedCode
