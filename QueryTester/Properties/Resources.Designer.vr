@@ -82,15 +82,38 @@ BegClass Resources Access(*Internal) Attributes(System.CodeDom.Compiler.Generate
     ///DclFld Query        Type(ASNA.Helpers.DataServices.QueryDriver)
     ///DclFld dt           Type(DataTable) 
     ///DclFld ExcelAdapter Type(ASNA.Helpers.DataServices.ToExcelAdapter)
+    ///DclFLd Excel        Type(ASNA.Helpers.ASPNET.ExcelExport) New()
+    ///DclFld Result       Type(*Boolean)
+    ///
+    ///db = *New AdgConnectio [rest of string was truncated]&quot;;.
+    ///</summary>
+    BegProp AVRToExcelWeb Type(*String) Access(*Internal) Shared(*Yes)
+        BegGet
+            LeaveSr ResourceManager.GetString("AVRToExcelWeb", resourceCulture)
+        EndGet
+    EndProp
+    
+    ///<summary>
+    ///  Looks up a localized string similar to Using ASNA.DataGate.Client
+    ///
+    ///...
+    ///
+    ///DclConst DBNAME     Value(&quot;*Public/Cypress&quot;)
+    ///DclConst EXCEL_FILE Value(&quot;C:\spreadsheets\customers.xlsx&quot;)
+    ///
+    ///DclFld db           Type(ASNA.DataGate.Client.AdgConnection)        
+    ///DclFld Query        Type(ASNA.Helpers.DataServices.QueryDriver)
+    ///DclFld dt           Type(DataTable) 
+    ///DclFld ExcelAdapter Type(ASNA.Helpers.DataServices.ToExcelAdapter)
     ///
     ///db = *New AdgConnection(DBNAME) 
     ///
     ///Query = *New ASNA.Helpers.DataServices.QueryDriver(db)
     ///Query.Args.Inputs.Library       [rest of string was truncated]&quot;;.
     ///</summary>
-    BegProp AVRToExcel Type(*String) Access(*Internal) Shared(*Yes)
+    BegProp AVRToExcelWindows Type(*String) Access(*Internal) Shared(*Yes)
         BegGet
-            LeaveSr ResourceManager.GetString("AVRToExcel", resourceCulture)
+            LeaveSr ResourceManager.GetString("AVRToExcelWindows", resourceCulture)
         EndGet
     EndProp
     
@@ -183,6 +206,32 @@ BegClass Resources Access(*Internal) Attributes(System.CodeDom.Compiler.Generate
     ///ASNA.Helpers.DataServices.QueryDriver Query;
     ///DataTable dt;
     ///ASNA.Helpers.DataServices.ToExcelAdapter ExcelAdapter;
+    ///ASNA.Helpers.ASPNET.ExcelExport Excel = new ASNA.Helpers.ASPNET.ExcelExport Excel();
+    ///bool Result;
+    ///
+    ///db = new AdgConnection(DBNAME); 
+    ///
+    ///Query = *New ASNA.Helpers.DataServices.QueryDriver(db);
+    ///Query [rest of string was truncated]&quot;;.
+    ///</summary>
+    BegProp CSToExcelWeb Type(*String) Access(*Internal) Shared(*Yes)
+        BegGet
+            LeaveSr ResourceManager.GetString("CSToExcelWeb", resourceCulture)
+        EndGet
+    EndProp
+    
+    ///<summary>
+    ///  Looks up a localized string similar to using ASNA.DataGate.Client;
+    ///
+    ///...
+    ///
+    ///string const DBNAME value(@&quot;*Public/Cypress&quot;);
+    ///strong const EXCEL_FILE Value(@&quot;C:\spreadsheets\customers.xlsx&quot;);
+    ///
+    ///ASNA.DataGate.Client.AdgConnection db;
+    ///ASNA.Helpers.DataServices.QueryDriver Query;
+    ///DataTable dt;
+    ///ASNA.Helpers.DataServices.ToExcelAdapter ExcelAdapter;
     ///
     ///db = new AdgConnection(DBNAME); 
     ///
@@ -191,9 +240,9 @@ BegClass Resources Access(*Internal) Attributes(System.CodeDom.Compiler.Generate
     ///Query.Args.Inputs.File         = &quot;{file}&quot;;
     ///Query.Args.Inp [rest of string was truncated]&quot;;.
     ///</summary>
-    BegProp CSToExcel Type(*String) Access(*Internal) Shared(*Yes)
+    BegProp CSToExcelWindows Type(*String) Access(*Internal) Shared(*Yes)
         BegGet
-            LeaveSr ResourceManager.GetString("CSToExcel", resourceCulture)
+            LeaveSr ResourceManager.GetString("CSToExcelWindows", resourceCulture)
         EndGet
     EndProp
     

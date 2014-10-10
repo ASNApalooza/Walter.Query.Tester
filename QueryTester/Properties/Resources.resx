@@ -138,6 +138,7 @@ Query.Args.Inputs.Rows         = {rows}
 Query.Args.Inputs.Query        = "{query}"
 
 {parms}
+{options}
 dt = Query.Exec() *As DataTable
 // DataTable now available for databinding or other use. Generally you'll assign this 
 // DataTable to a grid's or some other control's DataSource property. 
@@ -146,7 +147,45 @@ If (Query.Args.Error.ErrorException &lt;&gt; *Nothing)
 EndIf 
 db.Close()</value>
   </data>
-  <data name="AVRToExcel" xml:space="preserve">
+  <data name="AVRToExcelWeb" xml:space="preserve">
+    <value>Using ASNA.DataGate.Client
+
+...
+
+DclConst DBNAME     Value("*Public/Cypress")
+DclConst EXCEL_FILE Value("C:\spreadsheets\customers.xlsx")
+
+DclFld db           Type(ASNA.DataGate.Client.AdgConnection)        
+DclFld Query        Type(ASNA.Helpers.DataServices.QueryDriver)
+DclFld dt           Type(DataTable) 
+DclFld ExcelAdapter Type(ASNA.Helpers.DataServices.ToExcelAdapter)
+DclFLd Excel        Type(ASNA.Helpers.ASPNET.ExcelExport) New()
+DclFld Result       Type(*Boolean)
+
+db = *New AdgConnection(DBNAME) 
+
+Query = *New ASNA.Helpers.DataServices.QueryDriver(db)
+Query.Args.Inputs.Library      = "{library}"
+Query.Args.Inputs.File         = "{file}"
+Query.Args.Inputs.FieldsList   = "{fieldsList}"
+Query.Args.Inputs.Rows         = {rows}
+Query.Args.Inputs.Query        = "{query}"
+
+ExcelAdapter = *New ASNA.Helpers.DataServices.ToExcelAdapter(Query.Args)
+Query.OverrideAdapter(ExcelAdapter)
+Query.Args.Inputs.Options.Add("heading","Customer Listing")
+Query.Args.Inputs.Options.Add("worksheet_name","Customers")
+
+{parms}
+{options}
+Result = Excel.CreateSpreadsheet(HttpContext.Current,Inputs) 
+If (Result) 
+    // Spreadsheet creation was successful.
+Else 
+    // Spreadsheet creation failed.
+EndIf</value>
+  </data>
+  <data name="AVRToExcelWindows" xml:space="preserve">
     <value>Using ASNA.DataGate.Client
 
 ...
@@ -174,9 +213,10 @@ Query.Args.Inputs.Options.Add("heading","Customer Listing")
 Query.Args.Inputs.Options.Add("worksheet_name","Customers")
 
 {parms}
+{options}
 Query.Exec() 
-// Excel spreadsheet is now available in the Query object. In a Windows you'll
-// probably use the ToExcelAdapter's SaveToLocalFile() method to save 
+// Excel spreadsheet is now available in the Query object. In a Windows app
+// you'll probably use the ToExcelAdapter's SaveToLocalFile() method to save 
 // save the spreadsheeet.
 If (Query.Args.Error.ErrorException &lt;&gt; *Nothing)
     // Work with exception here
@@ -209,6 +249,7 @@ Query.OverrideAdapter(*New ASNA.Helpers.DataServices.ToJsonAdapter(Query.Args))
 Query.Args.Inputs.Options.Add("indentJson",*True)
 
 {parms}
+{options}
 Json = Query.Exec() *As *String
 // The Json data is now available. Generally you'll emit this data in a Web 
 // app for JavaScript use.
@@ -241,6 +282,7 @@ Query.Args.Inputs.Query        = "{query}"
 Query.OverrideAdapter(*New ASNA.Helpers.DataServices.ToLisItemArrayAdapter(Query.Args))
 
 {parms}
+{options}
 ListItems = Query.Exec() *As As System.Web.UI.WebControls.ListItem[]
 // The array of ListItems is now available. Generally you'll use a ComboBox 
 // or DropDownList's AddRange() method to assign this array.
@@ -270,6 +312,7 @@ Query.Args.Inputs.Rows         = {rows};
 Query.Args.Inputs.Query        = "{query}";
 
 {parms}
+{options}
 dt = Query.Exec() *As DataTable;
 // DataTable now available for databinding or other use. Generally you'll assign this 
 // DataTable to a grid's or some other control's DataSource property. 
@@ -278,7 +321,46 @@ if (Query.Args.Error.ErrorException != null) {
 }
 db.Close();</value>
   </data>
-  <data name="CSToExcel" xml:space="preserve">
+  <data name="CSToExcelWeb" xml:space="preserve">
+    <value>using ASNA.DataGate.Client;
+
+...
+
+string const DBNAME value(@"*Public/Cypress");
+strong const EXCEL_FILE Value(@"C:\spreadsheets\customers.xlsx");
+
+ASNA.DataGate.Client.AdgConnection db;
+ASNA.Helpers.DataServices.QueryDriver Query;
+DataTable dt;
+ASNA.Helpers.DataServices.ToExcelAdapter ExcelAdapter;
+ASNA.Helpers.ASPNET.ExcelExport Excel = new ASNA.Helpers.ASPNET.ExcelExport Excel();
+bool Result;
+
+db = new AdgConnection(DBNAME); 
+
+Query = *New ASNA.Helpers.DataServices.QueryDriver(db);
+Query.Args.Inputs.Library      = "{library}";
+Query.Args.Inputs.File         = "{file}";
+Query.Args.Inputs.FieldsList   = "{fieldsList}";
+Query.Args.Inputs.Rows         = {rows};
+Query.Args.Inputs.Query        = "{query}";
+
+ExcelAdapter = new ASNA.Helpers.DataServices.ToExcelAdapter(Query.Args);
+Query.OverrideAdapter(ExcelAdapter);
+Query.Args.Inputs.Options.Add("heading","Customer Listing");
+Query.Args.Inputs.Options.Add("worksheet_name","Customers");
+
+{parms}
+{options}
+Result = Excel.CreateSpreadsheet(HttpContext.Current,Inputs);
+if (Result) {
+    // Spreadsheet creation was successful.
+}
+else {
+    // Spreadsheet creation failed.
+}</value>
+  </data>
+  <data name="CSToExcelWindows" xml:space="preserve">
     <value>using ASNA.DataGate.Client;
 
 ...
@@ -306,6 +388,7 @@ Query.Args.Inputs.Options.Add("heading","Customer Listing");
 Query.Args.Inputs.Options.Add("worksheet_name","Customers");
 
 {parms}
+{options}
 dt = Query.Exec() *As DataTable;
 // Excel spreadsheet is now available in the Query object. In a Windows you'll
 // probably use the ToExcelAdapter's SaveToLocalFile() method to save 
@@ -341,6 +424,7 @@ Query.OverrideAdapter(new ASNA.Helpers.DataServices.ToJsonAdapter(Query.Args));
 Query.Args.Inputs.Options.Add("indentJson",true);
 
 {parms}
+{options}
 dt = Query.Exec() *As DataTable;
 // The Json data is now available. Generally you'll emit this data in a Web 
 // app for JavaScript use.
@@ -373,6 +457,7 @@ Query.Args.Inputs.Query        = "{query}";
 Query.OverrideAdapter(new ASNA.Helpers.DataServices.ToLisItemArrayAdapter(Query.Args));
 
 {parms}
+{options}
 dt = (System.Web.UI.WebControls.ListItem[])Query.Exec();
 // DataTable now available for databinding or other use. Generally you'll assign this 
 // DataTable to a grid's or some other control's DataSource property. 

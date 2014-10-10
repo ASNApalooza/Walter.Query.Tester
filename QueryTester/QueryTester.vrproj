@@ -13,6 +13,7 @@
     <StartupObject>QueryTester.Form1</StartupObject>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <Name>QueryTester</Name>
+    <ApplicationIcon>search.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -90,6 +91,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="search.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\ASNA\VisualRPG\v11.2\ASNA.VisualRPG.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

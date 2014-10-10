@@ -72,10 +72,12 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
     EndSr
 
     BegSr EnableTabs
-        tabControl1.Controls.Add(tabPage2)
-        tabControl1.Controls.Add(tabPage3)
-        tabControl1.Controls.Add(tabPage4)
-        tabControl1.Controls.Add(tabPage5)
+        If (tabControl1.Controls.Count = 1 ) 
+            tabControl1.Controls.Add(tabPage2)
+            tabControl1.Controls.Add(tabPage3)
+            tabControl1.Controls.Add(tabPage4)
+            tabControl1.Controls.Add(tabPage5)
+        EndIf 
     EndSr
 
 	BegSr buttonPerformQuery_Click Access(*Private) Event(*this.buttonPerformQuery.Click)
@@ -166,10 +168,36 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
         If (textboxOrderBy2Field.Text <> String.Empty)
             AddParmField(Query,textboxOrderBy2Field,textboxOrderBy2Value) 
         EndIf 
+        
         If (textboxOrderBy3Field.Text <> String.Empty)
             AddParmField(Query,textboxOrderBy3Field,textboxOrderBy3Value) 
         EndIf 
+
+        If (NOT String.IsNullOrEmpty(textboxQueryOptionKey1.Text) AND NOT String.IsNullOrEmpty(textboxQueryOptionValue1.Text))
+            AddQueryOption(Query,textboxQueryOptionKey1,textboxQueryOptionValue1) 
+        EndIf 
+
+        If (NOT String.IsNullOrEmpty(textboxQueryOptionKey2.Text) AND NOT String.IsNullOrEmpty(textboxQueryOptionValue2.Text))
+            AddQueryOption(Query,textboxQueryOptionKey2,textboxQueryOptionValue2) 
+        EndIf 
+
+        If (NOT String.IsNullOrEmpty(textboxQueryOptionKey3.Text) AND NOT String.IsNullOrEmpty(textboxQueryOptionValue3.Text))
+            AddQueryOption(Query,textboxQueryOptionKey3,textboxQueryOptionValue3) 
+        EndIf 
     EndSr
+
+    BegSr AddQueryOption
+        DclSrParm Query  Type(ASNA.Helpers.DataServices.QueryDriver)
+        DclSrParm Key    Type(TextBox)
+        DclSrParm Value  Type(TextBox) 
+
+        DclFld o Type(*Object) 
+
+        o = Value.Text *As Object
+
+        Query.Args.Inputs.Options.Add(Key.Text, Value.Text) 
+    EndSr
+
 
     BegSr AddQueryField
         DclSrParm Query  Type(ASNA.Helpers.DataServices.QueryDriver)
@@ -196,6 +224,11 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
 		DclSrParm e Type(System.EventArgs)
 
         DclFld ArgsJson Type(*String) 
+
+        If (NOT QueryAvailable) 
+            MsgBox "There isn't a query to save."
+            LeaveSr                 
+        EndIf
 
         ArgsJson = JsonConvert.SerializeObject(Query.Args,Formatting.Indented)
 
@@ -266,6 +299,17 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
             tb.Text = qo.SortOrder
             i += 1
         EndFor 
+
+        i = 1
+        ForEach vp Type(KeyValuePair(*of *String, *Object)) Collection(Args.Inputs.Options) 
+            tb = *This.Controls.Find(String.Format("textboxQueryOptionKey{0}",i),*True)[0] *As TextBox 
+            tb.Text = vp.Key.ToString()
+            tb = *This.Controls.Find(String.Format("textboxQueryOptionValue{0}",i),*True)[0] *As TextBox 
+            tb.Text = vp.Value.ToString()
+            i += 1
+        EndFor 
+
+
     EndSr
 	
     BegSr ClearInputs
@@ -363,9 +407,12 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
             richtextboxAVR.Text = Translate.ToJsonCode(Query) 
 
         ElseIf (TabPageIndex = 2)
-            richtextboxAVR.Text = Translate.ToExcelCode(Query) 
+            richtextboxAVR.Text = Translate.ToExcelCodeWindows(Query) 
 
         ElseIf (TabPageIndex = 3)
+            richtextboxAVR.Text = Translate.ToExcelCodeWeb(Query) 
+
+        ElseIf (TabPageIndex = 4)
             richtextboxAVR.Text = Translate.ToListItemCode(Query)
 
         EndIf 

@@ -1,5 +1,4 @@
 C:\rpDocuments\Programming\AVR\Other\QueryTester\QueryTester\bin\Debug\QueryTester.exe
-C:\rpDocuments\Programming\AVR\Other\QueryTester\QueryTester\obj\Debug\QueryTester.vrprojResolveAssemblyReference.cache
 C:\rpDocuments\Programming\AVR\Other\QueryTester\QueryTester\obj\Debug\QueryTester.Resources.resources
 C:\rpDocuments\Programming\AVR\Other\QueryTester\QueryTester\obj\Debug\QueryTester.vrproj.GenerateResource.Cache
 C:\rpDocuments\Programming\AVR\Other\QueryTester\QueryTester\bin\Debug\ASNA.Helpers.DataServices.dll

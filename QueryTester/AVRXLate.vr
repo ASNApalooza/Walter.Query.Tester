@@ -1,5 +1,6 @@
 ﻿Using System
 Using System.Text
+Using System.Collections.Generic
 Using System.Text.RegularExpressions
 
 DclNamespace QueryTester
@@ -30,6 +31,7 @@ BegClass AVRXLate Access(*Public)
         sb.Replace('{rows}',Query.Args.Inputs.Rows.ToString())
         sb.Replace('{query}',Query.Args.Inputs.Query.Trim())
         sb.Replace('{parms}', GetAvrQueryAndOrderByParms(Query))
+        sb.Replace('{options}', GetAvrQueryOptions(Query))
 
         LeaveSr sb.ToString() 
     EndFunc 
@@ -61,18 +63,32 @@ BegClass AVRXLate Access(*Public)
         LeaveSr GetExampleCode(Query,sb) 
     EndFunc             
 
-    BegFunc  ToExcelCode Type(*String) Access(*Public) 
+    BegFunc  ToExcelCodeWindows Type(*String) Access(*Public) 
         DclSrParm Query Type(ASNA.Helpers.DataServices.QueryDriver) 
 
         DclFld sb Type(StringBuilder) New()
 
         If (LanguageType = 0)
-            sb.Append(Resources.AVRToExcel) 
+            sb.Append(Resources.AVRToExcelWindows) 
         Else
-            sb.Append(Resources.CSToExcel) 
+            sb.Append(Resources.CSToExcelWindows) 
         EndIf 
         LeaveSr GetExampleCode(Query,sb) 
     EndFunc             
+
+    BegFunc  ToExcelCodeWeb Type(*String) Access(*Public) 
+        DclSrParm Query Type(ASNA.Helpers.DataServices.QueryDriver) 
+
+        DclFld sb Type(StringBuilder) New()
+
+        If (LanguageType = 0)
+            sb.Append(Resources.AVRToExcelWeb) 
+        Else
+            sb.Append(Resources.CSToExcelWeb) 
+        EndIf 
+        LeaveSr GetExampleCode(Query,sb) 
+    EndFunc             
+
 
     BegFunc  ToListItemCode Type(*String) Access(*Public) 
         DclSrParm Query Type(ASNA.Helpers.DataServices.QueryDriver) 
@@ -129,5 +145,33 @@ BegClass AVRXLate Access(*Public)
 
         LeaveSr sb.ToString() 
     EndFunc
+
+    BegFunc GetAvrQueryOptions Type(*String) 
+        DclSrParm Query Type(ASNA.Helpers.DataServices.QueryDriver) 
+        DclFld sb Type(StringBuilder) New()
+        
+        DclFld OptionsMask     Type(*String) 
+        DclFld Mask            Type(*String) 
+        
+        If (Query.Args.Inputs.Options.Count = 0) 
+            LeaveSr String.Empty 
+        EndIf
+
+        OptionsMask = 'Query.Args.Inputs.Options.Add("{field}","{value}")'
+
+        ForEach vp Type(KeyValuePair(*of *String, *Object)) Collection(Query.Args.Inputs.Options) 
+            Mask = OptionsMask
+            Mask = Mask.Replace("{field}", vp.Key) 
+            Mask = Mask.Replace("{value}", vp.Value.ToString())             
+            If (LanguageType = 1)
+                Mask = Mask + ";"
+            EndIf
+            sb.Append(Mask) 
+            sb.AppendLine("")
+        EndFor 
+
+        LeaveSr sb.ToString() 
+    EndFunc
+
     
 EndClass
