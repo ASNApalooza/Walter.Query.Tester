@@ -1,4 +1,22 @@
 ﻿BegClass Form1 Partial(*Yes)
+	DclFld label29 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld label8 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld label7 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld label30 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld label14 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld label16 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld label12 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld label10 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld label22 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld label21 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld label31 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld label32 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld label23 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld label13 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld label15 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld label17 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld label33 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
+	DclFld label34 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
 	DclFld label28 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
 	DclFld label27 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
 	DclFld textboxQueryOptionValue3 Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
@@ -10,9 +28,6 @@
 	DclFld textboxQueryOptionValue1 Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
 	DclFld label25 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
 	DclFld textboxQueryOptionKey1 Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
-	DclFld label23 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
-	DclFld label22 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
-	DclFld label21 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
 	DclFld tabPage10 Type(System.Windows.Forms.TabPage) Access(*Private) WithEvents(*Yes)
 	DclFld panel1 Type(System.Windows.Forms.Panel) Access(*Private) WithEvents(*Yes)
 	DclFld linklabelToClipboard Type(System.Windows.Forms.LinkLabel) Access(*Private) WithEvents(*Yes)
@@ -41,27 +56,18 @@
 	DclFld tabPage1 Type(System.Windows.Forms.TabPage) Access(*Private) WithEvents(*Yes)
 	DclFld comboboxDBName Type(System.Windows.Forms.ComboBox) Access(*Private) WithEvents(*Yes)
 	DclFld label18 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
-	DclFld label12 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
 	DclFld textboxOrderBy3Value Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
-	DclFld label13 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
 	DclFld textboxOrderBy3Field Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
-	DclFld label14 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
 	DclFld textboxOrderBy2Value Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
-	DclFld label15 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
 	DclFld textboxOrderBy2Field Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
-	DclFld label16 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
 	DclFld textboxOrderBy1Value Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
-	DclFld label17 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
 	DclFld textboxOrderBy1Field Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
-	DclFld label10 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
 	DclFld textboxQueryParm3Value Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
 	DclFld label11 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
 	DclFld textboxQueryParm3Field Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
-	DclFld label8 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
 	DclFld textboxQueryParm2Value Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
 	DclFld label9 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
 	DclFld textboxQueryParm2Field Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
-	DclFld label7 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
 	DclFld textboxQueryParm1Value Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
 	DclFld label6 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
 	DclFld textboxQueryParm1Field Type(System.Windows.Forms.TextBox) Access(*Private) WithEvents(*Yes)
@@ -107,6 +113,24 @@
 		*this.label20 = *new System.Windows.Forms.Label()
 		*this.label19 = *new System.Windows.Forms.Label()
 		*this.panelInputs = *new System.Windows.Forms.Panel()
+		*this.label33 = *new System.Windows.Forms.Label()
+		*this.label34 = *new System.Windows.Forms.Label()
+		*this.label31 = *new System.Windows.Forms.Label()
+		*this.label32 = *new System.Windows.Forms.Label()
+		*this.label23 = *new System.Windows.Forms.Label()
+		*this.label13 = *new System.Windows.Forms.Label()
+		*this.label15 = *new System.Windows.Forms.Label()
+		*this.label17 = *new System.Windows.Forms.Label()
+		*this.label22 = *new System.Windows.Forms.Label()
+		*this.label21 = *new System.Windows.Forms.Label()
+		*this.label14 = *new System.Windows.Forms.Label()
+		*this.label16 = *new System.Windows.Forms.Label()
+		*this.label12 = *new System.Windows.Forms.Label()
+		*this.label10 = *new System.Windows.Forms.Label()
+		*this.label8 = *new System.Windows.Forms.Label()
+		*this.label7 = *new System.Windows.Forms.Label()
+		*this.label30 = *new System.Windows.Forms.Label()
+		*this.label29 = *new System.Windows.Forms.Label()
 		*this.label28 = *new System.Windows.Forms.Label()
 		*this.label27 = *new System.Windows.Forms.Label()
 		*this.textboxQueryOptionValue3 = *new System.Windows.Forms.TextBox()
@@ -118,34 +142,22 @@
 		*this.textboxQueryOptionValue1 = *new System.Windows.Forms.TextBox()
 		*this.label25 = *new System.Windows.Forms.Label()
 		*this.textboxQueryOptionKey1 = *new System.Windows.Forms.TextBox()
-		*this.label23 = *new System.Windows.Forms.Label()
-		*this.label22 = *new System.Windows.Forms.Label()
-		*this.label21 = *new System.Windows.Forms.Label()
 		*this.labelCurrentQueryFile = *new System.Windows.Forms.Label()
 		*this.buttonPerformQuery = *new System.Windows.Forms.Button()
 		*this.comboboxDBName = *new System.Windows.Forms.ComboBox()
 		*this.label18 = *new System.Windows.Forms.Label()
-		*this.label12 = *new System.Windows.Forms.Label()
 		*this.textboxOrderBy3Value = *new System.Windows.Forms.TextBox()
-		*this.label13 = *new System.Windows.Forms.Label()
 		*this.textboxOrderBy3Field = *new System.Windows.Forms.TextBox()
-		*this.label14 = *new System.Windows.Forms.Label()
 		*this.textboxOrderBy2Value = *new System.Windows.Forms.TextBox()
-		*this.label15 = *new System.Windows.Forms.Label()
 		*this.textboxOrderBy2Field = *new System.Windows.Forms.TextBox()
-		*this.label16 = *new System.Windows.Forms.Label()
 		*this.textboxOrderBy1Value = *new System.Windows.Forms.TextBox()
-		*this.label17 = *new System.Windows.Forms.Label()
 		*this.textboxOrderBy1Field = *new System.Windows.Forms.TextBox()
-		*this.label10 = *new System.Windows.Forms.Label()
 		*this.textboxQueryParm3Value = *new System.Windows.Forms.TextBox()
 		*this.label11 = *new System.Windows.Forms.Label()
 		*this.textboxQueryParm3Field = *new System.Windows.Forms.TextBox()
-		*this.label8 = *new System.Windows.Forms.Label()
 		*this.textboxQueryParm2Value = *new System.Windows.Forms.TextBox()
 		*this.label9 = *new System.Windows.Forms.Label()
 		*this.textboxQueryParm2Field = *new System.Windows.Forms.TextBox()
-		*this.label7 = *new System.Windows.Forms.Label()
 		*this.textboxQueryParm1Value = *new System.Windows.Forms.TextBox()
 		*this.label6 = *new System.Windows.Forms.Label()
 		*this.textboxQueryParm1Field = *new System.Windows.Forms.TextBox()
@@ -302,6 +314,24 @@
 		//panelInputs
 		//
 		*this.panelInputs.Anchor = System.Windows.Forms.AnchorStyles.None
+		*this.panelInputs.Controls.Add(*this.label33)
+		*this.panelInputs.Controls.Add(*this.label34)
+		*this.panelInputs.Controls.Add(*this.label31)
+		*this.panelInputs.Controls.Add(*this.label32)
+		*this.panelInputs.Controls.Add(*this.label23)
+		*this.panelInputs.Controls.Add(*this.label13)
+		*this.panelInputs.Controls.Add(*this.label15)
+		*this.panelInputs.Controls.Add(*this.label17)
+		*this.panelInputs.Controls.Add(*this.label22)
+		*this.panelInputs.Controls.Add(*this.label21)
+		*this.panelInputs.Controls.Add(*this.label14)
+		*this.panelInputs.Controls.Add(*this.label16)
+		*this.panelInputs.Controls.Add(*this.label12)
+		*this.panelInputs.Controls.Add(*this.label10)
+		*this.panelInputs.Controls.Add(*this.label8)
+		*this.panelInputs.Controls.Add(*this.label7)
+		*this.panelInputs.Controls.Add(*this.label30)
+		*this.panelInputs.Controls.Add(*this.label29)
 		*this.panelInputs.Controls.Add(*this.label28)
 		*this.panelInputs.Controls.Add(*this.label27)
 		*this.panelInputs.Controls.Add(*this.textboxQueryOptionValue3)
@@ -313,34 +343,22 @@
 		*this.panelInputs.Controls.Add(*this.textboxQueryOptionValue1)
 		*this.panelInputs.Controls.Add(*this.label25)
 		*this.panelInputs.Controls.Add(*this.textboxQueryOptionKey1)
-		*this.panelInputs.Controls.Add(*this.label23)
-		*this.panelInputs.Controls.Add(*this.label22)
-		*this.panelInputs.Controls.Add(*this.label21)
 		*this.panelInputs.Controls.Add(*this.labelCurrentQueryFile)
 		*this.panelInputs.Controls.Add(*this.buttonPerformQuery)
 		*this.panelInputs.Controls.Add(*this.comboboxDBName)
 		*this.panelInputs.Controls.Add(*this.label18)
-		*this.panelInputs.Controls.Add(*this.label12)
 		*this.panelInputs.Controls.Add(*this.textboxOrderBy3Value)
-		*this.panelInputs.Controls.Add(*this.label13)
 		*this.panelInputs.Controls.Add(*this.textboxOrderBy3Field)
-		*this.panelInputs.Controls.Add(*this.label14)
 		*this.panelInputs.Controls.Add(*this.textboxOrderBy2Value)
-		*this.panelInputs.Controls.Add(*this.label15)
 		*this.panelInputs.Controls.Add(*this.textboxOrderBy2Field)
-		*this.panelInputs.Controls.Add(*this.label16)
 		*this.panelInputs.Controls.Add(*this.textboxOrderBy1Value)
-		*this.panelInputs.Controls.Add(*this.label17)
 		*this.panelInputs.Controls.Add(*this.textboxOrderBy1Field)
-		*this.panelInputs.Controls.Add(*this.label10)
 		*this.panelInputs.Controls.Add(*this.textboxQueryParm3Value)
 		*this.panelInputs.Controls.Add(*this.label11)
 		*this.panelInputs.Controls.Add(*this.textboxQueryParm3Field)
-		*this.panelInputs.Controls.Add(*this.label8)
 		*this.panelInputs.Controls.Add(*this.textboxQueryParm2Value)
 		*this.panelInputs.Controls.Add(*this.label9)
 		*this.panelInputs.Controls.Add(*this.textboxQueryParm2Field)
-		*this.panelInputs.Controls.Add(*this.label7)
 		*this.panelInputs.Controls.Add(*this.textboxQueryParm1Value)
 		*this.panelInputs.Controls.Add(*this.label6)
 		*this.panelInputs.Controls.Add(*this.textboxQueryParm1Field)
@@ -359,30 +377,210 @@
 		*this.panelInputs.Size = *new System.Drawing.Size(1035I, 643I)
 		*this.panelInputs.TabIndex = 1I
 		//
+		//label33
+		//
+		*this.label33.AutoSize = *True
+		*this.label33.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label33.Location = *new System.Drawing.Point(18I, 539I)
+		*this.label33.Name = "label33"
+		*this.label33.Size = *new System.Drawing.Size(64I, 20I)
+		*this.label33.TabIndex = 70I
+		*this.label33.Text = "Options"
+		//
+		//label34
+		//
+		*this.label34.AutoSize = *True
+		*this.label34.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label34.Location = *new System.Drawing.Point(18I, 518I)
+		*this.label34.Name = "label34"
+		*this.label34.Size = *new System.Drawing.Size(54I, 20I)
+		*this.label34.TabIndex = 69I
+		*this.label34.Text = "Query "
+		//
+		//label31
+		//
+		*this.label31.AutoSize = *True
+		*this.label31.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label31.Location = *new System.Drawing.Point(21I, 389I)
+		*this.label31.Name = "label31"
+		*this.label31.Size = *new System.Drawing.Size(50I, 20I)
+		*this.label31.TabIndex = 68I
+		*this.label31.Text = "Fields"
+		//
+		//label32
+		//
+		*this.label32.AutoSize = *True
+		*this.label32.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label32.Location = *new System.Drawing.Point(21I, 370I)
+		*this.label32.Name = "label32"
+		*this.label32.Size = *new System.Drawing.Size(69I, 20I)
+		*this.label32.TabIndex = 67I
+		*this.label32.Text = "Order by"
+		//
+		//label23
+		//
+		*this.label23.AutoSize = *True
+		*this.label23.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label23.Location = *new System.Drawing.Point(21I, 251I)
+		*this.label23.Name = "label23"
+		*this.label23.Size = *new System.Drawing.Size(91I, 20I)
+		*this.label23.TabIndex = 66I
+		*this.label23.Text = "Parameters"
+		//
+		//label13
+		//
+		*this.label13.AutoSize = *True
+		*this.label13.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label13.Location = *new System.Drawing.Point(147I, 423I)
+		*this.label13.Name = "label13"
+		*this.label13.Size = *new System.Drawing.Size(53I, 20I)
+		*this.label13.TabIndex = 65I
+		*this.label13.Text = "Field 3"
+		//
+		//label15
+		//
+		*this.label15.AutoSize = *True
+		*this.label15.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label15.Location = *new System.Drawing.Point(147I, 390I)
+		*this.label15.Name = "label15"
+		*this.label15.Size = *new System.Drawing.Size(53I, 20I)
+		*this.label15.TabIndex = 64I
+		*this.label15.Text = "Field 2"
+		//
+		//label17
+		//
+		*this.label17.AutoSize = *True
+		*this.label17.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label17.Location = *new System.Drawing.Point(147I, 357I)
+		*this.label17.Name = "label17"
+		*this.label17.Size = *new System.Drawing.Size(53I, 20I)
+		*this.label17.TabIndex = 63I
+		*this.label17.Text = "Field 1"
+		//
+		//label22
+		//
+		*this.label22.AutoSize = *True
+		*this.label22.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label22.Location = *new System.Drawing.Point(21I, 231I)
+		*this.label22.Name = "label22"
+		*this.label22.Size = *new System.Drawing.Size(51I, 20I)
+		*this.label22.TabIndex = 62I
+		*this.label22.Text = "Query"
+		//
+		//label21
+		//
+		*this.label21.AutoSize = *True
+		*this.label21.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label21.Location = *new System.Drawing.Point(486I, 376I)
+		*this.label21.Name = "label21"
+		*this.label21.Size = *new System.Drawing.Size(80I, 20I)
+		*this.label21.TabIndex = 61I
+		*this.label21.Text = "Fields List."
+		//
+		//label14
+		//
+		*this.label14.AutoSize = *True
+		*this.label14.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label14.Location = *new System.Drawing.Point(251I, 111I)
+		*this.label14.Name = "label14"
+		*this.label14.Size = *new System.Drawing.Size(283I, 20I)
+		*this.label14.TabIndex = 60I
+		*this.label14.Text = "(-1 = return all rows. Be careful with this!)"
+		//
+		//label16
+		//
+		*this.label16.AutoSize = *True
+		*this.label16.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label16.Location = *new System.Drawing.Point(486I, 356I)
+		*this.label16.Name = "label16"
+		*this.label16.Size = *new System.Drawing.Size(279I, 20I)
+		*this.label16.TabIndex = 59I
+		*this.label16.Text = "'Order by' fields must be included in the "
+		//
+		//label12
+		//
+		*this.label12.AutoSize = *True
+		*this.label12.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label12.Location = *new System.Drawing.Point(486I, 232I)
+		*this.label12.Name = "label12"
+		*this.label12.Size = *new System.Drawing.Size(164I, 20I)
+		*this.label12.TabIndex = 58I
+		*this.label12.Text = "every field in the query."
+		//
+		//label10
+		//
+		*this.label10.AutoSize = *True
+		*this.label10.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label10.Location = *new System.Drawing.Point(486I, 212I)
+		*this.label10.Name = "label10"
+		*this.label10.Size = *new System.Drawing.Size(276I, 20I)
+		*this.label10.TabIndex = 57I
+		*this.label10.Text = "Query parm fields must be provided for "
+		//
+		//label8
+		//
+		*this.label8.AutoSize = *True
+		*this.label8.Font = *new System.Drawing.Font("Source Sans Pro", 10, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label8.Location = *new System.Drawing.Point(354I, 335I)
+		*this.label8.Name = "label8"
+		*this.label8.Size = *new System.Drawing.Size(102I, 18I)
+		*this.label8.TabIndex = 56I
+		*this.label8.Text = "Asc = 0  Desc = 1"
+		//
+		//label7
+		//
+		*this.label7.AutoSize = *True
+		*this.label7.Font = *new System.Drawing.Font("Source Sans Pro", 10, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label7.Location = *new System.Drawing.Point(216I, 335I)
+		*this.label7.Name = "label7"
+		*this.label7.Size = *new System.Drawing.Size(37I, 18I)
+		*this.label7.TabIndex = 55I
+		*this.label7.Text = "Field"
+		//
+		//label30
+		//
+		*this.label30.AutoSize = *True
+		*this.label30.Font = *new System.Drawing.Font("Source Sans Pro", 10, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label30.Location = *new System.Drawing.Point(349I, 186I)
+		*this.label30.Name = "label30"
+		*this.label30.Size = *new System.Drawing.Size(41I, 18I)
+		*this.label30.TabIndex = 54I
+		*this.label30.Text = "Value"
+		//
+		//label29
+		//
+		*this.label29.AutoSize = *True
+		*this.label29.Font = *new System.Drawing.Font("Source Sans Pro", 10, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label29.Location = *new System.Drawing.Point(217I, 186I)
+		*this.label29.Name = "label29"
+		*this.label29.Size = *new System.Drawing.Size(37I, 18I)
+		*this.label29.TabIndex = 53I
+		*this.label29.Text = "Field"
+		//
 		//label28
 		//
 		*this.label28.AutoSize = *True
-		*this.label28.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.label28.Location = *new System.Drawing.Point(531I, 477I)
+		*this.label28.Font = *new System.Drawing.Font("Source Sans Pro", 10, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label28.Location = *new System.Drawing.Point(517I, 476I)
 		*this.label28.Name = "label28"
-		*this.label28.Size = *new System.Drawing.Size(48I, 20I)
+		*this.label28.Size = *new System.Drawing.Size(41I, 18I)
 		*this.label28.TabIndex = 52I
 		*this.label28.Text = "Value"
 		//
 		//label27
 		//
 		*this.label27.AutoSize = *True
-		*this.label27.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.label27.Location = *new System.Drawing.Point(231I, 477I)
+		*this.label27.Font = *new System.Drawing.Font("Source Sans Pro", 10, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label27.Location = *new System.Drawing.Point(217I, 476I)
 		*this.label27.Name = "label27"
-		*this.label27.Size = *new System.Drawing.Size(35I, 20I)
+		*this.label27.Size = *new System.Drawing.Size(30I, 18I)
 		*this.label27.TabIndex = 51I
 		*this.label27.Text = "Key"
 		//
 		//textboxQueryOptionValue3
 		//
 		*this.textboxQueryOptionValue3.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.textboxQueryOptionValue3.Location = *new System.Drawing.Point(529I, 566I)
+		*this.textboxQueryOptionValue3.Location = *new System.Drawing.Point(515I, 565I)
 		*this.textboxQueryOptionValue3.Name = "textboxQueryOptionValue3"
 		*this.textboxQueryOptionValue3.Size = *new System.Drawing.Size(297I, 28I)
 		*this.textboxQueryOptionValue3.TabIndex = 50I
@@ -390,17 +588,17 @@
 		//label26
 		//
 		*this.label26.AutoSize = *True
-		*this.label26.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.label26.Location = *new System.Drawing.Point(61I, 569I)
+		*this.label26.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label26.Location = *new System.Drawing.Point(136I, 567I)
 		*this.label26.Name = "label26"
-		*this.label26.Size = *new System.Drawing.Size(100I, 20I)
+		*this.label26.Size = *new System.Drawing.Size(67I, 20I)
 		*this.label26.TabIndex = 49I
-		*this.label26.Text = "Query option"
+		*this.label26.Text = "Option 3"
 		//
 		//textboxQueryOptionKey3
 		//
 		*this.textboxQueryOptionKey3.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.textboxQueryOptionKey3.Location = *new System.Drawing.Point(227I, 566I)
+		*this.textboxQueryOptionKey3.Location = *new System.Drawing.Point(213I, 565I)
 		*this.textboxQueryOptionKey3.Name = "textboxQueryOptionKey3"
 		*this.textboxQueryOptionKey3.Size = *new System.Drawing.Size(281I, 28I)
 		*this.textboxQueryOptionKey3.TabIndex = 48I
@@ -408,7 +606,7 @@
 		//textboxQueryOptionValue2
 		//
 		*this.textboxQueryOptionValue2.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.textboxQueryOptionValue2.Location = *new System.Drawing.Point(529I, 532I)
+		*this.textboxQueryOptionValue2.Location = *new System.Drawing.Point(515I, 531I)
 		*this.textboxQueryOptionValue2.Name = "textboxQueryOptionValue2"
 		*this.textboxQueryOptionValue2.Size = *new System.Drawing.Size(297I, 28I)
 		*this.textboxQueryOptionValue2.TabIndex = 47I
@@ -416,17 +614,17 @@
 		//label24
 		//
 		*this.label24.AutoSize = *True
-		*this.label24.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.label24.Location = *new System.Drawing.Point(61I, 535I)
+		*this.label24.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label24.Location = *new System.Drawing.Point(136I, 533I)
 		*this.label24.Name = "label24"
-		*this.label24.Size = *new System.Drawing.Size(100I, 20I)
+		*this.label24.Size = *new System.Drawing.Size(67I, 20I)
 		*this.label24.TabIndex = 46I
-		*this.label24.Text = "Query option"
+		*this.label24.Text = "Option 2"
 		//
 		//textboxQueryOptionKey2
 		//
 		*this.textboxQueryOptionKey2.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.textboxQueryOptionKey2.Location = *new System.Drawing.Point(227I, 532I)
+		*this.textboxQueryOptionKey2.Location = *new System.Drawing.Point(213I, 531I)
 		*this.textboxQueryOptionKey2.Name = "textboxQueryOptionKey2"
 		*this.textboxQueryOptionKey2.Size = *new System.Drawing.Size(281I, 28I)
 		*this.textboxQueryOptionKey2.TabIndex = 45I
@@ -434,7 +632,7 @@
 		//textboxQueryOptionValue1
 		//
 		*this.textboxQueryOptionValue1.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.textboxQueryOptionValue1.Location = *new System.Drawing.Point(530I, 498I)
+		*this.textboxQueryOptionValue1.Location = *new System.Drawing.Point(516I, 497I)
 		*this.textboxQueryOptionValue1.Name = "textboxQueryOptionValue1"
 		*this.textboxQueryOptionValue1.Size = *new System.Drawing.Size(297I, 28I)
 		*this.textboxQueryOptionValue1.TabIndex = 44I
@@ -442,50 +640,20 @@
 		//label25
 		//
 		*this.label25.AutoSize = *True
-		*this.label25.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.label25.Location = *new System.Drawing.Point(61I, 501I)
+		*this.label25.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label25.Location = *new System.Drawing.Point(136I, 500I)
 		*this.label25.Name = "label25"
-		*this.label25.Size = *new System.Drawing.Size(100I, 20I)
+		*this.label25.Size = *new System.Drawing.Size(67I, 20I)
 		*this.label25.TabIndex = 43I
-		*this.label25.Text = "Query option"
+		*this.label25.Text = "Option 1"
 		//
 		//textboxQueryOptionKey1
 		//
 		*this.textboxQueryOptionKey1.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.textboxQueryOptionKey1.Location = *new System.Drawing.Point(227I, 498I)
+		*this.textboxQueryOptionKey1.Location = *new System.Drawing.Point(213I, 497I)
 		*this.textboxQueryOptionKey1.Name = "textboxQueryOptionKey1"
 		*this.textboxQueryOptionKey1.Size = *new System.Drawing.Size(281I, 28I)
 		*this.textboxQueryOptionKey1.TabIndex = 42I
-		//
-		//label23
-		//
-		*this.label23.AutoSize = *True
-		*this.label23.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.label23.Location = *new System.Drawing.Point(669I, 419I)
-		*this.label23.Name = "label23"
-		*this.label23.Size = *new System.Drawing.Size(194I, 20I)
-		*this.label23.TabIndex = 41I
-		*this.label23.Text = "0=ascending 1=descending"
-		//
-		//label22
-		//
-		*this.label22.AutoSize = *True
-		*this.label22.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.label22.Location = *new System.Drawing.Point(669I, 344I)
-		*this.label22.Name = "label22"
-		*this.label22.Size = *new System.Drawing.Size(194I, 20I)
-		*this.label22.TabIndex = 40I
-		*this.label22.Text = "0=ascending 1=descending"
-		//
-		//label21
-		//
-		*this.label21.AutoSize = *True
-		*this.label21.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.label21.Location = *new System.Drawing.Point(669I, 268I)
-		*this.label21.Name = "label21"
-		*this.label21.Size = *new System.Drawing.Size(194I, 20I)
-		*this.label21.TabIndex = 39I
-		*this.label21.Text = "0=ascending 1=descending"
 		//
 		//labelCurrentQueryFile
 		//
@@ -499,7 +667,7 @@
 		//buttonPerformQuery
 		//
 		*this.buttonPerformQuery.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.buttonPerformQuery.Location = *new System.Drawing.Point(868I, 573I)
+		*this.buttonPerformQuery.Location = *new System.Drawing.Point(890I, 582I)
 		*this.buttonPerformQuery.Name = "buttonPerformQuery"
 		*this.buttonPerformQuery.Size = *new System.Drawing.Size(139I, 54I)
 		*this.buttonPerformQuery.TabIndex = 37I
@@ -525,128 +693,58 @@
 		*this.label18.TabIndex = 35I
 		*this.label18.Text = "DB Name"
 		//
-		//label12
-		//
-		*this.label12.AutoSize = *True
-		*this.label12.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.label12.Location = *new System.Drawing.Point(381I, 414I)
-		*this.label12.Name = "label12"
-		*this.label12.Size = *new System.Drawing.Size(142I, 20I)
-		*this.label12.TabIndex = 33I
-		*this.label12.Text = "Order by asc/desc 3"
-		//
 		//textboxOrderBy3Value
 		//
 		*this.textboxOrderBy3Value.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.textboxOrderBy3Value.Location = *new System.Drawing.Point(530I, 411I)
+		*this.textboxOrderBy3Value.Location = *new System.Drawing.Point(348I, 424I)
 		*this.textboxOrderBy3Value.Name = "textboxOrderBy3Value"
 		*this.textboxOrderBy3Value.Size = *new System.Drawing.Size(120I, 28I)
 		*this.textboxOrderBy3Value.TabIndex = 32I
 		//
-		//label13
-		//
-		*this.label13.AutoSize = *True
-		*this.label13.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.label13.Location = *new System.Drawing.Point(381I, 381I)
-		*this.label13.Name = "label13"
-		*this.label13.Size = *new System.Drawing.Size(114I, 20I)
-		*this.label13.TabIndex = 31I
-		*this.label13.Text = "Order by field 3"
-		//
 		//textboxOrderBy3Field
 		//
 		*this.textboxOrderBy3Field.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.textboxOrderBy3Field.Location = *new System.Drawing.Point(530I, 378I)
+		*this.textboxOrderBy3Field.Location = *new System.Drawing.Point(213I, 424I)
 		*this.textboxOrderBy3Field.Name = "textboxOrderBy3Field"
 		*this.textboxOrderBy3Field.Size = *new System.Drawing.Size(120I, 28I)
 		*this.textboxOrderBy3Field.TabIndex = 30I
 		//
-		//label14
-		//
-		*this.label14.AutoSize = *True
-		*this.label14.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.label14.Location = *new System.Drawing.Point(381I, 339I)
-		*this.label14.Name = "label14"
-		*this.label14.Size = *new System.Drawing.Size(136I, 20I)
-		*this.label14.TabIndex = 29I
-		*this.label14.Text = "Oder by asc/desc 2"
-		//
 		//textboxOrderBy2Value
 		//
 		*this.textboxOrderBy2Value.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.textboxOrderBy2Value.Location = *new System.Drawing.Point(530I, 336I)
+		*this.textboxOrderBy2Value.Location = *new System.Drawing.Point(348I, 390I)
 		*this.textboxOrderBy2Value.Name = "textboxOrderBy2Value"
 		*this.textboxOrderBy2Value.Size = *new System.Drawing.Size(120I, 28I)
 		*this.textboxOrderBy2Value.TabIndex = 28I
 		//
-		//label15
-		//
-		*this.label15.AutoSize = *True
-		*this.label15.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.label15.Location = *new System.Drawing.Point(381I, 306I)
-		*this.label15.Name = "label15"
-		*this.label15.Size = *new System.Drawing.Size(114I, 20I)
-		*this.label15.TabIndex = 27I
-		*this.label15.Text = "Order by field 2"
-		//
 		//textboxOrderBy2Field
 		//
 		*this.textboxOrderBy2Field.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.textboxOrderBy2Field.Location = *new System.Drawing.Point(530I, 303I)
+		*this.textboxOrderBy2Field.Location = *new System.Drawing.Point(213I, 390I)
 		*this.textboxOrderBy2Field.Name = "textboxOrderBy2Field"
 		*this.textboxOrderBy2Field.Size = *new System.Drawing.Size(120I, 28I)
 		*this.textboxOrderBy2Field.TabIndex = 26I
 		//
-		//label16
-		//
-		*this.label16.AutoSize = *True
-		*this.label16.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.label16.Location = *new System.Drawing.Point(381I, 263I)
-		*this.label16.Name = "label16"
-		*this.label16.Size = *new System.Drawing.Size(142I, 20I)
-		*this.label16.TabIndex = 25I
-		*this.label16.Text = "Order by asc/desc 1"
-		//
 		//textboxOrderBy1Value
 		//
 		*this.textboxOrderBy1Value.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.textboxOrderBy1Value.Location = *new System.Drawing.Point(530I, 260I)
+		*this.textboxOrderBy1Value.Location = *new System.Drawing.Point(348I, 356I)
 		*this.textboxOrderBy1Value.Name = "textboxOrderBy1Value"
 		*this.textboxOrderBy1Value.Size = *new System.Drawing.Size(120I, 28I)
 		*this.textboxOrderBy1Value.TabIndex = 24I
 		//
-		//label17
-		//
-		*this.label17.AutoSize = *True
-		*this.label17.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.label17.Location = *new System.Drawing.Point(381I, 231I)
-		*this.label17.Name = "label17"
-		*this.label17.Size = *new System.Drawing.Size(114I, 20I)
-		*this.label17.TabIndex = 23I
-		*this.label17.Text = "Order by field 1"
-		//
 		//textboxOrderBy1Field
 		//
 		*this.textboxOrderBy1Field.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.textboxOrderBy1Field.Location = *new System.Drawing.Point(530I, 228I)
+		*this.textboxOrderBy1Field.Location = *new System.Drawing.Point(213I, 356I)
 		*this.textboxOrderBy1Field.Name = "textboxOrderBy1Field"
 		*this.textboxOrderBy1Field.Size = *new System.Drawing.Size(120I, 28I)
 		*this.textboxOrderBy1Field.TabIndex = 22I
 		//
-		//label10
-		//
-		*this.label10.AutoSize = *True
-		*this.label10.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.label10.Location = *new System.Drawing.Point(60I, 414I)
-		*this.label10.Name = "label10"
-		*this.label10.Size = *new System.Drawing.Size(145I, 20I)
-		*this.label10.TabIndex = 21I
-		*this.label10.Text = "Query parm value 3"
-		//
 		//textboxQueryParm3Value
 		//
 		*this.textboxQueryParm3Value.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.textboxQueryParm3Value.Location = *new System.Drawing.Point(227I, 411I)
+		*this.textboxQueryParm3Value.Location = *new System.Drawing.Point(348I, 278I)
 		*this.textboxQueryParm3Value.Name = "textboxQueryParm3Value"
 		*this.textboxQueryParm3Value.Size = *new System.Drawing.Size(120I, 28I)
 		*this.textboxQueryParm3Value.TabIndex = 20I
@@ -654,35 +752,25 @@
 		//label11
 		//
 		*this.label11.AutoSize = *True
-		*this.label11.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.label11.Location = *new System.Drawing.Point(60I, 381I)
+		*this.label11.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label11.Location = *new System.Drawing.Point(147I, 282I)
 		*this.label11.Name = "label11"
-		*this.label11.Size = *new System.Drawing.Size(137I, 20I)
+		*this.label11.Size = *new System.Drawing.Size(53I, 20I)
 		*this.label11.TabIndex = 19I
-		*this.label11.Text = "Query parm field 3"
+		*this.label11.Text = "Field 3"
 		//
 		//textboxQueryParm3Field
 		//
 		*this.textboxQueryParm3Field.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.textboxQueryParm3Field.Location = *new System.Drawing.Point(227I, 378I)
+		*this.textboxQueryParm3Field.Location = *new System.Drawing.Point(213I, 278I)
 		*this.textboxQueryParm3Field.Name = "textboxQueryParm3Field"
 		*this.textboxQueryParm3Field.Size = *new System.Drawing.Size(120I, 28I)
 		*this.textboxQueryParm3Field.TabIndex = 18I
 		//
-		//label8
-		//
-		*this.label8.AutoSize = *True
-		*this.label8.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.label8.Location = *new System.Drawing.Point(60I, 339I)
-		*this.label8.Name = "label8"
-		*this.label8.Size = *new System.Drawing.Size(145I, 20I)
-		*this.label8.TabIndex = 17I
-		*this.label8.Text = "Query parm value 2"
-		//
 		//textboxQueryParm2Value
 		//
 		*this.textboxQueryParm2Value.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.textboxQueryParm2Value.Location = *new System.Drawing.Point(227I, 336I)
+		*this.textboxQueryParm2Value.Location = *new System.Drawing.Point(348I, 245I)
 		*this.textboxQueryParm2Value.Name = "textboxQueryParm2Value"
 		*this.textboxQueryParm2Value.Size = *new System.Drawing.Size(120I, 28I)
 		*this.textboxQueryParm2Value.TabIndex = 16I
@@ -690,35 +778,25 @@
 		//label9
 		//
 		*this.label9.AutoSize = *True
-		*this.label9.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.label9.Location = *new System.Drawing.Point(60I, 306I)
+		*this.label9.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label9.Location = *new System.Drawing.Point(147I, 249I)
 		*this.label9.Name = "label9"
-		*this.label9.Size = *new System.Drawing.Size(137I, 20I)
+		*this.label9.Size = *new System.Drawing.Size(53I, 20I)
 		*this.label9.TabIndex = 15I
-		*this.label9.Text = "Query parm field 2"
+		*this.label9.Text = "Field 2"
 		//
 		//textboxQueryParm2Field
 		//
 		*this.textboxQueryParm2Field.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.textboxQueryParm2Field.Location = *new System.Drawing.Point(227I, 303I)
+		*this.textboxQueryParm2Field.Location = *new System.Drawing.Point(213I, 245I)
 		*this.textboxQueryParm2Field.Name = "textboxQueryParm2Field"
 		*this.textboxQueryParm2Field.Size = *new System.Drawing.Size(120I, 28I)
 		*this.textboxQueryParm2Field.TabIndex = 14I
 		//
-		//label7
-		//
-		*this.label7.AutoSize = *True
-		*this.label7.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.label7.Location = *new System.Drawing.Point(60I, 263I)
-		*this.label7.Name = "label7"
-		*this.label7.Size = *new System.Drawing.Size(145I, 20I)
-		*this.label7.TabIndex = 13I
-		*this.label7.Text = "Query parm value 1"
-		//
 		//textboxQueryParm1Value
 		//
 		*this.textboxQueryParm1Value.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.textboxQueryParm1Value.Location = *new System.Drawing.Point(227I, 260I)
+		*this.textboxQueryParm1Value.Location = *new System.Drawing.Point(348I, 212I)
 		*this.textboxQueryParm1Value.Name = "textboxQueryParm1Value"
 		*this.textboxQueryParm1Value.Size = *new System.Drawing.Size(120I, 28I)
 		*this.textboxQueryParm1Value.TabIndex = 12I
@@ -726,17 +804,17 @@
 		//label6
 		//
 		*this.label6.AutoSize = *True
-		*this.label6.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.label6.Location = *new System.Drawing.Point(60I, 231I)
+		*this.label6.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
+		*this.label6.Location = *new System.Drawing.Point(147I, 216I)
 		*this.label6.Name = "label6"
-		*this.label6.Size = *new System.Drawing.Size(137I, 20I)
+		*this.label6.Size = *new System.Drawing.Size(53I, 20I)
 		*this.label6.TabIndex = 11I
-		*this.label6.Text = "Query parm field 1"
+		*this.label6.Text = "Field 1"
 		//
 		//textboxQueryParm1Field
 		//
 		*this.textboxQueryParm1Field.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.textboxQueryParm1Field.Location = *new System.Drawing.Point(227I, 228I)
+		*this.textboxQueryParm1Field.Location = *new System.Drawing.Point(213I, 212I)
 		*this.textboxQueryParm1Field.Name = "textboxQueryParm1Field"
 		*this.textboxQueryParm1Field.Size = *new System.Drawing.Size(120I, 28I)
 		*this.textboxQueryParm1Field.TabIndex = 10I
@@ -745,7 +823,7 @@
 		//
 		*this.label5.AutoSize = *True
 		*this.label5.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.label5.Location = *new System.Drawing.Point(18I, 166I)
+		*this.label5.Location = *new System.Drawing.Point(18I, 143I)
 		*this.label5.Name = "label5"
 		*this.label5.Size = *new System.Drawing.Size(51I, 20I)
 		*this.label5.TabIndex = 9I
@@ -754,7 +832,7 @@
 		//textboxQuery
 		//
 		*this.textboxQuery.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.textboxQuery.Location = *new System.Drawing.Point(143I, 163I)
+		*this.textboxQuery.Location = *new System.Drawing.Point(143I, 140I)
 		*this.textboxQuery.Name = "textboxQuery"
 		*this.textboxQuery.Size = *new System.Drawing.Size(877I, 28I)
 		*this.textboxQuery.TabIndex = 8I
@@ -763,7 +841,7 @@
 		//
 		*this.label4.AutoSize = *True
 		*this.label4.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.label4.Location = *new System.Drawing.Point(18I, 132I)
+		*this.label4.Location = *new System.Drawing.Point(18I, 109I)
 		*this.label4.Name = "label4"
 		*this.label4.Size = *new System.Drawing.Size(47I, 20I)
 		*this.label4.TabIndex = 7I
@@ -772,7 +850,7 @@
 		//textboxRows
 		//
 		*this.textboxRows.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.textboxRows.Location = *new System.Drawing.Point(143I, 129I)
+		*this.textboxRows.Location = *new System.Drawing.Point(143I, 106I)
 		*this.textboxRows.Name = "textboxRows"
 		*this.textboxRows.Size = *new System.Drawing.Size(100I, 28I)
 		*this.textboxRows.TabIndex = 6I
@@ -781,16 +859,16 @@
 		//
 		*this.label3.AutoSize = *True
 		*this.label3.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.label3.Location = *new System.Drawing.Point(18I, 96I)
+		*this.label3.Location = *new System.Drawing.Point(18I, 73I)
 		*this.label3.Name = "label3"
-		*this.label3.Size = *new System.Drawing.Size(75I, 20I)
+		*this.label3.Size = *new System.Drawing.Size(78I, 20I)
 		*this.label3.TabIndex = 5I
-		*this.label3.Text = "FieldsList"
+		*this.label3.Text = "Fields List"
 		//
 		//textboxFieldsList
 		//
 		*this.textboxFieldsList.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.textboxFieldsList.Location = *new System.Drawing.Point(143I, 93I)
+		*this.textboxFieldsList.Location = *new System.Drawing.Point(143I, 70I)
 		*this.textboxFieldsList.Name = "textboxFieldsList"
 		*this.textboxFieldsList.Size = *new System.Drawing.Size(877I, 28I)
 		*this.textboxFieldsList.TabIndex = 4I
@@ -1051,7 +1129,7 @@
 		*this.Icon = (resources.GetObject("$this.Icon") *As System.Drawing.Icon)
 		*this.MainMenuStrip = *this.menuStrip1
 		*this.Name = "Form1"
-		*this.Text = "Walter Query Tester"
+		*this.Text = "Walter Query Tester v.9.6"
 		*this.menuStrip1.ResumeLayout(*False)
 		*this.menuStrip1.PerformLayout()
 		*this.tabControl1.ResumeLayout(*False)

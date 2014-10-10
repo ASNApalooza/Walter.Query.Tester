@@ -13,3 +13,4 @@ C:\rpDocuments\Programming\AVR\Other\QueryTester\QueryTester\obj\Debug\QueryTest
 C:\rpDocuments\Programming\AVR\Other\QueryTester\QueryTester\bin\Debug\QueryTester.pdb
 C:\rpDocuments\Programming\AVR\Other\QueryTester\QueryTester\obj\Debug\QueryTester.exe
 C:\rpDocuments\Programming\AVR\Other\QueryTester\QueryTester\obj\Debug\QueryTester.pdb
+C:\rpDocuments\Programming\AVR\Other\QueryTester\QueryTester\obj\Debug\QueryTester.vrprojResolveAssemblyReference.cache

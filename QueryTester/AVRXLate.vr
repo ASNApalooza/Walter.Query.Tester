@@ -110,6 +110,10 @@ BegClass AVRXLate Access(*Public)
         DclFld QueryParmsMask Type(*String) 
         DclFld OrderByMask    Type(*String) 
         DclFld Mask           Type(*String) 
+
+        If (Query.Args.Inputs.QueryParms.Count = 0 ) AND (Query.Args.Inputs.OrderBy.Count = 0) 
+            LeaveSr String.Empty 
+        EndIf
         
         QueryParmsMask = 'Query.Args.Inputs.QueryParms.Add(*New ASNA.Helpers.DataServices.QueryField("{field}",{value}))'
         OrderByMask    = 'Query.Args.Inputs.OrderBy.Add(*New ASNA.Helpers.DataServices.QueryOrderByField("{field}",{value}))'
@@ -127,10 +131,14 @@ BegClass AVRXLate Access(*Public)
             If (LanguageType = 1)
                 Mask = Mask + ";"
             EndIf
-            sb.Append(Mask) 
-            sb.AppendLine("")
+            sb.AppendLine(Mask) 
         EndFor 
 
+        If (Query.Args.Inputs.OrderBy.Count = 0) 
+            LeaveSr sb.ToString() 
+        EndIf
+
+        sb.AppendLine("")
         ForEach qo Type(ASNA.Helpers.DataServices.QueryOrderByField) Collection(Query.Args.Inputs.OrderBy) 
             Mask = OrderByMask
             Mask = Mask.Replace("{field}", qo.FieldName) 

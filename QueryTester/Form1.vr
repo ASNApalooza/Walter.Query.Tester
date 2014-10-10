@@ -195,7 +195,13 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
 
         o = Value.Text *As Object
 
-        Query.Args.Inputs.Options.Add(Key.Text, Value.Text) 
+        If (Value.Text.ToUpper().Trim() = "*TRUE") 
+            Query.Args.Inputs.Options.Add(Key.Text, *True) 
+        ElseIf (Value.Text.ToUpper().Trim() = "*FALSE") 
+            Query.Args.Inputs.Options.Add(Key.Text, *False) 
+        Else 
+            Query.Args.Inputs.Options.Add(Key.Text, Value.Text) 
+        EndIf 
     EndSr
 
 
@@ -357,6 +363,7 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
 		DclSrParm sender Type(*Object)
 		DclSrParm e Type(System.Windows.Forms.TabControlEventArgs)
 
+        DclFld LocalQuery      Type(ASNA.Helpers.DataServices.QueryDriver) 
         DclFld Json Type(*String)
 
         If (e.TabPageIndex = 0)
@@ -370,13 +377,16 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
 
         ElseIf ( e.TabPageIndex = 3) 
             *This.Cursor = Cursors.WaitCursor
-            Query.Args.Inputs.Options.Clear() 
-            Query.Args.Inputs.Options.Add("indentJson", *True) 
-            Query.OverrideAdapter(*New ASNA.Helpers.DataServices.ToJsonAdapter(Query.Args)) 
-            Json = Query.Exec() *As *String 
-
+            LocalQuery = *New ASNA.Helpers.DataServices.QueryDriver(db)        
+            LocalQuery.Args.Inputs = *This.Query.Args.Inputs 
+            LocalQuery.OverrideAdapter(*New ASNA.Helpers.DataServices.ToJsonAdapter(LocalQuery.Args)) 
+            Json = LocalQuery.Exec() *As *String 
+            If (LocalQuery.Args.Error.ErrorException <> *Nothing)
+                MsgBox Msg(LocalQuery.Args.Error.ErrorMessage) Title("Query error fetching Json")
+            Else
+                richtextboxJsonResults.Text = Json 
+            EndIf
             *This.Cursor = Cursors.Default
-            richtextboxJsonResults.Text = Json 
         ElseIf (e.TabPageIndex = 4)
             richtextboxAVR.Text = Translate.ToDataTableCode(Query) 
         EndIf 
@@ -489,5 +499,20 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
 
 	EndSr
 
+	
+	BegSr textboxQueryParm1Value_TextChanged Access(*Private) Event(*this.textboxQueryParm1Value.TextChanged)
+		DclSrParm sender Type(*Object)
+		DclSrParm e Type(System.EventArgs)
+	EndSr
+	
+	BegSr label21_Click Access(*Private) 
+		DclSrParm sender Type(*Object)
+		DclSrParm e Type(System.EventArgs)
+	EndSr
+	
+	BegSr label22_Click Access(*Private) Event(*this.label22.Click)
+		DclSrParm sender Type(*Object)
+		DclSrParm e Type(System.EventArgs)
+	EndSr
 	
 EndClass
