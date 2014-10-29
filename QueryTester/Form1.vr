@@ -5,6 +5,7 @@ Using System.ComponentModel
 Using System.Data
 Using System.Drawing
 Using System.Text
+Using System.Text.RegularExpressions
 Using System.Windows.Forms
 Using ASNA.DataGate.Client 
 Using System.Web.UI.WebControls
@@ -35,16 +36,41 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
     DclFld ArgsJson       Type(*String) 
     DclFld QueryAvailable Type(*Boolean) 
     DclFld Translate      Type(AVRXLate) 
+    DclFld DBNames        Type( ArrayList ) New()
+
+    DclDB DummyToGetDBNames 
+    
+    BegSr GetDBNames  
+        //
+        // Get all DB names.
+        //
+        //DclFld Array Type( ArrayList ) New()
+
+        //ASNA.DataGate.Providers.DatabaseName.GetNames
+        ForEach DBName Type( *String ) Collection( DummyToGetDBNames.GetNames(*True ) )
+            DBNames.Add( "*PUBLIC/" + DBName )
+        EndFor
+        
+        ForEach DBName Type( *String ) Collection( DummyToGetDBNames.GetNames( *False ) )
+            DBNames.Add( DBName )
+        EndFor
+    EndSr 
 
 	BegSr Form1_Load Access(*Private) Event(*this.Load)
 		DclSrParm sender *Object
 		DclSrParm e System.EventArgs
         
+        GetDBNames()
+
         Translate = *New AVRXLate(0) 
         comboboxLanguage.SelectedIndex = 0
 
-        comboboxDBName.Items.Add(*New ListItem("Local", "*Public/DG Net Local"))
-        comboboxDBName.Items.Add(*New ListItem("IBM i", "*Public/Cypress"))
+        ForEach DBName Type(*String) Collection(DBNames) 
+            comboboxDBName.Items.Add(*New ListItem(DBName,DBName))
+        EndFor
+        
+        //comboboxDBName.Items.Add(*New ListItem("Local", "*Public/DG Net Local"))
+        //comboboxDBName.Items.Add(*New ListItem("IBM i", "*Public/Cypress"))
         comboboxDBName.SelectedIndex = 1
 
         labelCurrentQueryFile.Text = String.Empty 
@@ -204,7 +230,6 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
         EndIf 
     EndSr
 
-
     BegSr AddQueryField
         DclSrParm Query  Type(ASNA.Helpers.DataServices.QueryDriver)
         DclSrParm Field  Type(TextBox)
@@ -279,6 +304,7 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
 
         DclFld i  Type(*Integer4) 
         DclFld tb Type(TextBox) 
+        DclFld optionValue Type(*String)
 
         ClearInputs()
 
@@ -308,14 +334,19 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
 
         i = 1
         ForEach vp Type(KeyValuePair(*of *String, *Object)) Collection(Args.Inputs.Options) 
+            // When a query gets saved, it's possible that having viewed the query's Json 
+            // will have change *True to True. This fixes that possibliity when 
+            // opening a query. 
+            optionValue = vp.Value.ToString()
+            If (optionValue.ToUpper() = "TRUE" ) OR (optionValue.ToUpper() = "FALSE") 
+                optionValue = "*" + optionValue
+            EndIf
             tb = *This.Controls.Find(String.Format("textboxQueryOptionKey{0}",i),*True)[0] *As TextBox 
             tb.Text = vp.Key.ToString()
             tb = *This.Controls.Find(String.Format("textboxQueryOptionValue{0}",i),*True)[0] *As TextBox 
-            tb.Text = vp.Value.ToString()
+            tb.Text = optionValue
             i += 1
         EndFor 
-
-
     EndSr
 	
     BegSr ClearInputs
@@ -449,9 +480,9 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
 
         DclFld dt           Type(DataTable)
         DclFld DBName       Type(*String) 
-        DclFld EncodedArgs  Type(*String) 
+        DclFld QueryState  Type(*String) 
 
-        EncodedArgs = Query.Args.Outputs.EncodedArgs
+        QueryState = Query.Args.Outputs.QueryState
 
         *This.QueryAvailable = *False
 
@@ -464,7 +495,7 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
 
         *This.Cursor = Cursors.WaitCursor
 
-        dt = Query.NextPage(EncodedArgs) *As DataTable
+        dt = Query.NextPage(QueryState) *As DataTable
         If (Query.Args.Error.ErrorException <> *Nothing)
             MsgBox Query.Args.Error.ErrorMessage
         Else 
@@ -488,17 +519,14 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
         DclFld LanguageType Type(*Integer4) 
 
         LanguageType = comboboxLanguage.SelectedIndex
-
-
+        
         If (tabControl1.SelectedIndex = 4)
             Translate.SetLanguageType(LanguageType)
             tabControl2.SelectedIndex = 0
             tabPage6.Focus()
             ShowTranslatedCode(0)
         EndIf 
-
 	EndSr
-
 	
 	BegSr textboxQueryParm1Value_TextChanged Access(*Private) Event(*this.textboxQueryParm1Value.TextChanged)
 		DclSrParm sender Type(*Object)

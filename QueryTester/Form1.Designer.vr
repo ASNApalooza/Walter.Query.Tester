@@ -680,7 +680,7 @@
 		*this.comboboxDBName.FormattingEnabled = *True
 		*this.comboboxDBName.Location = *new System.Drawing.Point(104I, 21I)
 		*this.comboboxDBName.Name = "comboboxDBName"
-		*this.comboboxDBName.Size = *new System.Drawing.Size(220I, 28I)
+		*this.comboboxDBName.Size = *new System.Drawing.Size(349I, 28I)
 		*this.comboboxDBName.TabIndex = 36I
 		//
 		//label18
@@ -895,7 +895,7 @@
 		//
 		*this.label1.AutoSize = *True
 		*this.label1.Font = *new System.Drawing.Font("Source Sans Pro", 12, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.label1.Location = *new System.Drawing.Point(382I, 24I)
+		*this.label1.Location = *new System.Drawing.Point(459I, 24I)
 		*this.label1.Name = "label1"
 		*this.label1.Size = *new System.Drawing.Size(59I, 20I)
 		*this.label1.TabIndex = 1I
@@ -904,7 +904,7 @@
 		//textboxLibrary
 		//
 		*this.textboxLibrary.Font = *new System.Drawing.Font("Source Code Pro", 12, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (0 *As System.Byte))
-		*this.textboxLibrary.Location = *new System.Drawing.Point(447I, 20I)
+		*this.textboxLibrary.Location = *new System.Drawing.Point(524I, 20I)
 		*this.textboxLibrary.Name = "textboxLibrary"
 		*this.textboxLibrary.Size = *new System.Drawing.Size(220I, 28I)
 		*this.textboxLibrary.TabIndex = 0I
@@ -1038,7 +1038,7 @@
 		//comboboxLanguage
 		//
 		*this.comboboxLanguage.FormattingEnabled = *True
-		*this.comboboxLanguage.Items.AddRange(*new *Object[] {"AVR", "C#"})
+		*this.comboboxLanguage.Items.AddRange(*new *Object[] {"AVR", "C#", "JavaScript"})
 		*this.comboboxLanguage.Location = *new System.Drawing.Point(3I, 2I)
 		*this.comboboxLanguage.Name = "comboboxLanguage"
 		*this.comboboxLanguage.Size = *new System.Drawing.Size(121I, 26I)

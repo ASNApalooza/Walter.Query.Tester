@@ -44,8 +44,10 @@ BegClass AVRXLate Access(*Public)
 
         If (LanguageType = 0)
             sb.Append(Resources.AVRToDataTable) 
-        Else
+        ElseIf (LanguageType = 1)
             sb.Append(Resources.CSToDataTable) 
+        ElseIf (LanguageType = 2)
+            sb.Append(Resources.JSToDataTable) 
         EndIf 
         LeaveSr GetExampleCode(Query,sb) 
     EndFunc             
@@ -57,9 +59,12 @@ BegClass AVRXLate Access(*Public)
 
         If (LanguageType = 0)
             sb.Append(Resources.AVRToJson) 
-        Else
+        ElseIf (LanguageType = 1)
             sb.Append(Resources.CSToJson) 
+        ElseIf (LanguageType = 2)
+            sb.Append(Resources.JSToJson) 
         EndIf 
+
         LeaveSr GetExampleCode(Query,sb) 
     EndFunc             
 
@@ -70,8 +75,10 @@ BegClass AVRXLate Access(*Public)
 
         If (LanguageType = 0)
             sb.Append(Resources.AVRToExcelWindows) 
-        Else
+        ElseIf (LanguageType = 1)
             sb.Append(Resources.CSToExcelWindows) 
+        ElseIf (LanguageType = 2)
+            sb.Append(Resources.JSToDataTable) 
         EndIf 
         LeaveSr GetExampleCode(Query,sb) 
     EndFunc             
@@ -83,8 +90,10 @@ BegClass AVRXLate Access(*Public)
 
         If (LanguageType = 0)
             sb.Append(Resources.AVRToExcelWeb) 
-        Else
+        ElseIf (LanguageType = 1)
             sb.Append(Resources.CSToExcelWeb) 
+        ElseIf (LanguageType = 2)
+            sb.Append(Resources.JSToDataTable) 
         EndIf 
         LeaveSr GetExampleCode(Query,sb) 
     EndFunc             
@@ -97,8 +106,10 @@ BegClass AVRXLate Access(*Public)
 
         If (LanguageType = 0)
             sb.Append(Resources.AVRToListItemArray) 
-        Else
+        ElseIf (LanguageType = 1)
             sb.Append(Resources.CSToListItemArray) 
+        ElseIf (LanguageType = 2)
+            sb.Append(Resources.JSToDataTable) 
         EndIf 
         LeaveSr GetExampleCode(Query,sb) 
     EndFunc             

@@ -246,7 +246,6 @@ Query.Args.Inputs.Rows         = {rows}
 Query.Args.Inputs.Query        = "{query}"
 
 Query.OverrideAdapter(*New ASNA.Helpers.DataServices.ToJsonAdapter(Query.Args)) 
-Query.Args.Inputs.Options.Add("indentJson",*True)
 
 {parms}
 {options}
@@ -421,7 +420,6 @@ Query.Args.Inputs.Rows         = {rows};
 Query.Args.Inputs.Query        = "{query}";
 
 Query.OverrideAdapter(new ASNA.Helpers.DataServices.ToJsonAdapter(Query.Args)); 
-Query.Args.Inputs.Options.Add("indentJson",true);
 
 {parms}
 {options}
@@ -465,5 +463,28 @@ if (Query.Args.Error.ErrorException != null) {
     // Work with exception here
 }
 db.Close();</value>
+  </data>
+  <data name="JSToDataTable" xml:space="preserve">
+    <value>You can only generate Json with JavaScript. Click the "ToJson" tab to see an example.</value>
+  </data>
+  <data name="JSToJson" xml:space="preserve">
+    <value>You can do lots with Walter's Json output. This exmaple shows _all_of the code you need 
+to provide to hookup a jQuery UI autocomplete with Walter. There is _no_ other JavaScript you need
+to write!
+
+$(function () {
+    var ACCustomerName = new ASNAHelpers.QueryInputArgs();
+    ACCustomerName.url = "../services/jsonservice.ashx";
+    ACCustomerName.Library = "examples";
+    ACCustomerName.File = "cmastnewl2";
+    ACCustomerName.FieldsList = "cmname:label,cmcustno:value";
+    ACCustomerName.Rows = 12;
+    ACCustomerName.Query = "CMNAME &gt;= '{CMNAME}'";
+    ACCustomerName.addQueryParm("CMNAME");
+    ACCustomerName.addOption("labelTargetId", "textboxCustomerName");
+    ACCustomerName.addOption("labelValueId", "textboxCustomerNumber");
+    ACCustomerName.addOption("showLabelOnScroll", true);
+    ASNAHelpers.autoComplete.registerQuery(ACCustomerName);
+});</value>
   </data>
 </root>

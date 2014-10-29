@@ -300,4 +300,32 @@ BegClass Resources Access(*Internal) Attributes(System.CodeDom.Compiler.Generate
         EndGet
     EndProp
     
+    ///<summary>
+    ///  Looks up a localized string similar to You can only generate Json with JavaScript. Click the &quot;ToJson&quot; tab to see an example..
+    ///</summary>
+    BegProp JSToDataTable Type(*String) Access(*Internal) Shared(*Yes)
+        BegGet
+            LeaveSr ResourceManager.GetString("JSToDataTable", resourceCulture)
+        EndGet
+    EndProp
+    
+    ///<summary>
+    ///  Looks up a localized string similar to You can do lots with Walter&apos;s Json output. This exmaple shows _all_of the code you need 
+    ///to provide to hookup a jQuery UI autocomplete with Walter. There is _no_ other JavaScript you need
+    ///to write!
+    ///
+    ///$(function () {
+    ///    var ACCustomerName = new ASNAHelpers.QueryInputArgs();
+    ///    ACCustomerName.url = &quot;../services/jsonservice.ashx&quot;;
+    ///    ACCustomerName.Library = &quot;examples&quot;;
+    ///    ACCustomerName.File = &quot;cmastnewl2&quot;;
+    ///    ACCustomerName.FieldsList = &quot;cmname:label,cmcustno:value&quot;;
+    ///    ACCustomerName.Rows = 1 [rest of string was truncated]&quot;;.
+    ///</summary>
+    BegProp JSToJson Type(*String) Access(*Internal) Shared(*Yes)
+        BegGet
+            LeaveSr ResourceManager.GetString("JSToJson", resourceCulture)
+        EndGet
+    EndProp
+    
 EndClass
