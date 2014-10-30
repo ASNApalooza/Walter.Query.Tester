@@ -30,3 +30,4 @@ C:\rpDocuments\Programming\Walter\QueryTester\QueryTester\obj\Debug\QueryTester.
 C:\rpDocuments\Programming\Walter\QueryTester\QueryTester\obj\Debug\QueryTester.pdb
 C:\rpDocuments\Programming\Walter\QueryTester\QueryTester\bin\Debug\ASNA.Helpers.DataServices.dll
 C:\rpDocuments\Programming\Walter\QueryTester\QueryTester\bin\Debug\ASNA.Helpers.DataServices.pdb
+C:\rpDocuments\Programming\Walter\QueryTester\QueryTester\bin\Debug\Newtonsoft.Json.xml

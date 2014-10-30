@@ -290,12 +290,14 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
 
         openfiledialog1.ShowDialog() 
         If ( openfiledialog1.FileName <> "") 
+            *This.Cursor = Cursors.WaitCursor                
             DisableTabs()
             ArgsJson = File.ReadAllText(openfiledialog1.FileName) 
             Args = JsonConvert.DeserializeObject(ArgsJson, *TypeOf(ASNA.Helpers.DataServices.QueryFileInstanceArgs)) *AS ASNA.Helpers.DataServices.QueryFileInstanceArgs
             RefreshFormInputs(Args)
             *This.QueryAvailable = *False
             labelCurrentQueryFile.Text = openfiledialog1.FileName  
+            *This.Cursor = Cursors.Default
         EndIf
 	EndSr
 
@@ -411,6 +413,7 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
             LocalQuery = *New ASNA.Helpers.DataServices.QueryDriver(db)        
             LocalQuery.Args.Inputs = *This.Query.Args.Inputs 
             LocalQuery.OverrideAdapter(*New ASNA.Helpers.DataServices.ToJsonAdapter(LocalQuery.Args)) 
+            LocalQuery.Args.Inputs.Options.Add("indentJson",*True)
             Json = LocalQuery.Exec() *As *String 
             If (LocalQuery.Args.Error.ErrorException <> *Nothing)
                 MsgBox Msg(LocalQuery.Args.Error.ErrorMessage) Title("Query error fetching Json")
