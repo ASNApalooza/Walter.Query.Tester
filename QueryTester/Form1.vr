@@ -268,7 +268,8 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
             If (File.Exists(savefiledialog1.FileName))
                 File.Delete(savefiledialog1.FileName)
             EndIf
-            File.WriteAllText(savefiledialog1.FileName,ArgsJson)           
+            File.WriteAllText(savefiledialog1.FileName,ArgsJson)     
+            labelCurrentQueryFile.Text = savefiledialog1.FileName        
         EndIF
 	EndSr
 	
@@ -355,7 +356,10 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
         ForEach tb Type(TextBox) Collection(panelInputs.Controls)
             tb.Text = String.Empty
         EndFor 
-        labelCurrentQueryFile.Text = openfiledialog1.FileName  
+        labelCurrentQueryFile.Text = openfiledialog1.FileName 
+        
+        DisableTabs() 
+        labelCurrentQueryFile.Text = String.Empty 
     EndSr 
 	
 	BegSr showQueryAsExcelToolStripMenuItem_Click Access(*Private) Event(*this.showQueryAsExcelToolStripMenuItem.Click)
@@ -413,7 +417,11 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
             LocalQuery = *New ASNA.Helpers.DataServices.QueryDriver(db)        
             LocalQuery.Args.Inputs = *This.Query.Args.Inputs 
             LocalQuery.OverrideAdapter(*New ASNA.Helpers.DataServices.ToJsonAdapter(LocalQuery.Args)) 
-            LocalQuery.Args.Inputs.Options.Add("indentJson",*True)
+
+            If (NOT LocalQuery.Args.Inputs.Options.ContainsKey("indentJson")) 
+                LocalQuery.Args.Inputs.Options.Add("indentJson",*True)
+            EndIf 
+
             Json = LocalQuery.Exec() *As *String 
             If (LocalQuery.Args.Error.ErrorException <> *Nothing)
                 MsgBox Msg(LocalQuery.Args.Error.ErrorMessage) Title("Query error fetching Json")

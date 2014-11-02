@@ -13,7 +13,7 @@
     <StartupObject>QueryTester.Form1</StartupObject>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <Name>QueryTester</Name>
-    <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <ApplicationIcon>qq.ico</ApplicationIcon>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -95,6 +95,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <Content Include="q.ico" />
+    <Content Include="qq.ico" />
     <Content Include="search.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\ASNA\VisualRPG\v11.2\ASNA.VisualRPG.targets" />
