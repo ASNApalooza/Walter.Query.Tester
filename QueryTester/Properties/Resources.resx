@@ -141,7 +141,7 @@ Query.Args.Inputs.Query        = "{query}"
 {options}
 dt = Query.Exec() *As DataTable
 // DataTable now available for databinding or other use. Generally you'll assign this 
-// DataTable to a grid's or some other control's DataSource property. 
+// DataTable to a grid or some other control's DataSource property. 
 If (Query.Args.Error.ErrorException &lt;&gt; *Nothing)
     // Work with exception here
 EndIf 
@@ -314,7 +314,7 @@ Query.Args.Inputs.Query        = "{query}";
 {options}
 dt = Query.Exec() *As DataTable;
 // DataTable now available for databinding or other use. Generally you'll assign this 
-// DataTable to a grid's or some other control's DataSource property. 
+// DataTable to a grid or some other control's DataSource property. 
 if (Query.Args.Error.ErrorException != null) {
     // Work with exception here
 }

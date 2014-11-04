@@ -535,6 +535,7 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
 
         DBName = (comboboxDBName.SelectedItem *As ListItem).Value 
         db = *New AdgConnection(DBName) 
+        db.Open()
 
         Query = *New ASNA.Helpers.DataServices.QueryDriver(db)        
 
