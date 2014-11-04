@@ -11,6 +11,7 @@ Using ASNA.DataGate.Client
 Using System.Web.UI.WebControls
 Using System.IO 
 Using NewtonSoft.Json
+Using System.Reflection
 
 BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
 
@@ -68,14 +69,21 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
         ForEach DBName Type(*String) Collection(DBNames) 
             comboboxDBName.Items.Add(*New ListItem(DBName,DBName))
         EndFor
-        
-        //comboboxDBName.Items.Add(*New ListItem("Local", "*Public/DG Net Local"))
-        //comboboxDBName.Items.Add(*New ListItem("IBM i", "*Public/Cypress"))
+
         comboboxDBName.SelectedIndex = 1
 
         labelCurrentQueryFile.Text = String.Empty 
 
         DisableTabs()
+
+        DclFld version Type(*String)
+        DclFld t       Type(Type)
+
+        t = *TypeOf(Form1) 
+
+        version = t.Assembly.GetName().Version.ToString() 
+        *This.Text = "Walter Query Tester v" + version 
+
 	EndSr
 
 	BegSr Form1_FormClosing Access(*Private) Event(*this.FormClosing)
@@ -121,6 +129,14 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
            (String.IsNullOrEmpty(textboxRows.Text))
             LeaveSr 
         EndIf
+
+        If (textboxFieldsList.Text.Trim() = String.Empty)
+            textboxFieldsList.Text = "*All"
+        EndIf 
+
+        If (textboxRows.Text.Trim() = String.Empty)
+            textboxRows.Text = "12"
+        EndIf 
 
         *This.Cursor = Cursors.WaitCursor
 
@@ -366,17 +382,31 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
 		DclSrParm sender Type(*Object)
 		DclSrParm e Type(System.EventArgs)
 
+        DclFld LocalQuery   Type(ASNA.Helpers.DataServices.QueryDriver) 
         DclFld ExcelAdapter Type(ASNA.Helpers.DataServices.ToExcelAdapter)
+        DclFld DBName       Type(*String) 
+
+        DBName = (comboboxDBName.SelectedItem *As ListItem).Value 
+        db = *New AdgConnection(DBName) 
+        db.Open()
+        LocalQuery = *New ASNA.Helpers.DataServices.QueryDriver(db)      
 
         *This.Cursor = Cursors.WaitCursor
-        ExcelAdapter = *New ASNA.Helpers.DataServices.ToExcelAdapter(Query.Args) 
-        Query.OverrideAdapter(ExcelAdapter)
-        Query.Args.Inputs.Options.Clear() 
-        Query.Args.Inputs.Options.Add("heading","Customer Listing")
-        Query.Args.Inputs.Options.Add("worksheet_name","Customers")
-        Query.Exec()
+        SetQueryProperties(LocalQuery) 
+        ExcelAdapter = *New ASNA.Helpers.DataServices.ToExcelAdapter(LocalQuery.Args) 
+        LocalQuery.OverrideAdapter(ExcelAdapter)
+
+        LocalQuery.Exec()
+        If (LocalQuery.Args.Error.ErrorException <> *Nothing)
+            *This.Cursor = Cursors.Default
+            MsgBox Msg(LocalQuery.Args.Error.ErrorMessage) Title("Query error")
+            LeaveSr 
+        EndIf 
+
         ExcelAdapter.SaveToLocalFile(EXCEL_FILE)
         *This.Cursor = Cursors.Default
+
+        db.Close()
 
         OsExec CmdLine(EXCEL_FILE) 
 	EndSr
@@ -402,6 +432,7 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
 
         DclFld LocalQuery      Type(ASNA.Helpers.DataServices.QueryDriver) 
         DclFld Json Type(*String)
+        DclFld DBName Type(*String) 
 
         If (e.TabPageIndex = 0)
 
@@ -414,6 +445,9 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
 
         ElseIf ( e.TabPageIndex = 3) 
             *This.Cursor = Cursors.WaitCursor
+            DBName = (comboboxDBName.SelectedItem *As ListItem).Value 
+            db = *New AdgConnection(DBName) 
+            db.Open()
             LocalQuery = *New ASNA.Helpers.DataServices.QueryDriver(db)        
             LocalQuery.Args.Inputs = *This.Query.Args.Inputs 
             LocalQuery.OverrideAdapter(*New ASNA.Helpers.DataServices.ToJsonAdapter(LocalQuery.Args)) 
@@ -428,11 +462,11 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
             Else
                 richtextboxJsonResults.Text = Json 
             EndIf
+            db.Close()
             *This.Cursor = Cursors.Default
         ElseIf (e.TabPageIndex = 4)
             richtextboxAVR.Text = Translate.ToDataTableCode(Query) 
         EndIf 
-
 	EndSr
 	
 	BegSr tabControl2_Selecting Access(*Private) Event(*this.tabControl2.Selecting)
@@ -552,6 +586,13 @@ BegClass Form1 Extends(System.Windows.Forms.Form) Access(*Public) Partial(*Yes)
 	BegSr label22_Click Access(*Private) Event(*this.label22.Click)
 		DclSrParm sender Type(*Object)
 		DclSrParm e Type(System.EventArgs)
+	EndSr
+	
+	BegSr waltersDocsOnTheWebToolStripMenuItem_Click Access(*Private) Event(*this.waltersDocsOnTheWebToolStripMenuItem.Click)
+		DclSrParm sender Type(*Object)
+		DclSrParm e Type(System.EventArgs)
+
+        OsExec  CmdLine("http://asnapalooza.github.io/ASNA.Helpers.DataServices.site") 
 	EndSr
 	
 EndClass

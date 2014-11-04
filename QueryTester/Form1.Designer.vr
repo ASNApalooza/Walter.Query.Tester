@@ -1,4 +1,5 @@
 ﻿BegClass Form1 Partial(*Yes)
+	DclFld waltersDocsOnTheWebToolStripMenuItem Type(System.Windows.Forms.ToolStripMenuItem) Access(*Private) WithEvents(*Yes)
 	DclFld label35 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
 	DclFld label29 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
 	DclFld label8 Type(System.Windows.Forms.Label) Access(*Private) WithEvents(*Yes)
@@ -107,6 +108,7 @@
 		*this.clearInputsToolStripMenuItem = *new System.Windows.Forms.ToolStripMenuItem()
 		*this.viewToolStripMenuItem = *new System.Windows.Forms.ToolStripMenuItem()
 		*this.showQueryAsExcelToolStripMenuItem = *new System.Windows.Forms.ToolStripMenuItem()
+		*this.waltersDocsOnTheWebToolStripMenuItem = *new System.Windows.Forms.ToolStripMenuItem()
 		*this.saveFileDialog1 = *new System.Windows.Forms.SaveFileDialog()
 		*this.openFileDialog1 = *new System.Windows.Forms.OpenFileDialog()
 		*this.tabControl1 = *new System.Windows.Forms.TabControl()
@@ -249,7 +251,7 @@
 		//
 		//viewToolStripMenuItem
 		//
-		*this.viewToolStripMenuItem.DropDownItems.AddRange(*new System.Windows.Forms.ToolStripItem[] {*this.showQueryAsExcelToolStripMenuItem})
+		*this.viewToolStripMenuItem.DropDownItems.AddRange(*new System.Windows.Forms.ToolStripItem[] {*this.showQueryAsExcelToolStripMenuItem, *this.waltersDocsOnTheWebToolStripMenuItem})
 		*this.viewToolStripMenuItem.Name = "viewToolStripMenuItem"
 		*this.viewToolStripMenuItem.Size = *new System.Drawing.Size(44I, 20I)
 		*this.viewToolStripMenuItem.Text = "View"
@@ -257,8 +259,14 @@
 		//showQueryAsExcelToolStripMenuItem
 		//
 		*this.showQueryAsExcelToolStripMenuItem.Name = "showQueryAsExcelToolStripMenuItem"
-		*this.showQueryAsExcelToolStripMenuItem.Size = *new System.Drawing.Size(179I, 22I)
+		*this.showQueryAsExcelToolStripMenuItem.Size = *new System.Drawing.Size(205I, 22I)
 		*this.showQueryAsExcelToolStripMenuItem.Text = "Show query as Excel"
+		//
+		//waltersDocsOnTheWebToolStripMenuItem
+		//
+		*this.waltersDocsOnTheWebToolStripMenuItem.Name = "waltersDocsOnTheWebToolStripMenuItem"
+		*this.waltersDocsOnTheWebToolStripMenuItem.Size = *new System.Drawing.Size(205I, 22I)
+		*this.waltersDocsOnTheWebToolStripMenuItem.Text = "Walters docs on the Web"
 		//
 		//saveFileDialog1
 		//
@@ -1141,7 +1149,7 @@
 		*this.Icon = (resources.GetObject("$this.Icon") *As System.Drawing.Icon)
 		*this.MainMenuStrip = *this.menuStrip1
 		*this.Name = "Form1"
-		*this.Text = "Walter Query Tester v.9.6"
+		*this.Text = "Walter Query Tester v.9.6.8"
 		*this.menuStrip1.ResumeLayout(*False)
 		*this.menuStrip1.PerformLayout()
 		*this.tabControl1.ResumeLayout(*False)

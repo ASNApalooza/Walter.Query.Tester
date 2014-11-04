@@ -32,5 +32,5 @@ SetAssemblyAttribute Guid("a718871b-24b2-4c9b-bca1-358c24d1efd8")
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
 // SetAssemblyAttribute AssemblyVersion("1.0.*")
-SetAssemblyAttribute AssemblyVersion("1.0.0.0")
-SetAssemblyAttribute AssemblyFileVersion("1.0.0.0")
+SetAssemblyAttribute AssemblyVersion("0.9.6.8")
+SetAssemblyAttribute AssemblyFileVersion("0.9.6.8")
