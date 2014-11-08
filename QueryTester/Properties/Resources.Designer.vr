@@ -57,12 +57,13 @@ BegClass Resources Access(*Internal) Attributes(System.CodeDom.Compiler.Generate
     ///DclFld dt         Type(DataTable) 
     ///
     ///db = *New AdgConnection(DBNAME) 
+    ///db.Open()
     ///
     ///Query = *New ASNA.Helpers.DataServices.QueryDriver(db)
     ///Query.Args.Inputs.Library      = &quot;{library}&quot;
     ///Query.Args.Inputs.File         = &quot;{file}&quot;
     ///Query.Args.Inputs.FieldsList   = &quot;{fieldsList}&quot;
-    ///Query.Args.Inputs.Rows         [rest of string was truncated]&quot;;.
+    ///Query.Args.Inputs.R [rest of string was truncated]&quot;;.
     ///</summary>
     BegProp AVRToDataTable Type(*String) Access(*Internal) Shared(*Yes)
         BegGet
@@ -107,9 +108,10 @@ BegClass Resources Access(*Internal) Attributes(System.CodeDom.Compiler.Generate
     ///DclFld ExcelAdapter Type(ASNA.Helpers.DataServices.ToExcelAdapter)
     ///
     ///db = *New AdgConnection(DBNAME) 
+    ///db.Open()
     ///
     ///Query = *New ASNA.Helpers.DataServices.QueryDriver(db)
-    ///Query.Args.Inputs.Library       [rest of string was truncated]&quot;;.
+    ///Query.Args.Inputs.Li [rest of string was truncated]&quot;;.
     ///</summary>
     BegProp AVRToExcelWindows Type(*String) Access(*Internal) Shared(*Yes)
         BegGet
@@ -130,11 +132,12 @@ BegClass Resources Access(*Internal) Attributes(System.CodeDom.Compiler.Generate
     ///DclFld Json       Type(*String) 
     ///
     ///db = *New AdgConnection(DBNAME) 
+    ///db.Open()
     ///
     ///Query = *New ASNA.Helpers.DataServices.QueryDriver(db)
     ///Query.Args.Inputs.Library      = &quot;{library}&quot;
     ///Query.Args.Inputs.File         = &quot;{file}&quot;
-    ///Query.Args.Inputs.FieldsList   = &quot;{fieldsList [rest of string was truncated]&quot;;.
+    ///Query.Args.Inputs.FieldsList   = &quot; [rest of string was truncated]&quot;;.
     ///</summary>
     BegProp AVRToJson Type(*String) Access(*Internal) Shared(*Yes)
         BegGet
@@ -156,10 +159,12 @@ BegClass Resources Access(*Internal) Attributes(System.CodeDom.Compiler.Generate
     ///DclArray ListItems  Type(System.Web.UI.WebControls.ListItem) Rank(1)
     ///
     ///db = *New AdgConnection(DBNAME) 
+    ///db.Open()
     ///
-    ///Query = *New ASNA.Helpers.DataServices.QueryDriver(db)
-    ///Query.Args.Inputs.Library      = &quot;{library}&quot;
-    ///Query.Args.Inputs.File    [rest of string was truncated]&quot;;.
+    ///// The ToListItemArrayAdapter requires that two fields in the FieldsList
+    ///// be aliased &apos;text&apos; and &apos;value.&apos;
+    ///
+    ///Query [rest of string was truncated]&quot;;.
     ///</summary>
     BegProp AVRToListItemArray Type(*String) Access(*Internal) Shared(*Yes)
         BegGet
@@ -179,14 +184,14 @@ BegClass Resources Access(*Internal) Attributes(System.CodeDom.Compiler.Generate
     ///DataTable dt;
     ///
     ///db = new AdgConnection(DBNAME); 
+    ///db.Open();
     ///
     ///Query = *New ASNA.Helpers.DataServices.QueryDriver(db);
     ///Query.Args.Inputs.Library      = &quot;{library}&quot;;
     ///Query.Args.Inputs.File         = &quot;{file}&quot;;
     ///Query.Args.Inputs.FieldsList   = &quot;{fieldsList}&quot;;
     ///Query.Args.Inputs.Rows         = {rows};
-    ///Query.Args.Inputs.Query        = &quot;{query}&quot;;
-    /// [rest of string was truncated]&quot;;.
+    ///Query.Args.Inputs.Query        =  [rest of string was truncated]&quot;;.
     ///</summary>
     BegProp CSToDataTable Type(*String) Access(*Internal) Shared(*Yes)
         BegGet
@@ -210,9 +215,9 @@ BegClass Resources Access(*Internal) Attributes(System.CodeDom.Compiler.Generate
     ///bool Result;
     ///
     ///db = new AdgConnection(DBNAME); 
+    ///db.Open();
     ///
-    ///Query = *New ASNA.Helpers.DataServices.QueryDriver(db);
-    ///Query [rest of string was truncated]&quot;;.
+    ///Query = *New ASNA.Helpers.DataServices.QueryDriver [rest of string was truncated]&quot;;.
     ///</summary>
     BegProp CSToExcelWeb Type(*String) Access(*Internal) Shared(*Yes)
         BegGet
@@ -234,11 +239,12 @@ BegClass Resources Access(*Internal) Attributes(System.CodeDom.Compiler.Generate
     ///ASNA.Helpers.DataServices.ToExcelAdapter ExcelAdapter;
     ///
     ///db = new AdgConnection(DBNAME); 
+    ///db.Open();
     ///
     ///Query = *New ASNA.Helpers.DataServices.QueryDriver(db);
     ///Query.Args.Inputs.Library      = &quot;{library}&quot;;
     ///Query.Args.Inputs.File         = &quot;{file}&quot;;
-    ///Query.Args.Inp [rest of string was truncated]&quot;;.
+    ///Qu [rest of string was truncated]&quot;;.
     ///</summary>
     BegProp CSToExcelWindows Type(*String) Access(*Internal) Shared(*Yes)
         BegGet
@@ -259,13 +265,14 @@ BegClass Resources Access(*Internal) Attributes(System.CodeDom.Compiler.Generate
     ///string Json;
     ///
     ///db = new AdgConnection(DBNAME); 
+    ///db.Open();
     ///
     ///Query = *New ASNA.Helpers.DataServices.QueryDriver(db);
     ///Query.Args.Inputs.Library      = &quot;{library}&quot;;
     ///Query.Args.Inputs.File         = &quot;{file}&quot;;
     ///Query.Args.Inputs.FieldsList   = &quot;{fieldsList}&quot;;
     ///Query.Args.Inputs.Rows         = {rows};
-    ///Query.Args.Inputs.Query         [rest of string was truncated]&quot;;.
+    ///Query.Args.Inputs.Q [rest of string was truncated]&quot;;.
     ///</summary>
     BegProp CSToJson Type(*String) Access(*Internal) Shared(*Yes)
         BegGet
@@ -287,12 +294,13 @@ BegClass Resources Access(*Internal) Attributes(System.CodeDom.Compiler.Generate
     ///System.Web.UI.WebControls.ListItem[] ListItems;
     ///
     ///db = new AdgConnection(DBNAME); 
+    ///db.Open();
+    ///
+    ///// The ToListItemArrayAdapter requires that two fields in the FieldsList
+    ///// be aliased &apos;text&apos; and &apos;value.&apos;
     ///
     ///Query = *New ASNA.Helpers.DataServices.QueryDriver(db);
-    ///Query.Args.Inputs.Library      = &quot;{library}&quot;;
-    ///Query.Args.Inputs.File         = &quot;{file}&quot;;
-    ///Query.Args.Inputs.FieldsList   = &quot;{fieldsList}&quot;;
-    ///Query.Args.Inputs.R [rest of string was truncated]&quot;;.
+    ///Query.Args.Inputs.Library      = &quot;{li [rest of string was truncated]&quot;;.
     ///</summary>
     BegProp CSToListItemArray Type(*String) Access(*Internal) Shared(*Yes)
         BegGet

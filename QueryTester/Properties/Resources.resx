@@ -129,6 +129,7 @@ DclFld Query      Type(ASNA.Helpers.DataServices.QueryDriver)
 DclFld dt         Type(DataTable) 
 
 db = *New AdgConnection(DBNAME) 
+db.Open()
 
 Query = *New ASNA.Helpers.DataServices.QueryDriver(db)
 Query.Args.Inputs.Library      = "{library}"
@@ -163,6 +164,7 @@ DclFLd Excel        Type(ASNA.Helpers.ASPNET.ExcelExport) New()
 DclFld Result       Type(*Boolean)
 
 db = *New AdgConnection(DBNAME) 
+db.Open()
 
 Query = *New ASNA.Helpers.DataServices.QueryDriver(db)
 Query.Args.Inputs.Library      = "{library}"
@@ -199,6 +201,7 @@ DclFld dt           Type(DataTable)
 DclFld ExcelAdapter Type(ASNA.Helpers.DataServices.ToExcelAdapter)
 
 db = *New AdgConnection(DBNAME) 
+db.Open()
 
 Query = *New ASNA.Helpers.DataServices.QueryDriver(db)
 Query.Args.Inputs.Library      = "{library}"
@@ -237,6 +240,7 @@ DclFld dt         Type(DataTable)
 DclFld Json       Type(*String) 
 
 db = *New AdgConnection(DBNAME) 
+db.Open()
 
 Query = *New ASNA.Helpers.DataServices.QueryDriver(db)
 Query.Args.Inputs.Library      = "{library}"
@@ -271,6 +275,10 @@ DclFld dt           Type(DataTable)
 DclArray ListItems  Type(System.Web.UI.WebControls.ListItem) Rank(1)
 
 db = *New AdgConnection(DBNAME) 
+db.Open()
+
+// The ToListItemArrayAdapter requires that two fields in the FieldsList
+// be aliased 'text' and 'value.'
 
 Query = *New ASNA.Helpers.DataServices.QueryDriver(db)
 Query.Args.Inputs.Library      = "{library}"
@@ -282,7 +290,7 @@ Query.OverrideAdapter(*New ASNA.Helpers.DataServices.ToLisItemArrayAdapter(Query
 
 {parms}
 {options}
-ListItems = Query.Exec() *As As System.Web.UI.WebControls.ListItem[]
+ListItems = Query.Exec() *As System.Web.UI.WebControls.ListItem[]
 // The array of ListItems is now available. Generally you'll use a ComboBox 
 // or DropDownList's AddRange() method to assign this array.
 If (Query.Args.Error.ErrorException &lt;&gt; *Nothing)
@@ -302,6 +310,7 @@ ASNA.Helpers.DataServices.QueryDriver Query;
 DataTable dt;
 
 db = new AdgConnection(DBNAME); 
+db.Open();
 
 Query = *New ASNA.Helpers.DataServices.QueryDriver(db);
 Query.Args.Inputs.Library      = "{library}";
@@ -336,6 +345,7 @@ ASNA.Helpers.ASPNET.ExcelExport Excel = new ASNA.Helpers.ASPNET.ExcelExport Exce
 bool Result;
 
 db = new AdgConnection(DBNAME); 
+db.Open();
 
 Query = *New ASNA.Helpers.DataServices.QueryDriver(db);
 Query.Args.Inputs.Library      = "{library}";
@@ -373,6 +383,7 @@ DataTable dt;
 ASNA.Helpers.DataServices.ToExcelAdapter ExcelAdapter;
 
 db = new AdgConnection(DBNAME); 
+db.Open();
 
 Query = *New ASNA.Helpers.DataServices.QueryDriver(db);
 Query.Args.Inputs.Library      = "{library}";
@@ -411,6 +422,7 @@ DataTable dt;
 string Json;
 
 db = new AdgConnection(DBNAME); 
+db.Open();
 
 Query = *New ASNA.Helpers.DataServices.QueryDriver(db);
 Query.Args.Inputs.Library      = "{library}";
@@ -445,6 +457,10 @@ DataTable dt;
 System.Web.UI.WebControls.ListItem[] ListItems;
 
 db = new AdgConnection(DBNAME); 
+db.Open();
+
+// The ToListItemArrayAdapter requires that two fields in the FieldsList
+// be aliased 'text' and 'value.'
 
 Query = *New ASNA.Helpers.DataServices.QueryDriver(db);
 Query.Args.Inputs.Library      = "{library}";
